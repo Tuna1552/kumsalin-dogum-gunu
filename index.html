@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İyi ki Doğdun Kumsal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
@@ -14,103 +14,91 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        serif: ['Cormorant Garamond', 'serif'],
-                        sans: ['Outfit', 'sans-serif']
+                        sans: ['Inter', 'sans-serif'],
+                        cursive: ['Dancing Script', 'cursive']
                     },
                     colors: {
-                        warm: {
-                            950: '#0f0c0a',
-                            900: '#1a1512',
-                            800: '#2a211c',
-                            rose: '#e8a0a0',
-                            soft: '#f5d0c8',
-                            gold: '#e8c9a0',
-                            cream: '#f8f1eb'
-                        }
+                        primary: '#3b82f6',
+                        soft: '#60a5fa',
+                        dark: '#0f172a',
+                        card: '#1e293b',
+                        light: '#f1f5f9'
                     }
                 }
             }
         }
     </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Outfit', sans-serif;
-            background: #0f0c0a;
-            color: #f8f1eb;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f1f5f9;
             overflow-x: hidden;
         }
 
-        #stars-canvas {
+        #particles-canvas {
             position: fixed;
             inset: 0;
-            z-index: 0;
+            z-index: 1;
             pointer-events: none;
         }
 
-        .ui-layer { position: relative; z-index: 10; }
+        .ui-container {
+            position: relative;
+            z-index: 10;
+        }
 
-        /* Password */
-        .gate-card {
-            background: rgba(26, 21, 18, 0.75);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(232, 160, 160, 0.12);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        .glass {
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .password-input {
-            background: rgba(15, 12, 10, 0.7);
-            border: 1px solid rgba(232, 160, 160, 0.2);
-            color: #f8f1eb;
-            transition: all 0.35s ease;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            transition: all 0.3s ease;
         }
         .password-input:focus {
-            border-color: #e8a0a0;
-            box-shadow: 0 0 0 3px rgba(232, 160, 160, 0.12);
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
             outline: none;
         }
-        .password-input::placeholder { color: #6b5d54; }
 
         .enter-btn {
-            background: linear-gradient(135deg, #c97b7b, #e8a0a0);
+            background: linear-gradient(to right, #2563eb, #3b82f6);
             transition: all 0.3s ease;
         }
         .enter-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 12px 28px rgba(201, 123, 123, 0.35);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
         }
 
-        /* Rings */
-        .ring-container {
+        /* Countdown rings */
+        .ring-box {
             position: relative;
-            width: 108px;
-            height: 108px;
+            width: 100px;
+            height: 100px;
         }
         @media (min-width: 768px) {
-            .ring-container { width: 132px; height: 132px; }
+            .ring-box { width: 125px; height: 125px; }
         }
         .ring-svg { transform: rotate(-90deg); }
         .ring-bg {
             fill: none;
-            stroke: rgba(232, 160, 160, 0.12);
+            stroke: rgba(59, 130, 246, 0.15);
             stroke-width: 5;
         }
-        .ring-progress {
+        .ring-fill {
             fill: none;
-            stroke: #e8a0a0;
+            stroke: #60a5fa;
             stroke-width: 5;
             stroke-linecap: round;
-            transition: stroke-dashoffset 0.75s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: drop-shadow(0 0 5px rgba(232, 160, 160, 0.45));
+            transition: stroke-dashoffset 0.7s ease;
+            filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.4));
         }
 
-        .glass {
-            background: rgba(26, 21, 18, 0.6);
-            backdrop-filter: blur(18px);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* Photos */
+        /* Photo grid */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -126,9 +114,8 @@
             aspect-ratio: 1;
             overflow: hidden;
             border-radius: 14px;
-            background: #2a211c;
-            cursor: pointer;
-            position: relative;
+            background: #1e293b;
+            border: 1px solid rgba(255,255,255,0.04);
         }
         @media (min-width: 768px) {
             .photo-card { aspect-ratio: 4/5; border-radius: 18px; }
@@ -137,46 +124,46 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.5s ease;
         }
-        .photo-card:hover img { transform: scale(1.07); }
+        .photo-card:hover img { transform: scale(1.06); }
 
-        /* Nav */
-        .nav-pill.active {
-            background: linear-gradient(135deg, #c97b7b, #e8a0a0);
+        .nav-btn.active-mobile { color: #60a5fa; }
+        .nav-btn.active-desktop {
+            background: #2563eb;
             color: white;
-            box-shadow: 0 4px 18px rgba(201, 123, 123, 0.3);
         }
 
         .typed-cursor::after {
             content: '|';
-            animation: blink 1s infinite;
-            color: #e8a0a0;
+            animation: blink 1s step-end infinite;
+            color: #60a5fa;
         }
-        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes blink { 50% { opacity: 0; } }
 
         @keyframes float {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
-        .float { animation: float 4.5s ease-in-out infinite; }
+        .float { animation: float 3.5s ease-in-out infinite; }
 
         .fade-in {
-            animation: fadeIn 0.7s ease forwards;
+            animation: fadeIn 0.6s ease forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #0f0c0a; }
-        ::-webkit-scrollbar-thumb { background: #c97b7b; border-radius: 10px; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
 
         .lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(15, 12, 10, 0.96);
+            background: rgba(15, 23, 42, 0.95);
             z-index: 100;
             display: none;
             align-items: center;
@@ -185,87 +172,83 @@
         }
         .lightbox.active { display: flex; }
         .lightbox img {
-            max-width: 96%;
+            max-width: 95%;
             max-height: 90vh;
             border-radius: 12px;
-            box-shadow: 0 0 50px rgba(232, 160, 160, 0.15);
         }
     </style>
 </head>
-<body>
-    <canvas id="stars-canvas"></canvas>
+<body class="min-h-screen">
 
-    <!-- PASSWORD -->
-    <div id="password-gate" class="min-h-screen flex items-center justify-center ui-layer px-4">
-        <div class="gate-card w-full max-w-md p-9 md:p-11 rounded-3xl text-center">
-            <div class="mb-7 float">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-rose-400/10 border border-rose-300/20">
-                    <i class="fas fa-heart text-2xl text-warm-rose"></i>
-                </div>
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="ui-container min-h-screen flex flex-col">
+
+        <!-- ŞİFRE EKRANI -->
+        <div id="password-page" class="flex flex-col items-center justify-center flex-1 p-4">
+            <div class="w-full max-w-sm p-8 rounded-3xl glass text-center">
+                <h1 class="text-3xl md:text-4xl font-bold text-soft mb-3">Merhaba Kumsal</h1>
+                <p class="text-sm text-slate-400 mb-8 font-light leading-relaxed">
+                    Siteye girmek için şifreyi yaz
+                </p>
+
+                <input 
+                    type="password" 
+                    id="password-input"
+                    class="password-input w-full py-3.5 px-4 rounded-2xl text-center text-base tracking-wider text-slate-100 placeholder:text-slate-600 mb-5"
+                    placeholder="Şifre"
+                    autocomplete="off"
+                >
+
+                <button id="enter-btn" class="enter-btn w-full py-3.5 rounded-2xl font-semibold text-white text-sm">
+                    Giriş Yap
+                </button>
+
+                <p id="error-msg" class="mt-4 text-red-400 text-sm opacity-0 transition-opacity">
+                    Şifre yanlış, tekrar dene
+                </p>
             </div>
+        </div>
 
-            <h1 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight mb-2">
-                Merhaba <span class="text-warm-rose">Kumsal</span>
-            </h1>
-            <p class="text-stone-400 text-sm font-light leading-relaxed mb-9">
-                Bu sayfa senin için hazırlandı.<br>
-                Devam etmek için gizli kelimeyi yaz.
-            </p>
+        <!-- ANA UYGULAMA -->
+        <div id="app-container" class="hidden flex-1 flex flex-col">
+            <div id="content-area" class="flex-1 flex flex-col items-center justify-center p-4 md:p-6 pb-24 md:pb-28"></div>
 
-            <input 
-                type="password" 
-                id="password-input" 
-                class="password-input w-full py-3.5 px-5 rounded-2xl text-center text-base tracking-widest mb-5"
-                placeholder="••••••••••"
-                autocomplete="off"
-                spellcheck="false"
-            >
+            <!-- Mobil Nav -->
+            <nav class="fixed bottom-0 left-0 w-full h-16 bg-card/90 backdrop-blur-lg border-t border-slate-700 flex justify-around items-center z-20 md:hidden">
+                <button data-page="home" class="nav-btn flex-1 flex flex-col items-center justify-center text-xs text-soft font-medium">
+                    <i class="fas fa-home text-lg mb-0.5"></i>
+                    <span>Menü</span>
+                </button>
+                <button data-page="memories" class="nav-btn flex-1 flex flex-col items-center justify-center text-xs text-slate-400 font-medium">
+                    <i class="fas fa-camera text-lg mb-0.5"></i>
+                    <span>Anılar</span>
+                </button>
+                <button data-page="message" class="nav-btn flex-1 flex flex-col items-center justify-center text-xs text-slate-400 font-medium">
+                    <i class="fas fa-envelope-open-text text-lg mb-0.5"></i>
+                    <span>Mesaj</span>
+                </button>
+            </nav>
 
-            <button id="enter-btn" class="enter-btn w-full py-3.5 rounded-2xl font-medium text-sm tracking-wide text-white">
-                Giriş Yap
-            </button>
-
-            <p id="error-msg" class="mt-5 text-rose-400/90 text-sm opacity-0 transition-opacity duration-300">
-                Şifre hatalı, tekrar dene
-            </p>
+            <!-- Masaüstü Nav -->
+            <nav class="hidden md:flex fixed bottom-5 left-0 right-0 justify-center z-20">
+                <div class="flex gap-2 p-1.5 rounded-full glass border border-slate-700">
+                    <button data-page="home" class="nav-btn active-desktop px-6 py-2.5 rounded-full text-sm font-medium">
+                        <i class="fas fa-home mr-2"></i>Menü
+                    </button>
+                    <button data-page="memories" class="nav-btn px-6 py-2.5 rounded-full text-sm font-medium text-slate-300 hover:bg-slate-700/50">
+                        <i class="fas fa-camera mr-2"></i>Anılar
+                    </button>
+                    <button data-page="message" class="nav-btn px-6 py-2.5 rounded-full text-sm font-medium text-slate-300 hover:bg-slate-700/50">
+                        <i class="fas fa-envelope-open-text mr-2"></i>Mesajımız
+                    </button>
+                </div>
+            </nav>
         </div>
     </div>
 
-    <!-- APP -->
-    <div id="app" class="hidden flex-col min-h-screen ui-layer">
-        <div id="content" class="flex-1 flex flex-col items-center justify-center px-4 pt-10 pb-28 md:pb-32"></div>
-
-        <!-- Mobile Nav -->
-        <nav class="fixed bottom-0 left-0 right-0 h-15 bg-[#1a1512]/92 backdrop-blur-xl border-t border-white/5 flex md:hidden z-30">
-            <button data-page="home" class="nav-btn flex-1 flex flex-col items-center justify-center text-[10px] text-warm-rose font-medium py-3">
-                <i class="fas fa-home text-base mb-0.5"></i> Ana
-            </button>
-            <button data-page="memories" class="nav-btn flex-1 flex flex-col items-center justify-center text-[10px] text-stone-500 font-medium py-3">
-                <i class="fas fa-images text-base mb-0.5"></i> Anılar
-            </button>
-            <button data-page="message" class="nav-btn flex-1 flex flex-col items-center justify-center text-[10px] text-stone-500 font-medium py-3">
-                <i class="fas fa-heart text-base mb-0.5"></i> Mesaj
-            </button>
-        </nav>
-
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex fixed bottom-7 left-0 right-0 justify-center z-30">
-            <div class="flex gap-1.5 p-1.5 rounded-full glass border border-white/8">
-                <button data-page="home" class="nav-pill nav-btn px-6 py-2.5 rounded-full text-sm font-medium active">
-                    Ana Sayfa
-                </button>
-                <button data-page="memories" class="nav-pill nav-btn px-6 py-2.5 rounded-full text-sm font-medium text-stone-400 hover:text-white">
-                    Anılar
-                </button>
-                <button data-page="message" class="nav-pill nav-btn px-6 py-2.5 rounded-full text-sm font-medium text-stone-400 hover:text-white">
-                    Mesajımız
-                </button>
-            </div>
-        </nav>
-    </div>
-
     <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')">
         <img id="lightbox-img" src="" alt="">
     </div>
 
@@ -273,7 +256,7 @@
         const BIRTHDAY = new Date('December 3, 2026 00:00:00').getTime();
         const PASSWORD = 'yeşiluzayli';
 
-        // Placeholder — kendi fotoğraflarınla değiştir
+        // Placeholder fotoğraflar - sonradan değiştireceksin
         const FEATURED = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200&q=80';
         const PHOTOS = [
             'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80',
@@ -287,136 +270,133 @@
             'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80'
         ];
 
-        // Stars (warm soft particles)
-        const canvas = document.getElementById('stars-canvas');
+        // Particles (önceki siteye benzer)
+        const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
-        let stars = [];
+        let particles = [];
+        const colors = ['#3b82f6', '#60a5fa', '#38bdf8', '#93c5fd'];
 
-        function resize() {
-            canvas.width = innerWidth;
-            canvas.height = innerHeight;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
-        function createStars() {
-            stars = [];
-            const count = Math.floor((innerWidth * innerHeight) / 5500);
-            for (let i = 0; i < count; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    r: Math.random() * 1.2 + 0.2,
-                    a: Math.random(),
-                    s: Math.random() * 0.015 + 0.004
-                });
-            }
-        }
-        function drawStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            stars.forEach(s => {
-                s.a += s.s;
-                if (s.a > 1 || s.a < 0) s.s *= -1;
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(232, 160, 160, ${0.08 + s.a * 0.35})`;
-                ctx.fill();
+
+        function createParticle() {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: -10,
+                size: Math.random() * 2.5 + 1,
+                speed: Math.random() * 1.5 + 0.6,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                opacity: Math.random() * 0.6 + 0.2
             });
-            requestAnimationFrame(drawStars);
         }
-        resize(); createStars(); drawStars();
-        window.addEventListener('resize', () => { resize(); createStars(); });
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, i) => {
+                p.y += p.speed;
+                ctx.globalAlpha = p.opacity;
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                if (p.y > canvas.height) particles.splice(i, 1);
+            });
+            if (particles.length < 45) createParticle();
+            requestAnimationFrame(animateParticles);
+        }
 
         // Password
-        const gate = document.getElementById('password-gate');
-        const app = document.getElementById('app');
-        const input = document.getElementById('password-input');
+        const passwordPage = document.getElementById('password-page');
+        const appContainer = document.getElementById('app-container');
+        const passwordInput = document.getElementById('password-input');
         const enterBtn = document.getElementById('enter-btn');
         const errorMsg = document.getElementById('error-msg');
 
-        function checkPassword() {
-            if (input.value.trim().toLowerCase() === PASSWORD) {
+        function tryLogin() {
+            if (passwordInput.value.trim().toLowerCase() === PASSWORD) {
                 confetti({
-                    particleCount: 90,
-                    spread: 70,
-                    origin: { y: 0.65 },
-                    colors: ['#e8a0a0', '#e8c9a0', '#f5d0c8', '#ffffff']
+                    particleCount: 80,
+                    spread: 60,
+                    origin: { y: 0.7 },
+                    colors: ['#3b82f6', '#60a5fa', '#93c5fd', '#ffffff']
                 });
-                setTimeout(() => {
-                    confetti({ particleCount: 40, angle: 60, spread: 50, origin: { x: 0 }, colors: ['#e8a0a0', '#e8c9a0'] });
-                    confetti({ particleCount: 40, angle: 120, spread: 50, origin: { x: 1 }, colors: ['#e8a0a0', '#e8c9a0'] });
-                }, 200);
 
-                gate.style.transition = 'opacity 0.55s, transform 0.55s';
-                gate.style.opacity = '0';
-                gate.style.transform = 'scale(0.97)';
+                passwordPage.style.opacity = '0';
+                passwordPage.style.transform = 'scale(0.96)';
+                passwordPage.style.transition = 'all 0.5s ease';
+
                 setTimeout(() => {
-                    gate.classList.add('hidden');
-                    app.classList.remove('hidden');
-                    app.classList.add('flex');
+                    passwordPage.classList.add('hidden');
+                    appContainer.classList.remove('hidden');
+                    appContainer.classList.add('flex');
                     renderPage('home');
-                }, 550);
+                }, 500);
             } else {
                 errorMsg.style.opacity = '1';
-                setTimeout(() => errorMsg.style.opacity = '0', 2200);
+                setTimeout(() => errorMsg.style.opacity = '0', 2000);
             }
         }
 
-        enterBtn.addEventListener('click', checkPassword);
-        input.addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
+        enterBtn.addEventListener('click', tryLogin);
+        passwordInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter') tryLogin();
+        });
 
-        // Pages
-        const content = document.getElementById('content');
+        // Sayfalar
+        const contentArea = document.getElementById('content-area');
 
-        function createRing(id, max) {
-            const radius = 52;
-            const circumference = 2 * Math.PI * radius;
+        function createRing(id) {
+            const r = 48;
+            const circ = 2 * Math.PI * r;
             return `
-                <div class="ring-container mx-auto">
-                    <svg class="ring-svg w-full h-full" viewBox="0 0 120 120">
-                        <circle class="ring-bg" cx="60" cy="60" r="${radius}"></circle>
-                        <circle class="ring-progress" id="ring-${id}" cx="60" cy="60" r="${radius}"
-                            stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}"></circle>
+                <div class="ring-box mx-auto">
+                    <svg class="ring-svg w-full h-full" viewBox="0 0 110 110">
+                        <circle class="ring-bg" cx="55" cy="55" r="${r}"></circle>
+                        <circle class="ring-fill" id="ring-${id}" cx="55" cy="55" r="${r}"
+                            stroke-dasharray="${circ}" stroke-dashoffset="${circ}"></circle>
                     </svg>
                     <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <span id="${id}" class="text-2xl md:text-3xl font-semibold tabular-nums text-warm-cream">0</span>
-                        <span class="text-[9px] text-warm-rose/70 tracking-widest mt-0.5 uppercase">${id}</span>
+                        <span id="${id}" class="text-2xl md:text-3xl font-bold tabular-nums">0</span>
+                        <span class="text-[9px] text-slate-400 tracking-wider mt-0.5 uppercase">${id}</span>
                     </div>
                 </div>
             `;
         }
 
-        const homeHTML = `
+        const homeContent = `
             <div class="w-full max-w-4xl fade-in text-center">
-                <p class="text-warm-rose/70 text-xs tracking-[0.3em] uppercase mb-4 font-medium">3 Aralık 2026</p>
-                <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.15] mb-3">
-                    İyi ki Doğdun<br>
-                    <span class="text-warm-rose">Kumsal</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-soft mb-3">
+                    İyi ki Doğdun, Kumsal
                 </h1>
-                <p class="text-stone-400 text-sm md:text-base font-light mb-12 max-w-md mx-auto">
-                    Bugüne kalan süre
+                <p class="text-slate-400 text-sm md:text-base mb-10 font-light">
+                    3 Aralık 2026’ya kalan süre
                 </p>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 justify-items-center">
-                    ${createRing('gün', 365)}
-                    ${createRing('saat', 24)}
-                    ${createRing('dakika', 60)}
-                    ${createRing('saniye', 60)}
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 max-w-2xl mx-auto">
+                    ${createRing('gün')}
+                    ${createRing('saat')}
+                    ${createRing('dakika')}
+                    ${createRing('saniye')}
                 </div>
             </div>
         `;
 
-        const memoriesHTML = `
-            <div class="w-full max-w-5xl fade-in pb-6">
-                <div class="text-center mb-10">
-                    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-warm-cream mb-2">Anılarımız</h2>
-                    <p class="text-stone-400 text-sm font-light">Güzel günlerden kareler</p>
+        const memoriesContent = `
+            <div class="w-full max-w-5xl fade-in pb-4">
+                <div class="glass rounded-2xl p-6 mb-8 text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold text-soft mb-1">Güzel Anlarımız</h2>
+                    <p class="text-slate-400 text-sm font-light">Daha nice güzel günler dileğiyle</p>
                 </div>
 
-                <div class="mb-8 rounded-2xl overflow-hidden border border-white/5 shadow-xl">
-                    <img src="${FEATURED}" alt="Öne çıkan" class="w-full max-h-[400px] object-cover">
+                <div class="mb-7 rounded-2xl overflow-hidden border border-slate-700/50">
+                    <img src="${FEATURED}" alt="Öne çıkan" class="w-full max-h-[380px] object-cover">
                 </div>
 
                 <div class="photo-grid">
-                    ${PHOTOS.map((url, i) => `
-                        <div class="photo-card" onclick="openLightbox('${url}')">
+                    ${PHOTOS.map(url => `
+                        <div class="photo-card cursor-pointer" onclick="openLightbox('${url}')">
                             <img src="${url}" alt="Anı" loading="lazy">
                         </div>
                     `).join('')}
@@ -424,32 +404,30 @@
             </div>
         `;
 
-        const messageHTML = `
-            <div class="w-full max-w-xl fade-in pb-6">
+        const messageContent = `
+            <div class="w-full max-w-lg fade-in">
                 <div id="envelope" class="text-center">
-                    <div class="float mb-8">
-                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-rose-400/10 border border-rose-300/20">
-                            <i class="fas fa-envelope-open-text text-3xl text-warm-rose"></i>
-                        </div>
+                    <div class="float mb-7">
+                        <i class="fas fa-envelope-open-text text-5xl text-soft"></i>
                     </div>
-                    <p class="text-warm-rose/60 text-[10px] tracking-[0.35em] uppercase mb-6">Sana özel bir not</p>
-                    <button id="open-msg" class="px-9 py-3.5 rounded-full bg-gradient-to-r from-[#c97b7b] to-[#e8a0a0] text-white text-sm font-medium tracking-wide shadow-lg shadow-rose-900/20 hover:scale-[1.03] transition-transform">
+                    <p class="text-blue-300/70 text-xs tracking-widest uppercase mb-6">Sana bir not bırakıldı</p>
+                    <button id="open-msg" class="px-8 py-3.5 rounded-full bg-primary hover:bg-blue-600 text-white text-sm font-semibold transition-all hover:scale-105">
                         Mesajı Oku
                     </button>
                 </div>
 
                 <div id="letter" class="hidden">
-                    <div class="glass rounded-3xl p-8 md:p-11">
-                        <div id="typed" class="text-stone-200 leading-relaxed text-[15px] font-light space-y-5 typed-cursor"></div>
-                        <div id="sign" class="hidden mt-11 pt-8 border-t border-white/5 text-center opacity-0 transition-opacity duration-1000">
-                            <p class="text-[9px] text-warm-rose/50 tracking-[0.3em] uppercase mb-2">Sevgiyle</p>
-                            <h3 class="font-serif text-2xl md:text-3xl text-warm-soft italic">
+                    <div class="glass rounded-3xl p-8 md:p-10">
+                        <div id="typed" class="text-slate-200 text-[15px] leading-relaxed font-light space-y-4 typed-cursor"></div>
+                        <div id="sign" class="hidden mt-10 pt-8 border-t border-white/5 text-center opacity-0 transition-opacity duration-1000">
+                            <p class="text-[10px] text-blue-400/60 tracking-widest uppercase mb-2">Sevgiyle</p>
+                            <h3 class="font-cursive text-3xl text-soft">
                                 Arkadaşların
                             </h3>
                         </div>
                     </div>
-                    <div class="mt-6 text-center">
-                        <button onclick="renderPage('message')" class="text-stone-600 hover:text-stone-400 text-[10px] tracking-widest uppercase transition-colors">
+                    <div class="mt-5 text-center">
+                        <button onclick="renderPage('message')" class="text-slate-500 hover:text-slate-400 text-xs tracking-wider uppercase">
                             Yeniden oku
                         </button>
                     </div>
@@ -459,29 +437,35 @@
 
         function renderPage(page) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            content.style.opacity = '0';
+            contentArea.style.opacity = '0';
             setTimeout(() => {
-                if (page === 'home') content.innerHTML = homeHTML;
-                else if (page === 'memories') content.innerHTML = memoriesHTML;
+                if (page === 'home') contentArea.innerHTML = homeContent;
+                else if (page === 'memories') contentArea.innerHTML = memoriesContent;
                 else if (page === 'message') {
-                    content.innerHTML = messageHTML;
-                    setTimeout(attachMessage, 40);
+                    contentArea.innerHTML = messageContent;
+                    setTimeout(setupMessage, 50);
                 }
                 updateNav(page);
-                content.style.opacity = '1';
+                contentArea.style.opacity = '1';
                 if (page === 'home') startCountdown();
-            }, 220);
+            }, 200);
         }
 
         function updateNav(active) {
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 const isActive = btn.dataset.page === active;
-                if (btn.classList.contains('nav-pill')) {
-                    btn.classList.toggle('active', isActive);
-                    btn.classList.toggle('text-stone-400', !isActive);
+                // mobil
+                if (!btn.classList.contains('px-6')) {
+                    btn.classList.toggle('text-soft', isActive);
+                    btn.classList.toggle('text-slate-400', !isActive);
                 } else {
-                    btn.classList.toggle('text-warm-rose', isActive);
-                    btn.classList.toggle('text-stone-500', !isActive);
+                    // masaüstü
+                    btn.classList.toggle('active-desktop', isActive);
+                    if (!isActive) {
+                        btn.classList.add('text-slate-300');
+                    } else {
+                        btn.classList.remove('text-slate-300');
+                    }
                 }
             });
         }
@@ -491,55 +475,59 @@
         });
 
         // Countdown
-        let interval;
+        let timer;
         function startCountdown() {
-            clearInterval(interval);
-            function tick() {
-                const dist = BIRTHDAY - Date.now();
-                if (dist <= 0) return;
+            clearInterval(timer);
+            function update() {
+                const now = Date.now();
+                const distance = BIRTHDAY - now;
+                if (distance <= 0) return;
 
-                const d = Math.floor(dist / 86400000);
-                const h = Math.floor((dist % 86400000) / 3600000);
-                const m = Math.floor((dist % 3600000) / 60000);
-                const s = Math.floor((dist % 60000) / 1000);
+                const d = Math.floor(distance / 86400000);
+                const h = Math.floor((distance % 86400000) / 3600000);
+                const m = Math.floor((distance % 3600000) / 60000);
+                const s = Math.floor((distance % 60000) / 1000);
 
-                const vals = { gün: d, saat: h, dakika: m, saniye: s };
-                const maxs = { gün: 365, saat: 24, dakika: 60, saniye: 60 };
-                const radius = 52;
-                const circ = 2 * Math.PI * radius;
+                const values = { gün: d, saat: h, dakika: m, saniye: s };
+                const max = { gün: 365, saat: 24, dakika: 60, saniye: 60 };
+                const r = 48;
+                const circ = 2 * Math.PI * r;
 
-                Object.keys(vals).forEach(k => {
-                    const el = document.getElementById(k);
-                    if (el) el.textContent = vals[k];
-                    const ring = document.getElementById(`ring-${k}`);
-                    if (ring) ring.style.strokeDashoffset = circ - (vals[k] / maxs[k]) * circ;
+                Object.keys(values).forEach(key => {
+                    const el = document.getElementById(key);
+                    if (el) el.textContent = values[key];
+
+                    const ring = document.getElementById(`ring-${key}`);
+                    if (ring) {
+                        ring.style.strokeDashoffset = circ - (values[key] / max[key]) * circ;
+                    }
                 });
             }
-            tick();
-            interval = setInterval(tick, 1000);
+            update();
+            timer = setInterval(update, 1000);
         }
 
-        // Message
-        const lines = [
+        // Mesaj
+        const messageLines = [
             "Merhaba Kumsal,",
-            "Bugün senin günün. Senin gibi birinin doğum gününü kutlamak gerçekten özel bir his.",
-            "Gülüşün, enerjin ve içtenliğin etrafındaki herkese iyi geliyor. İyi ki varsın, iyi ki yollarımız kesişti.",
-            "Hayatın sana hep güzellikler getirmesini, kalbinin her zaman bu kadar sıcak kalmasını diliyoruz.",
-            "Daha nice mutlu, sağlıklı ve güzel yıllara... İyi ki doğdun Kumsal."
+            "Bugün senin doğum günün. Senin gibi değerli bir arkadaşın özel gününü kutlamak bizim için gerçekten güzel bir şey.",
+            "Senin gülüşün, samimiyetin ve enerjin etrafındaki herkese iyi geliyor. İyi ki varsın, iyi ki tanışmışız.",
+            "Hayatının her döneminde mutlu, sağlıklı ve huzurlu olmanı diliyoruz. Daha nice güzel yaşlara...",
+            "İyi ki doğdun Kumsal."
         ];
 
-        function attachMessage() {
+        function setupMessage() {
             const btn = document.getElementById('open-msg');
             if (!btn) return;
-            btn.onclick = async () => {
-                const env = document.getElementById('envelope');
-                env.style.opacity = '0';
-                env.style.transform = 'scale(0.96)';
+            btn.onclick = () => {
+                const envelope = document.getElementById('envelope');
+                envelope.style.opacity = '0';
+                envelope.style.transition = 'all 0.4s ease';
                 setTimeout(() => {
-                    env.classList.add('hidden');
+                    envelope.classList.add('hidden');
                     document.getElementById('letter').classList.remove('hidden');
                     typeMessage();
-                }, 380);
+                }, 400);
             };
         }
 
@@ -547,18 +535,20 @@
             const box = document.getElementById('typed');
             const sign = document.getElementById('sign');
             box.innerHTML = '';
-            for (const line of lines) {
+
+            for (const line of messageLines) {
                 const p = document.createElement('p');
                 box.appendChild(p);
                 for (const char of line) {
                     p.textContent += char;
-                    await new Promise(r => setTimeout(r, 20));
+                    await new Promise(r => setTimeout(r, 18));
                 }
-                await new Promise(r => setTimeout(r, 260));
+                await new Promise(r => setTimeout(r, 220));
             }
+
             box.classList.remove('typed-cursor');
             sign.classList.remove('hidden');
-            setTimeout(() => sign.style.opacity = '1', 80);
+            setTimeout(() => sign.style.opacity = '1', 100);
         }
 
         // Lightbox
@@ -566,11 +556,15 @@
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').classList.add('active');
         }
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-        }
 
-        content.style.transition = 'opacity 0.25s';
+        // Başlat
+        window.onload = () => {
+            resizeCanvas();
+            animateParticles();
+            window.addEventListener('resize', resizeCanvas);
+        };
+
+        contentArea.style.transition = 'opacity 0.25s ease';
     </script>
 </body>
 </html>
