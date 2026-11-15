@@ -1,312 +1,806 @@
 <!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İyi Ki Doğdun Kumsal! 🌸</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Canvas Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8f8fb" />
+  <meta name="description" content="Kumsal için hazırlanmış küçük bir doğum günü sürprizi." />
+  <title>İyi ki Doğdun Kumsal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f8f9fc;
+      --ink: #292a36;
+      --muted: #858796;
+      --purple: #8174dc;
+      --purple-deep: #6558c8;
+      --peach: #ff9b83;
+      --pink: #f4b9ca;
+      --mint: #a9cfc4;
+      --line: rgba(255,255,255,.88);
+      --glass: rgba(255,255,255,.66);
+      --shadow: 0 24px 70px rgba(75, 70, 120, .10);
+      --sans: 'Plus Jakarta Sans', sans-serif;
+      --serif: 'Playfair Display', serif;
+      --fun: 'Nunito', sans-serif;
+    }
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        blush: '#fff0f3',
-                        roseAccent: '#e056fd',
-                        softPink: '#ff7675',
-                        creamBg: '#fcf6f5',
-                        lavenderSoft: '#f8f4ff',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-        }
-        .glass-input {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 182, 193, 0.4);
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(2deg); }
-        }
-        .animate-float {
-            animation: float 5s ease-in-out infinite;
-        }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(224, 86, 253, 0.2); }
-            50% { box-shadow: 0 0 30px rgba(224, 86, 253, 0.5); }
-        }
-        .pulse-glow {
-            animation: pulseGlow 3s infinite;
-        }
-        .shake {
-            animation: shake 0.4s ease-in-out;
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-8px); }
-            40%, 80% { transform: translateX(8px); }
-        }
-    </style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    ::selection { background: rgba(129,116,220,.20); }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 12% 12%, rgba(255,190,205,.27), transparent 34%),
+        radial-gradient(ellipse at 88% 18%, rgba(170,174,245,.25), transparent 33%),
+        radial-gradient(ellipse at 80% 88%, rgba(178,220,210,.20), transparent 31%),
+        radial-gradient(ellipse at 18% 82%, rgba(255,213,187,.18), transparent 34%),
+        #f8f9fc;
+    }
+    .ambient::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: .22;
+      background-image: radial-gradient(rgba(110,105,140,.22) .65px, transparent .65px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+    .orb {
+      position: fixed;
+      z-index: -2;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      filter: blur(2px);
+      opacity: .35;
+      pointer-events: none;
+      animation: orbFloat 13s ease-in-out infinite;
+    }
+    .orb.one { background: radial-gradient(circle at 35% 30%, #fff, #f6cbd8 62%, transparent 70%); top: 18%; left: -145px; }
+    .orb.two { background: radial-gradient(circle at 35% 30%, #fff, #c9c7f6 62%, transparent 70%); right: -150px; bottom: 12%; animation-delay: -6s; }
+    @keyframes orbFloat { 0%,100%{ transform:translate3d(0,0,0) } 50%{ transform:translate3d(18px,-23px,0) } }
+
+    /* -------------------- GİRİŞ -------------------- */
+    #authScreen {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 38px 22px 64px;
+      position: relative;
+      isolation: isolate;
+      transition: opacity .75s ease, transform .75s cubic-bezier(.2,.8,.2,1), filter .75s ease;
+    }
+    #authScreen.leaving { opacity: 0; transform: scale(.965) translateY(-15px); filter: blur(8px); pointer-events: none; }
+    .auth-wrap {
+      width: min(100%, 475px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 29px;
+      animation: authAppear 1s cubic-bezier(.2,.75,.25,1) both;
+    }
+    @keyframes authAppear { from { opacity:0; transform:translateY(22px) scale(.985) } to { opacity:1; transform:translateY(0) scale(1) } }
+    .auth-heading { text-align: center; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #9b98aa;
+      font-size: 9px;
+      line-height: 1.5;
+      font-weight: 800;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before, .eyebrow::after { content:''; width:18px; height:1px; background:currentColor; opacity:.55; }
+    .auth-heading h1 {
+      margin: 11px 0 7px;
+      font-family: var(--serif);
+      font-weight: 500;
+      font-style: italic;
+      font-size: clamp(48px, 10vw, 69px);
+      letter-spacing: -.055em;
+      line-height: 1.05;
+      color: #30303d;
+    }
+    .auth-heading p { margin:0; color:#9999a8; font-size:12px; letter-spacing:.035em; }
+
+    .mascot-row {
+      height: 78px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 19px;
+      perspective: 500px;
+    }
+    .mascot {
+      width: 54px;
+      height: 58px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 10px 10px rgba(45,40,80,.10));
+      animation: mascotBob 4s ease-in-out infinite;
+      transform-origin: 50% 100%;
+      transition: transform .3s ease;
+    }
+    .mascot:nth-child(2) { animation-delay: -.8s; transform: translateY(-7px); }
+    .mascot:nth-child(3) { animation-delay: -1.6s; }
+    @keyframes mascotBob { 0%,100% { translate:0 0; rotate:0deg } 50% { translate:0 -9px; rotate:2deg } }
+    .mascot-body { position:absolute; inset:5px 2px 1px; border-radius: 17px 17px 20px 20px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; overflow:hidden; }
+    .mascot.purple .mascot-body { background:linear-gradient(145deg,#a49af1,#7568d5); border-radius: 18px 18px 22px 22px; }
+    .mascot.peach .mascot-body { background:linear-gradient(145deg,#ffc3ad,#ff987e); border-radius: 52% 52% 45% 45%; inset:8px 3px 0; }
+    .mascot.night .mascot-body { background:linear-gradient(145deg,#45465f,#242638); border-radius: 17px 17px 25px 25px; transform: rotate(4deg); }
+    .mascot.peach::before { content:''; position:absolute; top:0; left:14px; width:25px; height:20px; background:#ffb49b; border-radius:100% 0 100% 0; transform:rotate(-30deg); z-index:0; }
+    .mascot.night::before { content:'✦'; position:absolute; top:-8px; right:0; color:#b9b3fa; font-size:19px; z-index:2; }
+    .eyes { display:flex; align-items:center; gap:9px; position:relative; z-index:2; }
+    .eye { width:9px; height:11px; border-radius:50%; background:#fff; position:relative; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.08); }
+    .pupil { position:absolute; width:4px; height:5px; border-radius:50%; background:#292938; left:3px; top:3px; transition:transform .08s linear; }
+    .mouth { width:10px; height:6px; border-bottom:2px solid rgba(35,34,48,.55); border-radius:0 0 50% 50%; position:relative; z-index:2; transition:all .25s ease; }
+    .mascot.is-sad .mouth { border-bottom:0; border-top:2px solid rgba(255,255,255,.75); border-radius:50% 50% 0 0; transform:translateY(3px); }
+    .mascot.is-happy .mouth { width:14px; height:8px; border-bottom:3px solid rgba(35,34,48,.6); }
+    .mascot.is-happy { transform:translateY(-9px) scale(1.08); }
+    .cheek { position:absolute; top:32px; width:7px; height:4px; background:rgba(255,255,255,.34); border-radius:50%; }
+    .cheek.left { left:8px; } .cheek.right { right:8px; }
+
+    .auth-panel {
+      width:100%;
+      padding: 29px 30px 25px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.60);
+      border: 1px solid rgba(255,255,255,.94);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 24px 65px rgba(92,83,145,.085), inset 0 1px 0 rgba(255,255,255,.9);
+      position:relative;
+    }
+    .auth-panel::before { content:''; position:absolute; inset:8px; border:1px solid rgba(255,255,255,.48); border-radius:23px; pointer-events:none; }
+    .panel-top { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:21px; position:relative; }
+    .panel-label { color:#77778b; font-size:10px; font-weight:800; letter-spacing:.17em; text-transform:uppercase; }
+    .secure-label { display:flex; align-items:center; gap:6px; color:#aaa8b7; font-family:var(--fun); font-size:10px; font-weight:700; }
+    .secure-dot { width:6px; height:6px; border-radius:50%; background:#9bc9b5; box-shadow:0 0 0 4px rgba(155,201,181,.13); }
+    .input-shell {
+      display:flex; align-items:center; gap:9px;
+      padding: 7px 9px 7px 17px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(222,219,238,.9);
+      border-radius:17px;
+      box-shadow:inset 0 2px 5px rgba(80,75,120,.025);
+      transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+      position:relative;
+    }
+    .input-shell:focus-within { border-color:#a49aeb; box-shadow:0 0 0 4px rgba(129,116,220,.09), 0 10px 24px rgba(110,100,180,.07); transform:translateY(-1px); }
+    .lock-icon { width:17px; height:17px; color:#aaa7bd; flex:none; }
+    #passInput { min-width:0; width:100%; border:0; outline:0; background:transparent; padding:10px 0; color:#383747; font-size:13px; font-weight:600; letter-spacing:.025em; }
+    #passInput::placeholder { color:#b4b2c0; font-weight:400; }
+    .icon-btn { border:0; padding:8px; color:#aaa7b7; background:transparent; border-radius:10px; display:grid; place-items:center; transition:background .2s,color .2s; }
+    .icon-btn:hover { background:#f1effa; color:#6e63bd; }
+    .icon-btn svg { width:18px; height:18px; }
+    .submit-btn {
+      width:100%; border:0; margin-top:14px; padding:16px 18px; border-radius:16px;
+      color:#fff; background:linear-gradient(105deg,#7770cf,#8a7ddd 55%,#9a8cda);
+      box-shadow:0 12px 24px rgba(119,112,207,.22), inset 0 1px 0 rgba(255,255,255,.24);
+      font-size:10px; font-weight:900; letter-spacing:.19em; text-transform:uppercase;
+      transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;
+      position:relative; overflow:hidden;
+    }
+    .submit-btn::after { content:''; position:absolute; top:-80%; left:-20%; width:30%; height:260%; transform:rotate(25deg); background:rgba(255,255,255,.17); transition:left .6s ease; }
+    .submit-btn:hover { transform:translateY(-2px); box-shadow:0 16px 29px rgba(119,112,207,.28); filter:saturate(1.08); }
+    .submit-btn:hover::after { left:115%; }
+    .submit-btn:active { transform:scale(.985); }
+    .auth-hint { display:flex; justify-content:center; align-items:center; gap:8px; margin:17px 0 0; color:#aaa8b6; font-family:var(--fun); font-size:11px; font-weight:700; text-align:center; }
+    .auth-hint .tiny-star { color:#e7a9bd; font-size:13px; }
+    #errorText { min-height:16px; margin:11px 0 -3px; text-align:center; color:#d97886; font-size:11px; font-weight:700; opacity:0; transition:opacity .2s; }
+    #errorText.show { opacity:1; }
+    .shake { animation:shake .42s cubic-bezier(.36,.07,.19,.97) both; }
+    @keyframes shake { 10%,90%{transform:translateX(-2px)} 20%,80%{transform:translateX(4px)} 30%,50%,70%{transform:translateX(-6px)} 40%,60%{transform:translateX(6px)} }
+    .auth-footer { position:absolute; bottom:22px; left:0; right:0; text-align:center; color:#c2c0cc; font-size:8px; font-weight:800; letter-spacing:.35em; }
+    .floating-spark { position:absolute; color:#c7c0ec; pointer-events:none; animation:twinkle 3.2s ease-in-out infinite; }
+    .floating-spark.s1 { top:19%; left:17%; font-size:15px; }
+    .floating-spark.s2 { top:28%; right:15%; font-size:11px; animation-delay:-1s; }
+    .floating-spark.s3 { bottom:23%; left:20%; font-size:10px; animation-delay:-2s; }
+    @keyframes twinkle { 0%,100%{opacity:.35; transform:scale(.8) rotate(0)} 50%{opacity:1; transform:scale(1.2) rotate(25deg)} }
+
+    /* -------------------- ANA SAYFA -------------------- */
+    #siteContent { display:none; opacity:0; transform:translateY(18px); transition:opacity .8s ease,transform .8s ease; }
+    #siteContent.visible { display:block; }
+    #siteContent.revealed { opacity:1; transform:translateY(0); }
+    .site-shell { width:min(1120px, calc(100% - 44px)); margin:0 auto; }
+    .topbar { height:83px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(151,147,178,.13); }
+    .brand { display:flex; align-items:center; gap:11px; color:#373647; text-decoration:none; }
+    .brand-mark { width:35px; height:35px; border-radius:12px; display:grid; place-items:center; color:#fff; background:linear-gradient(145deg,#a79ce9,#776bce); font-family:var(--serif); font-size:19px; font-style:italic; box-shadow:0 7px 16px rgba(129,116,220,.19); }
+    .brand-text { display:flex; flex-direction:column; gap:2px; }
+    .brand-text strong { font-size:11px; letter-spacing:.11em; text-transform:uppercase; }
+    .brand-text span { color:#aaa8b5; font-family:var(--fun); font-size:9px; font-weight:700; letter-spacing:.08em; }
+    .nav-links { display:flex; align-items:center; gap:27px; }
+    .nav-links a { color:#91909e; text-decoration:none; font-size:10px; font-weight:800; letter-spacing:.08em; transition:color .2s; }
+    .nav-links a:hover { color:#7469ca; }
+    .nav-tag { padding:9px 13px; border:1px solid rgba(129,116,220,.17); border-radius:99px; color:#786dc9; background:rgba(255,255,255,.45); font-size:9px; font-weight:900; letter-spacing:.1em; }
+
+    .hero { min-height:565px; display:grid; grid-template-columns:1.08fr .92fr; align-items:center; gap:35px; padding:65px 0 58px; position:relative; }
+    .hero-copy { position:relative; z-index:1; }
+    .hero-kicker { display:inline-flex; align-items:center; gap:9px; padding:8px 12px; border-radius:99px; background:rgba(255,255,255,.56); border:1px solid rgba(255,255,255,.9); color:#8b83bd; font-size:9px; font-weight:900; letter-spacing:.18em; text-transform:uppercase; box-shadow:0 6px 20px rgba(80,75,130,.035); }
+    .hero-kicker span { width:6px; height:6px; background:#eea5b7; border-radius:50%; box-shadow:0 0 0 4px rgba(238,165,183,.14); }
+    .hero h2 { max-width:650px; margin:24px 0 17px; font-family:var(--serif); font-size:clamp(54px,7.2vw,91px); line-height:.98; font-weight:500; letter-spacing:-.065em; color:#30303c; }
+    .hero h2 em { display:block; color:#8277d4; font-weight:500; }
+    .hero-desc { max-width:420px; margin:0; color:#92919f; font-size:13px; line-height:1.95; font-weight:400; }
+    .hero-bottom { display:flex; align-items:center; gap:15px; margin-top:30px; }
+    .scroll-link { display:inline-flex; align-items:center; gap:9px; text-decoration:none; color:#7167bd; font-size:10px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+    .scroll-link span { width:29px; height:29px; border:1px solid rgba(129,116,220,.25); border-radius:50%; display:grid; place-items:center; font-size:14px; transition:transform .2s,background .2s; }
+    .scroll-link:hover span { transform:translateY(3px); background:rgba(255,255,255,.8); }
+    .hero-note { color:#b4b1bf; font-family:var(--fun); font-size:11px; font-weight:700; }
+
+    .hero-art { min-height:405px; display:grid; place-items:center; position:relative; }
+    .art-halo { width:min(100%,390px); aspect-ratio:1; border-radius:50%; position:absolute; background:radial-gradient(circle,rgba(255,255,255,.9) 0 28%,rgba(235,229,255,.48) 45%,rgba(255,224,229,.26) 62%,transparent 72%); }
+    .art-ring { position:absolute; width:320px; max-width:88%; aspect-ratio:1; border:1px solid rgba(152,143,207,.22); border-radius:50%; transform:rotate(-22deg) scaleY(.56); }
+    .art-ring::after { content:''; position:absolute; top:12%; left:12%; right:12%; bottom:12%; border:1px dashed rgba(152,143,207,.18); border-radius:50%; }
+    .birthday-orb { width:210px; aspect-ratio:1; position:relative; border-radius:48% 52% 50% 48%; background:radial-gradient(circle at 30% 25%,#fff 0 5%,#f9e9f1 22%,#d7d2f8 60%,#a9a2e5 100%); box-shadow:inset -18px -22px 35px rgba(111,99,190,.15), inset 14px 12px 30px rgba(255,255,255,.95), 0 28px 55px rgba(139,126,207,.20); animation:planetFloat 7s ease-in-out infinite; }
+    .birthday-orb::before { content:''; position:absolute; top:22%; left:22%; width:17px; height:17px; background:rgba(255,255,255,.65); border-radius:50%; filter:blur(2px); }
+    .birthday-orb::after { content:'✦'; position:absolute; right:20%; bottom:23%; color:rgba(255,255,255,.8); font-size:23px; text-shadow:0 0 14px #fff; }
+    @keyframes planetFloat { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-13px) rotate(3deg)} }
+    .orbit-dot { position:absolute; width:35px; height:35px; border-radius:50%; background:linear-gradient(145deg,#ffd8c9,#ff9c8a); box-shadow:0 10px 20px rgba(233,151,143,.2); top:19%; right:15%; animation:planetFloat 6s ease-in-out infinite reverse; }
+    .orbit-dot.small { width:15px; height:15px; background:linear-gradient(145deg,#c5e2d9,#86c4b1); bottom:22%; left:15%; top:auto; animation-delay:-2s; }
+    .orbit-star { position:absolute; color:#aaa2df; font-size:21px; animation:twinkle 3s ease infinite; }
+    .orbit-star.a { top:17%; left:17%; } .orbit-star.b { bottom:17%; right:14%; font-size:14px; animation-delay:-1.2s; }
+    .art-caption { position:absolute; bottom:7px; right:5%; display:flex; align-items:center; gap:8px; color:#aaa7b8; font-family:var(--fun); font-size:10px; font-weight:800; letter-spacing:.09em; }
+    .art-caption::before { content:''; width:24px; height:1px; background:#c9c4df; }
+
+    .countdown-section { padding:30px 0 95px; }
+    .section-heading { text-align:center; margin-bottom:30px; }
+    .section-overline { color:#a49fba; font-size:9px; font-weight:900; letter-spacing:.28em; text-transform:uppercase; }
+    .section-heading h3 { margin:10px 0 7px; color:#343341; font-family:var(--serif); font-size:clamp(31px,4vw,43px); font-style:italic; font-weight:500; letter-spacing:-.035em; }
+    .section-heading p { margin:0; color:#aaa8b5; font-size:11px; line-height:1.8; }
+    .countdown-panel { position:relative; padding:33px 34px 28px; border-radius:31px; border:1px solid rgba(255,255,255,.95); background:rgba(255,255,255,.57); box-shadow:var(--shadow); backdrop-filter:blur(20px); overflow:hidden; }
+    .countdown-panel::before { content:''; position:absolute; width:300px; height:300px; right:-135px; top:-190px; border-radius:50%; background:rgba(208,201,249,.23); }
+    .countdown-panel::after { content:''; position:absolute; width:230px; height:230px; left:-125px; bottom:-175px; border-radius:50%; background:rgba(255,207,211,.20); }
+    .timer-topline { display:flex; justify-content:space-between; align-items:center; gap:12px; position:relative; z-index:1; margin-bottom:24px; }
+    .timer-title { color:#858397; font-size:9px; font-weight:900; letter-spacing:.2em; text-transform:uppercase; }
+    .timer-date { display:flex; align-items:center; gap:7px; color:#9b96b6; font-family:var(--fun); font-size:11px; font-weight:800; }
+    .timer-date svg { width:14px; height:14px; }
+    .timer-grid { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .time-card { min-width:0; padding:22px 12px 18px; border-radius:22px; background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(247,246,253,.77)); border:1px solid rgba(255,255,255,.98); box-shadow:0 10px 26px rgba(87,79,139,.055),inset 0 1px 0 white; text-align:center; position:relative; overflow:hidden; }
+    .time-card::before { content:''; position:absolute; top:0; left:20%; right:20%; height:2px; border-radius:9px; background:linear-gradient(90deg,transparent,#c8c0f4,transparent); }
+    .time-number { display:block; color:#3a3949; font-family:var(--fun); font-size:clamp(37px,5.7vw,61px); font-weight:900; line-height:1; letter-spacing:-.06em; font-variant-numeric:tabular-nums; }
+    .time-card:last-child .time-number { color:#8175d3; }
+    .time-label { display:block; margin-top:10px; color:#aaa7b7; font-size:9px; font-weight:900; letter-spacing:.2em; text-transform:uppercase; }
+    .timer-bottom { position:relative; z-index:1; margin-top:24px; display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .timer-message { display:flex; align-items:center; gap:8px; color:#aaa7b5; font-family:var(--fun); font-size:11px; font-weight:700; }
+    .timer-message b { color:#8479ce; font-weight:900; }
+    .timer-progress { width:150px; height:5px; overflow:hidden; border-radius:99px; background:#eeedf5; }
+    .timer-progress span { display:block; width:0%; height:100%; border-radius:99px; background:linear-gradient(90deg,#f0b5c5,#9d92df); transition:width .7s ease; }
+
+    .divider-ornament { display:flex; align-items:center; justify-content:center; gap:13px; margin:0 auto 85px; color:#c5c0da; font-size:12px; }
+    .divider-ornament::before,.divider-ornament::after { content:''; width:min(100px,18vw); height:1px; background:linear-gradient(90deg,transparent,#dedbea); }
+    .divider-ornament::after { transform:scaleX(-1); }
+
+    .memories-section { padding:0 0 100px; }
+    .memories-intro { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:27px; }
+    .memories-intro h3 { margin:9px 0 0; font-family:var(--serif); color:#343341; font-size:clamp(34px,4vw,46px); font-weight:500; font-style:italic; letter-spacing:-.04em; }
+    .memories-intro p { max-width:280px; margin:0 0 4px; color:#aaa8b5; font-size:11px; line-height:1.8; }
+    .gallery-grid { display:grid; grid-template-columns:1.08fr .92fr .92fr; grid-template-rows:210px 185px; gap:15px; }
+    .memory-card { position:relative; min-width:0; min-height:0; overflow:hidden; border-radius:22px; border:1px solid rgba(255,255,255,.95); background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(239,237,249,.83)); box-shadow:0 13px 35px rgba(79,74,120,.065); cursor:pointer; isolation:isolate; transition:transform .3s ease,box-shadow .3s ease; }
+    .memory-card:first-child { grid-row:span 2; }
+    .memory-card:nth-child(4) { grid-column:span 2; }
+    .memory-card:hover { transform:translateY(-5px); box-shadow:0 20px 38px rgba(79,74,120,.12); }
+    .memory-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .4s ease,transform .65s cubic-bezier(.2,.7,.2,1); }
+    .memory-card.has-image img { opacity:1; }
+    .memory-card:hover img { transform:scale(1.045); }
+    .memory-placeholder { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:18px; color:#aaa6bc; background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.9),transparent 65%),linear-gradient(140deg,rgba(255,236,239,.72),rgba(231,229,250,.72)); }
+    .memory-placeholder .placeholder-icon { width:43px; height:43px; margin-bottom:12px; display:grid; place-items:center; border-radius:15px; color:#9388d5; background:rgba(255,255,255,.7); border:1px solid rgba(255,255,255,.95); box-shadow:0 7px 18px rgba(99,89,163,.07); }
+    .placeholder-icon svg { width:19px; height:19px; }
+    .memory-placeholder strong { color:#77748f; font-family:var(--serif); font-size:18px; font-weight:500; font-style:italic; }
+    .memory-placeholder small { margin-top:5px; color:#aaa7b7; font-size:9px; font-weight:700; letter-spacing:.09em; }
+    .memory-card.has-image .memory-placeholder { display:none; }
+    .memory-caption { position:absolute; z-index:2; left:14px; right:14px; bottom:13px; display:flex; align-items:center; justify-content:space-between; gap:8px; color:#fff; opacity:0; transform:translateY(6px); transition:all .25s ease; text-shadow:0 2px 9px rgba(0,0,0,.35); }
+    .memory-card.has-image:hover .memory-caption { opacity:1; transform:translateY(0); }
+    .memory-caption span { font-family:var(--serif); font-size:17px; font-style:italic; }
+    .memory-caption small { font-family:var(--fun); font-size:9px; font-weight:800; letter-spacing:.1em; }
+    .gallery-hint { margin:15px 0 0; text-align:center; color:#b2afbd; font-family:var(--fun); font-size:10px; font-weight:700; }
+
+    .note-section { padding:0 0 105px; }
+    .note-card { position:relative; max-width:790px; margin:0 auto; padding:43px 46px 40px; border-radius:30px; border:1px solid rgba(255,255,255,.96); background:rgba(255,255,255,.60); box-shadow:var(--shadow); backdrop-filter:blur(18px); text-align:center; overflow:hidden; }
+    .note-card::before,.note-card::after { content:'✦'; position:absolute; color:rgba(168,157,224,.23); font-size:42px; }
+    .note-card::before { left:25px; top:17px; } .note-card::after { right:25px; bottom:13px; font-size:31px; }
+    .note-card h3 { margin:10px 0 12px; color:#373544; font-family:var(--serif); font-size:clamp(34px,4.5vw,48px); font-weight:500; font-style:italic; letter-spacing:-.04em; }
+    .note-card > p { max-width:500px; margin:0 auto; color:#9997a5; font-size:12px; line-height:1.9; }
+    .open-letter { display:inline-flex; align-items:center; justify-content:center; gap:9px; margin-top:24px; padding:13px 19px; border:1px solid rgba(129,116,220,.20); border-radius:99px; background:rgba(255,255,255,.76); color:#786dc8; font-size:9px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; transition:all .25s ease; box-shadow:0 7px 18px rgba(90,83,145,.05); }
+    .open-letter:hover { transform:translateY(-2px); background:#fff; box-shadow:0 12px 22px rgba(90,83,145,.1); }
+    .open-letter svg { width:15px; height:15px; }
+    .letter-content { max-height:0; overflow:hidden; opacity:0; transition:max-height .7s ease,opacity .5s ease,margin .5s ease; }
+    .letter-content.open { max-height:500px; margin-top:26px; opacity:1; }
+    .letter-paper { max-width:560px; margin:0 auto; padding:24px 28px; border-radius:18px; background:linear-gradient(135deg,rgba(255,250,249,.96),rgba(249,247,255,.96)); border:1px solid rgba(238,225,239,.85); text-align:left; }
+    .letter-paper p { margin:0 0 13px; color:#777585; font-family:var(--fun); font-size:12px; line-height:1.95; }
+    .letter-paper p:last-child { margin-bottom:0; }
+    .letter-sign { color:#8a7ed0 !important; font-family:var(--serif) !important; font-size:19px !important; font-style:italic; text-align:right; }
+
+    .footer { padding:0 0 35px; text-align:center; color:#b8b5c1; font-size:8px; font-weight:900; letter-spacing:.28em; text-transform:uppercase; }
+    .footer .heart { color:#e7a5b8; font-size:12px; vertical-align:middle; margin:0 5px; }
+
+    /* Lightbox & birthday reveal */
+    .lightbox { position:fixed; inset:0; z-index:50; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(38,37,54,.72); backdrop-filter:blur(12px); }
+    .lightbox.open { display:flex; animation:fadeIn .25s ease both; }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    .lightbox-inner { width:min(900px,100%); max-height:88vh; position:relative; display:flex; align-items:center; justify-content:center; }
+    .lightbox-inner img { display:block; max-width:100%; max-height:82vh; object-fit:contain; border-radius:17px; box-shadow:0 24px 80px rgba(0,0,0,.3); }
+    .lightbox-close { position:absolute; top:-42px; right:0; width:34px; height:34px; border:1px solid rgba(255,255,255,.3); border-radius:50%; color:white; background:rgba(255,255,255,.12); font-size:20px; }
+    .birthday-overlay { position:fixed; inset:0; z-index:60; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(44,41,63,.88); backdrop-filter:blur(15px); text-align:center; }
+    .birthday-overlay.show { display:flex; animation:fadeIn .4s ease both; }
+    .birthday-message { max-width:650px; color:#fff; position:relative; z-index:2; }
+    .birthday-message .mini { color:#e6dffb; font-size:9px; font-weight:900; letter-spacing:.3em; text-transform:uppercase; }
+    .birthday-message h2 { margin:16px 0; font-family:var(--serif); font-size:clamp(48px,9vw,88px); line-height:.98; font-weight:500; font-style:italic; letter-spacing:-.05em; }
+    .birthday-message p { color:rgba(255,255,255,.7); font-size:13px; line-height:1.8; }
+    .birthday-message button { margin-top:17px; padding:13px 20px; border:1px solid rgba(255,255,255,.4); border-radius:99px; color:#fff; background:rgba(255,255,255,.12); font-size:9px; font-weight:900; letter-spacing:.15em; text-transform:uppercase; }
+    .confetti { position:fixed; top:-15px; width:8px; height:13px; z-index:1; opacity:.9; animation:confettiFall linear forwards; }
+    @keyframes confettiFall { to { transform:translate3d(var(--drift),110vh,0) rotate(780deg); opacity:.1; } }
+
+    @media (max-width: 760px) {
+      .site-shell { width:min(100% - 34px, 570px); }
+      .topbar { height:70px; }
+      .nav-links { gap:13px; }
+      .nav-links a { font-size:9px; }
+      .nav-links a:nth-child(2) { display:none; }
+      .nav-tag { padding:8px 10px; font-size:8px; }
+      .hero { min-height:0; grid-template-columns:1fr; gap:0; padding:65px 0 45px; text-align:center; }
+      .hero-copy { display:flex; flex-direction:column; align-items:center; }
+      .hero h2 { margin-top:22px; font-size:clamp(57px,13vw,79px); }
+      .hero-desc { max-width:390px; font-size:12px; }
+      .hero-bottom { justify-content:center; margin-top:24px; }
+      .hero-art { min-height:330px; margin-top:1px; }
+      .birthday-orb { width:175px; }
+      .art-ring { width:275px; }
+      .art-caption { right:10%; bottom:0; }
+      .countdown-section { padding:22px 0 76px; }
+      .countdown-panel { padding:25px 20px 22px; border-radius:25px; }
+      .timer-grid { gap:9px; }
+      .time-card { padding:18px 5px 15px; border-radius:17px; }
+      .time-number { font-size:clamp(32px,8vw,47px); }
+      .time-label { font-size:8px; letter-spacing:.13em; }
+      .timer-bottom { align-items:flex-start; flex-direction:column; gap:12px; }
+      .timer-progress { width:100%; }
+      .divider-ornament { margin-bottom:70px; }
+      .memories-intro { display:block; text-align:center; }
+      .memories-intro p { margin:10px auto 0; }
+      .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:190px 150px 160px; gap:10px; }
+      .memory-card:first-child { grid-row:span 2; }
+      .memory-card:nth-child(4) { grid-column:span 2; }
+      .memory-card { border-radius:17px; }
+      .memory-placeholder strong { font-size:16px; }
+      .note-card { padding:37px 23px 32px; border-radius:25px; }
+      .note-card::before { left:13px; top:12px; font-size:28px; }
+      .note-card::after { right:13px; bottom:8px; font-size:23px; }
+      .letter-paper { padding:20px 18px; }
+    }
+    @media (max-width: 420px) {
+      #authScreen { padding-left:17px; padding-right:17px; }
+      .auth-wrap { gap:25px; }
+      .auth-panel { padding:24px 19px 21px; border-radius:25px; }
+      .auth-heading h1 { font-size:56px; }
+      .mascot-row { gap:14px; }
+      .mascot { width:49px; height:54px; }
+      .panel-top { margin-bottom:17px; }
+      .secure-label { font-size:9px; }
+      .site-shell { width:calc(100% - 30px); }
+      .brand-mark { width:32px; height:32px; }
+      .brand-text strong { font-size:10px; }
+      .nav-links { gap:9px; }
+      .nav-links a { font-size:8px; letter-spacing:.03em; }
+      .hero { padding-top:55px; }
+      .hero h2 { font-size:58px; }
+      .hero-art { min-height:290px; }
+      .birthday-orb { width:155px; }
+      .art-ring { width:245px; }
+      .timer-topline { align-items:flex-start; flex-direction:column; gap:8px; }
+      .timer-grid { gap:7px; }
+      .time-card { padding:16px 3px 13px; border-radius:14px; }
+      .time-number { font-size:34px; }
+      .time-label { font-size:7px; }
+      .gallery-grid { grid-template-rows:165px 137px 145px; }
+      .memory-placeholder { padding:10px; }
+      .memory-placeholder .placeholder-icon { width:36px; height:36px; margin-bottom:8px; }
+      .memory-placeholder strong { font-size:14px; }
+      .memory-placeholder small { font-size:8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-[#fff0f3] via-[#f8f4ff] to-[#fff5f5] text-gray-800 min-h-screen font-sans selection:bg-pink-200 selection:text-pink-800 overflow-x-hidden">
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="orb one" aria-hidden="true"></div>
+  <div class="orb two" aria-hidden="true"></div>
 
-    <!-- ŞİFRE EKRANI (OVERLAY) -->
-    <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-xl px-4 transition-opacity duration-700">
-        <div class="glass-card p-8 md:p-10 rounded-3xl shadow-2xl max-w-md w-full text-center relative overflow-hidden">
-            <!-- Dekoratif Arka Plan Işıltısı -->
-            <div class="absolute -top-12 -right-12 w-32 h-32 bg-pink-300 rounded-full filter blur-2xl opacity-50"></div>
-            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-purple-300 rounded-full filter blur-2xl opacity-50"></div>
+  <!-- GİRİŞ EKRANI: Şifreyi ve metinleri aşağıdaki script bölümünden düzenleyebilirsin. -->
+  <section id="authScreen" aria-label="Özel giriş ekranı">
+    <span class="floating-spark s1" aria-hidden="true">✦</span>
+    <span class="floating-spark s2" aria-hidden="true">✧</span>
+    <span class="floating-spark s3" aria-hidden="true">✦</span>
+    <div class="auth-wrap">
+      <header class="auth-heading">
+        <div class="eyebrow">A little surprise for Kumsal</div>
+        <h1>Giriş Yap</h1>
+        <p>Bu website senin için tasarlandı</p>
+      </header>
 
-            <div class="relative z-10">
-                <div class="w-16 h-16 bg-gradient-to-tr from-pink-400 to-purple-400 rounded-2xl mx-auto flex items-center justify-center text-white text-2xl shadow-lg mb-6 animate-float">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <h2 class="font-serif text-3xl font-bold text-gray-800 mb-2">Özel Alan 🌸</h2>
-                <p class="text-gray-600 text-sm mb-6">Bu sürpriz sayfaya girmek için özel şifreyi girmen gerekiyor.</p>
-                
-                <form id="auth-form" onsubmit="checkPassword(event)" class="space-y-4">
-                    <div class="relative">
-                        <input type="password" id="password-input" placeholder="Şifreyi gir..." 
-                            class="glass-input w-full px-5 py-3.5 rounded-2xl text-center text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all font-medium text-lg">
-                    </div>
-                    <button type="submit" 
-                        class="w-full py-3.5 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-2xl shadow-lg hover:opacity-95 transform active:scale-95 transition-all duration-200">
-                        Kilidi Aç ✨
-                    </button>
-                    <p id="error-msg" class="text-rose-500 text-xs font-medium hidden mt-2">Şifre yanlış! İpucu: arkadaştan isteyebilirsin 😉</p>
-                </form>
-            </div>
+      <div class="mascot-row" aria-label="Seni karşılayan küçük karakterler">
+        <div class="mascot purple">
+          <div class="mascot-body"><div class="eyes"><span class="eye"><i class="pupil"></i></span><span class="eye"><i class="pupil"></i></span></div><span class="mouth"></span><i class="cheek left"></i><i class="cheek right"></i></div>
         </div>
-    </div>
+        <div class="mascot peach">
+          <div class="mascot-body"><div class="eyes"><span class="eye"><i class="pupil"></i></span><span class="eye"><i class="pupil"></i></span></div><span class="mouth"></span><i class="cheek left"></i><i class="cheek right"></i></div>
+        </div>
+        <div class="mascot night">
+          <div class="mascot-body"><div class="eyes"><span class="eye"><i class="pupil"></i></span><span class="eye"><i class="pupil"></i></span></div><span class="mouth"></span><i class="cheek left"></i><i class="cheek right"></i></div>
+        </div>
+      </div>
 
-    <!-- ANA İÇERİK (Şifre girilince açılır) -->
-    <div id="main-content" class="opacity-0 transition-opacity duration-1000 hidden">
-
-        <!-- HERO SECTION -->
-        <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-20">
-            <!-- Dekoratif Yüzen Kalpler/Çiçekler -->
-            <div class="absolute top-10 left-10 text-pink-300 text-3xl animate-float opacity-70 hidden md:block"><i class="fa-solid fa-sparkles"></i></div>
-            <div class="absolute bottom-20 right-10 text-purple-300 text-4xl animate-float opacity-70 hidden md:block" style="animation-delay: 2s;"><i class="fa-solid fa-heart"></i></div>
-
-            <div class="glass-card p-8 md:p-14 rounded-[2.5rem] shadow-xl max-w-2xl w-full border border-white/80 relative z-10 pulse-glow">
-                <span class="px-4 py-1.5 rounded-full bg-pink-100 text-pink-600 text-xs font-semibold tracking-wider uppercase mb-4 inline-block">3 Aralık 2026</span>
-                <h1 class="font-serif text-4xl md:text-6xl font-bold text-gray-900 mb-4 tracking-tight">İyi ki Doğdun, <span class="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">Kumsal!</span> 🎂✨</h1>
-                <p class="text-gray-600 text-base md:text-lg mb-8 max-w-lg mx-auto font-light">Hayatına neşe, yüzüne hep böyle tatlı gülümsemeler getiren harika bir yaş dilerim. Bu site tamamen senin için hazırlandı!</p>
-
-                <!-- GERİ SAYIM SAYACI (GELİŞMİŞ) -->
-                <div class="mb-8">
-                    <p class="text-xs font-bold uppercase tracking-widest text-purple-500 mb-3">Doğum Gününe Kalan Muazzam Zaman</p>
-                    <div id="countdown" class="grid grid-cols-4 gap-2 md:gap-4 max-w-md mx-auto">
-                        <div class="glass-card p-3 md:p-4 rounded-2xl shadow-sm border border-pink-100">
-                            <span id="days" class="block font-serif text-2xl md:text-4xl font-bold text-gray-800">00</span>
-                            <span class="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider">Gün</span>
-                        </div>
-                        <div class="glass-card p-3 md:p-4 rounded-2xl shadow-sm border border-pink-100">
-                            <span id="hours" class="block font-serif text-2xl md:text-4xl font-bold text-gray-800">00</span>
-                            <span class="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider">Saat</span>
-                        </div>
-                        <div class="glass-card p-3 md:p-4 rounded-2xl shadow-sm border border-pink-100">
-                            <span id="minutes" class="block font-serif text-2xl md:text-4xl font-bold text-gray-800">00</span>
-                            <span class="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider">Dakika</span>
-                        </div>
-                        <div class="glass-card p-3 md:p-4 rounded-2xl shadow-sm border border-pink-100">
-                            <span id="seconds" class="block font-serif text-2xl md:text-4xl font-bold text-rose-500">00</span>
-                            <span class="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider">Saniye</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kutlama Butonu -->
-                <button onclick="triggerCelebration()" class="px-8 py-3.5 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-medium rounded-2xl shadow-lg hover:shadow-pink-300/50 hover:scale-105 active:scale-95 transition-all duration-300">
-                    Konfeti Patlat 🎉
-                </button>
-            </div>
-
-            <!-- Aşağı Kaydır İkonu -->
-            <a href="#gallery" class="absolute bottom-6 text-gray-400 hover:text-pink-500 transition-colors animate-bounce">
-                <i class="fa-solid fa-chevron-down text-xl"></i>
-            </a>
-        </header>
-
-        <!-- FOTOĞRAF GALERİSİ ALANI -->
-        <section id="gallery" class="py-20 px-4 max-w-5xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-3">Güzel Anlar & Hatıralar 📸</h2>
-                <p class="text-gray-600 text-sm md:text-base">En tatlı anların toplandığı özel köşe</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <!-- Fotoğraf Kartı 1 -->
-                <div class="glass-card p-3 rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden">
-                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-pink-100 relative">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Anı 1" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer" onclick="openLightbox(this.src)">
-                    </div>
-                    <div class="p-3 text-center">
-                        <p class="text-xs font-semibold text-gray-700">En Güzel Gülüşün ✨</p>
-                    </div>
-                </div>
-
-                <!-- Fotoğraf Kartı 2 -->
-                <div class="glass-card p-3 rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden">
-                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-pink-100 relative">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Anı 2" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer" onclick="openLightbox(this.src)">
-                    </div>
-                    <div class="p-3 text-center">
-                        <p class="text-xs font-semibold text-gray-700">Unutulmaz Anlar 🌸</p>
-                    </div>
-                </div>
-
-                <!-- Fotoğraf Kartı 3 -->
-                <div class="glass-card p-3 rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden">
-                    <div class="overflow-hidden rounded-2xl aspect-[4/5] bg-pink-100 relative">
-                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Anı 3" 
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer" onclick="openLightbox(this.src)">
-                    </div>
-                    <div class="p-3 text-center">
-                        <p class="text-xs font-semibold text-gray-700">Mutluluk Tablosu 💖</p>
-                    </div>
-                </div>
-            </div>
-            <p class="text-center text-xs text-gray-400 mt-6">*Fotoğrafları değiştirmek istersen buradaki bağlantıları kendi fotoğraflarınla kolayca güncelleyebilirsin!</p>
-        </section>
-
-        <!-- ÖZEL MESAJ BÖLÜMÜ -->
-        <section class="py-16 px-4 max-w-3xl mx-auto">
-            <div class="glass-card p-8 md:p-12 rounded-[2.5rem] shadow-xl text-center relative">
-                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-pink-500 text-white rounded-full flex items-center justify-center shadow-lg text-lg">
-                    <i class="fa-solid fa-quote-left"></i>
-                </div>
-                <h3 class="font-serif text-2xl md:text-3xl font-bold text-gray-900 mb-4 mt-2">İyi Ki Varsın Kumsal!</h3>
-                <p class="text-gray-600 text-base md:text-lg leading-relaxed font-light mb-6">
-                    Yeni yaşın sana kalbinin güzelliği kadar kusursuz, mutlu ve huzurlu günler getirsin. Hayatında her şey gönlünce olsun, yüzündeki o tatlı tebessüm hiçbir zaman solmasın. Doğum günün kutlu olsun! 🌸🎂
-                </p>
-                <div class="inline-block px-6 py-2 bg-pink-50 rounded-full text-pink-600 text-sm font-medium">
-                    Tuna Can'dan Küçük Bir Sürpriz ✨
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="py-8 text-center text-gray-500 text-xs">
-            <p>Kumsal'ın 2026 Doğum Günü Özel Tasarımı 💝</p>
-        </footer>
-
-    </div>
-
-    <!-- LIGHTBOX MODAL (Fotoğrafa tıklayınca açılan büyük pencere) -->
-    <div id="lightbox" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 cursor-pointer" onclick="closeLightbox()">
-        <div class="relative max-w-3xl max-h-[90vh]">
-            <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl object-contain mx-auto">
-            <button class="absolute -top-10 right-0 text-white text-2xl hover:text-pink-400 transition-colors">
-                <i class="fa-solid fa-xmark"></i>
+      <div class="auth-panel">
+        <div class="panel-top">
+          <span class="panel-label">Erişim Şifresi</span>
+          <span class="secure-label"><i class="secure-dot"></i> sadece sana ait</span>
+        </div>
+        <form id="loginForm">
+          <div class="input-shell" id="inputShell">
+            <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="3"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path><path d="M12 14v3"></path></svg>
+            <input id="passInput" type="password" placeholder="Şifreyi buraya yaz..." autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Erişim şifresi" />
+            <button class="icon-btn" id="toggleBtn" type="button" aria-label="Şifreyi göster" title="Şifreyi göster">
+              <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
             </button>
-        </div>
+          </div>
+          <p id="errorText" role="status" aria-live="polite">Hmm, bu şifre olmadı. Bir daha deneyelim mi?</p>
+          <button class="submit-btn" type="submit">Sistemi Aç <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="auth-hint"><span class="tiny-star">✦</span> İçeride seni bekleyen güzel şeyler var <span class="tiny-star">✦</span></p>
+      </div>
     </div>
+    <div class="auth-footer">PRIVATE LITTLE CORNER · 2026</div>
+  </section>
 
-    <!-- JAVASCRIPT KODLARI -->
-    <script>
-        // Şifre Kontrolü
-        function checkPassword(event) {
-            event.preventDefault();
-            const inputVal = document.getElementById('password-input').value.trim();
-            const authScreen = document.getElementById('auth-screen');
-            const mainContent = document.getElementById('main-content');
-            const errorMsg = document.getElementById('error-msg');
-            const cardBox = authScreen.querySelector('.glass-card');
+  <!-- ANA SAYFA -->
+  <main id="siteContent">
+    <div class="site-shell">
+      <nav class="topbar" aria-label="Ana menü">
+        <a class="brand" href="#top" aria-label="Başa dön">
+          <span class="brand-mark">K.</span>
+          <span class="brand-text"><strong>Kumsal'ın köşesi</strong><span>a little place made for you</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="#countdown">GERİ SAYIM</a>
+          <a href="#memories">ANILAR</a>
+          <a href="#note">NOTUM</a>
+          <span class="nav-tag">03.12.2026</span>
+        </div>
+      </nav>
 
-            if (inputVal === 'yeşiluzayli') {
-                // Şifre Doğru: Ekranı yumuşakça kapat ve ana içeriği göster
-                authScreen.style.opacity = '0';
-                setTimeout(() => {
-                    authScreen.style.display = 'none';
-                    mainContent.classList.remove('hidden');
-                    // Fade in effect
-                    setTimeout(() => {
-                        mainContent.style.opacity = '1';
-                    }, 50);
-                    // İlk açılışta otomatik konfeti
-                    triggerCelebration();
-                }, 700);
-            } else {
-                // Şifre Yanlış: Hata mesajı göster ve salla
-                errorMsg.classList.remove('hidden');
-                cardBox.classList.add('shake');
-                setTimeout(() => {
-                    cardBox.classList.remove('shake');
-                }, 400);
-            }
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <div class="hero-kicker"><span></span> 3 ARALIK 2026 · ÖZEL BİR GÜN</div>
+          <h2>Bu dünya<br/>biraz daha <em>güzel, Kumsal.</em></h2>
+          <p class="hero-desc">Bazen bir günü özel yapan takvimdeki yeri değil, o gün doğmuş olan insandır. Bu sayfa da tam olarak o yüzden burada.</p>
+          <div class="hero-bottom">
+            <a class="scroll-link" href="#countdown"><span>↓</span> Sürprize göz at</a>
+            <span class="hero-note">senin için küçük bir şey hazırladım ✧</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Pastel renklerde yüzen hayali gezegen">
+          <div class="art-halo"></div>
+          <div class="art-ring"></div>
+          <span class="orbit-star a">✧</span><span class="orbit-star b">✦</span>
+          <div class="birthday-orb"><span class="orbit-dot"></span><span class="orbit-dot small"></span></div>
+          <div class="art-caption">KUMSAL'S LITTLE UNIVERSE</div>
+        </div>
+      </section>
+
+      <section class="countdown-section" id="countdown">
+        <div class="section-heading">
+          <div class="section-overline">THE DAY IS GETTING CLOSER</div>
+          <h3>Beklenen güne kalan süre</h3>
+          <p>Biraz heyecan, biraz sabırsızlık… ve kocaman bir iyi ki doğdun.</p>
+        </div>
+        <div class="countdown-panel">
+          <div class="timer-topline">
+            <span class="timer-title">Doğum günü sayacı · canlı</span>
+            <span class="timer-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg> 03 Aralık 2026 · 00:00</span>
+          </div>
+          <div class="timer-grid" aria-label="Doğum gününe kalan süre">
+            <div class="time-card"><span class="time-number" id="days">00</span><span class="time-label">Gün</span></div>
+            <div class="time-card"><span class="time-number" id="hours">00</span><span class="time-label">Saat</span></div>
+            <div class="time-card"><span class="time-number" id="minutes">00</span><span class="time-label">Dakika</span></div>
+            <div class="time-card"><span class="time-number" id="seconds">00</span><span class="time-label">Saniye</span></div>
+          </div>
+          <div class="timer-bottom">
+            <div class="timer-message"><span>✦</span> <span><b id="timerStatus">Her saniye biraz daha yaklaşıyoruz.</b> Hazır ol!</span></div>
+            <div class="timer-progress" aria-label="Geri sayım ilerlemesi"><span id="progressBar"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-ornament" aria-hidden="true">✧</div>
+
+      <section class="memories-section" id="memories">
+        <div class="memories-intro">
+          <div><div class="section-overline">LITTLE MOMENTS, BIG MEMORIES</div><h3>Biriktirdiğimiz güzellikler.</h3></div>
+          <p>Buraya birlikte çekildiğiniz fotoğrafları ekleyebilirsin. Her kare, bu sayfanın küçük bir parçası olacak.</p>
+        </div>
+        <div class="gallery-grid" id="gallery">
+          <!-- Fotoğraf eklemek için: foto-1.jpg, foto-2.jpg ... dosyalarını index.html ile aynı klasöre koy. -->
+          <button class="memory-card" type="button" data-photo="foto-1.jpg" data-caption="Güzel bir anı">
+            <div class="memory-placeholder"><span class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="3"></rect><circle cx="8.5" cy="9" r="1.5"></circle><path d="m21 15-5-5L5 20"></path></svg></span><strong>Bir güzel anı</strong><small>FOTOĞRAF 01</small></div><img alt="Birlikte çekilmiş güzel bir anı" loading="lazy" /><span class="memory-caption"><span>Bir güzel anı</span><small>01 / 05</small></span>
+          </button>
+          <button class="memory-card" type="button" data-photo="foto-2.jpg" data-caption="Gülümseten bir gün">
+            <div class="memory-placeholder"><span class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"></path><circle cx="12" cy="12" r="5"></circle></svg></span><strong>Gülümseten bir gün</strong><small>FOTOĞRAF 02</small></div><img alt="Gülümseten bir gün" loading="lazy" /><span class="memory-caption"><span>Gülümseten bir gün</span><small>02 / 05</small></span>
+          </button>
+          <button class="memory-card" type="button" data-photo="foto-3.jpg" data-caption="Küçük bir kaçamak">
+            <div class="memory-placeholder"><span class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18 9 6l4 8 3-5 5 9H3Z"></path><path d="M3 21h18"></path></svg></span><strong>Küçük bir kaçamak</strong><small>FOTOĞRAF 03</small></div><img alt="Küçük bir kaçamak" loading="lazy" /><span class="memory-caption"><span>Küçük bir kaçamak</span><small>03 / 05</small></span>
+          </button>
+          <button class="memory-card" type="button" data-photo="foto-4.jpg" data-caption="Unutulmayacak bir kare">
+            <div class="memory-placeholder"><span class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 8.6c0 5.2-8.8 11-8.8 11s-8.8-5.8-8.8-11A4.6 4.6 0 0 1 12 6.5a4.6 4.6 0 0 1 8.8 2.1Z"></path></svg></span><strong>Unutulmayacak bir kare</strong><small>FOTOĞRAF 04</small></div><img alt="Unutulmayacak bir kare" loading="lazy" /><span class="memory-caption"><span>Unutulmayacak bir kare</span><small>04 / 05</small></span>
+          </button>
+          <button class="memory-card" type="button" data-photo="foto-5.jpg" data-caption="Daha nicelerine">
+            <div class="memory-placeholder"><span class="placeholder-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 2.3 6.8L21 11l-6.7 2.2L12 20l-2.3-6.8L3 11l6.7-2.2L12 2Z"></path><path d="m19 15 1.2 2.8L23 19l-2.8 1.2L19 23l-1.2-2.8L15 19l2.8-1.2L19 15Z"></path></svg></span><strong>Daha nicelerine</strong><small>FOTOĞRAF 05</small></div><img alt="Daha nicelerine" loading="lazy" /><span class="memory-caption"><span>Daha nicelerine</span><small>05 / 05</small></span>
+          </button>
+        </div>
+        <p class="gallery-hint">✧ Fotoğraflara dokunarak daha büyük görüntüleyebilirsin ✧</p>
+      </section>
+
+      <section class="note-section" id="note">
+        <div class="note-card">
+          <div class="section-overline">A NOTE JUST FOR YOU</div>
+          <h3>Kumsal'a küçük bir not.</h3>
+          <p>Her doğum günü, birinin hayatımıza kattığı güzellikleri hatırlamak için güzel bir bahane. Bu sayfanın sonunda da sana ayrılmış birkaç satır var.</p>
+          <button class="open-letter" id="letterBtn" type="button" aria-expanded="false" aria-controls="letterContent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"></path><path d="m4 7 8 6 8-6"></path></svg> Notu aç <span aria-hidden="true">✦</span></button>
+          <div class="letter-content" id="letterContent">
+            <div class="letter-paper">
+              <p>Sevgili Kumsal,</p>
+              <p>Yeni yaşında yüzünü güldüren şeylerin çoğalmasını, önüne güzel fırsatların çıkmasını ve kendin için dilediğin her şeye birer birer yaklaşmanı diliyorum. Umarım bu yıl sana bolca kahkaha, unutulmaz anı ve güzel başlangıç getirir.</p>
+              <p>İyi ki doğdun, iyi ki varsın. Nice güzel yaşlara! ♡</p>
+              <p class="letter-sign">— [Buraya adını yaz]</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">made with <span class="heart">♥</span> for Kumsal · 03.12.2026</footer>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici">
+    <div class="lightbox-inner"><button class="lightbox-close" id="lightboxClose" type="button" aria-label="Kapat">×</button><img id="lightboxImage" alt="Büyütülmüş fotoğraf" /></div>
+  </div>
+
+  <div class="birthday-overlay" id="birthdayOverlay" role="dialog" aria-modal="true" aria-label="Doğum günü mesajı">
+    <div class="birthday-message"><div class="mini">THE DAY HAS FINALLY ARRIVED</div><h2>İyi ki doğdun,<br/>Kumsal! ♡</h2><p>Bugün senin günün. Dilerim yeni yaşın, kalbin kadar güzel sürprizlerle dolu olur.</p><button type="button" id="closeBirthday">Bu güzel güne dön</button></div>
+  </div>
+
+  <script>
+    /* ============================================================
+       KOLAYCA DÜZENLEYEBİLECEĞİN ALANLAR
+       ============================================================ */
+    const SITE_PASSWORD = 'yeşiluzayli';
+    // Doğum günü: 3 Aralık 2026, Türkiye saatiyle 00:00.
+    const BIRTHDAY_DATE = new Date('2026-12-03T00:00:00+03:00');
+
+    /* -------------------- GİRİŞ VE KARAKTERLER -------------------- */
+    const authScreen = document.getElementById('authScreen');
+    const siteContent = document.getElementById('siteContent');
+    const loginForm = document.getElementById('loginForm');
+    const passInput = document.getElementById('passInput');
+    const inputShell = document.getElementById('inputShell');
+    const errorText = document.getElementById('errorText');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const eyeIcon = document.getElementById('eyeIcon');
+    const mascots = [...document.querySelectorAll('.mascot')];
+    let passwordVisible = false;
+
+    // Karakterlerin gözleri fareyi takip eder. Dokunmatik cihazlarda bu efekt kapalıdır.
+    if (window.matchMedia('(pointer: fine)').matches) {
+      document.addEventListener('pointermove', (event) => {
+        mascots.forEach((mascot) => {
+          const pupils = mascot.querySelectorAll('.pupil');
+          const rect = mascot.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          const dx = event.clientX - centerX;
+          const dy = event.clientY - centerY;
+          const distance = Math.max(1, Math.hypot(dx, dy));
+          const movement = Math.min(2.3, distance / 65);
+          const x = (dx / distance) * movement;
+          const y = (dy / distance) * movement;
+          pupils.forEach((pupil) => { pupil.style.transform = `translate(${x}px, ${y}px)`; });
+        });
+      }, { passive: true });
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      passwordVisible = !passwordVisible;
+      passInput.type = passwordVisible ? 'text' : 'password';
+      toggleBtn.setAttribute('aria-label', passwordVisible ? 'Şifreyi gizle' : 'Şifreyi göster');
+      toggleBtn.title = passwordVisible ? 'Şifreyi gizle' : 'Şifreyi göster';
+      eyeIcon.innerHTML = passwordVisible
+        ? '<path d="M3 3 21 21"></path><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"></path><path d="M9.9 5.2A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3 3.8"></path><path d="M6.2 6.2C3.5 8 2 12 2 12s3.6 7 10 7a10 10 0 0 0 4-.8"></path>'
+        : '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle>';
+    });
+
+    function showError() {
+      errorText.classList.add('show');
+      inputShell.classList.remove('shake');
+      void inputShell.offsetWidth;
+      inputShell.classList.add('shake');
+      mascots.forEach((mascot) => mascot.classList.add('is-sad'));
+      window.setTimeout(() => mascots.forEach((mascot) => mascot.classList.remove('is-sad')), 950);
+    }
+
+    function enterSite() {
+      errorText.classList.remove('show');
+      mascots.forEach((mascot) => mascot.classList.add('is-happy'));
+      window.setTimeout(() => {
+        authScreen.classList.add('leaving');
+        window.setTimeout(() => {
+          authScreen.style.display = 'none';
+          siteContent.classList.add('visible');
+          requestAnimationFrame(() => siteContent.classList.add('revealed'));
+          document.body.style.overflow = 'auto';
+          startCountdown();
+          loadGalleryPhotos();
+        }, 570);
+      }, 250);
+    }
+
+    loginForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      // NFC normalizasyonu Türkçe karakterlerin farklı Unicode yazımlarında sorun yaşanmasını önler.
+      const entered = passInput.value.trim().normalize('NFC');
+      if (entered === SITE_PASSWORD.normalize('NFC')) {
+        enterSite();
+      } else {
+        showError();
+        passInput.select();
+      }
+    });
+
+    /* -------------------- GERİ SAYIM -------------------- */
+    const timerEls = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      minutes: document.getElementById('minutes'),
+      seconds: document.getElementById('seconds')
+    };
+    const timerStatus = document.getElementById('timerStatus');
+    const progressBar = document.getElementById('progressBar');
+    // İlerleme çizgisi, 1 Kasım'dan doğum günü başlangıcına kadar olan dönemi temsil eder.
+    const COUNTDOWN_START = new Date('2026-11-01T00:00:00+03:00').getTime();
+    let countdownInterval = null;
+
+    function pad(value) { return String(value).padStart(2, '0'); }
+
+    function startCountdown() {
+      function updateCountdown() {
+        const now = Date.now();
+        const distance = BIRTHDAY_DATE.getTime() - now;
+        if (distance <= 0) {
+          Object.values(timerEls).forEach((element) => { element.textContent = '00'; });
+          timerStatus.textContent = 'Bugün senin günün, Kumsal!';
+          progressBar.style.width = '100%';
+          document.querySelector('.timer-title').textContent = 'BUGÜN SENİN GÜNÜN';
+          if (!document.getElementById('birthdayOverlay').classList.contains('show')) {
+            showBirthdayOverlay();
+          }
+          if (countdownInterval) window.clearInterval(countdownInterval);
+          return;
         }
+        const days = Math.floor(distance / 86400000);
+        const hours = Math.floor((distance % 86400000) / 3600000);
+        const minutes = Math.floor((distance % 3600000) / 60000);
+        const seconds = Math.floor((distance % 60000) / 1000);
+        timerEls.days.textContent = pad(days);
+        timerEls.hours.textContent = pad(hours);
+        timerEls.minutes.textContent = pad(minutes);
+        timerEls.seconds.textContent = pad(seconds);
+        const progress = Math.max(0, Math.min(100, ((now - COUNTDOWN_START) / (BIRTHDAY_DATE.getTime() - COUNTDOWN_START)) * 100));
+        progressBar.style.width = `${progress}%`;
+        timerStatus.textContent = days === 0 ? 'Son saatlere girdik!' : days <= 3 ? 'Çok az kaldı, heyecan dorukta!' : 'Her saniye biraz daha yaklaşıyoruz.';
+      }
+      updateCountdown();
+      if (countdownInterval) window.clearInterval(countdownInterval);
+      countdownInterval = window.setInterval(updateCountdown, 1000);
+    }
 
-        // Geri Sayım Sayacı (Hedef: 3 Aralık 2026 00:00:00)
-        const targetDate = new Date("December 3, 2026 00:00:00").getTime();
+    /* -------------------- FOTOĞRAF GALERİSİ -------------------- */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
+    function loadGalleryPhotos() {
+      document.querySelectorAll('.memory-card').forEach((card) => {
+        const image = card.querySelector('img');
+        image.src = card.dataset.photo;
+        image.addEventListener('load', () => card.classList.add('has-image'), { once: true });
+        image.addEventListener('error', () => card.classList.remove('has-image'), { once: true });
+        card.addEventListener('click', () => {
+          if (!card.classList.contains('has-image')) return;
+          lightboxImage.src = image.src;
+          lightboxImage.alt = card.dataset.caption || 'Fotoğraf';
+          lightbox.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+    }
 
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = 'auto';
+      lightboxImage.removeAttribute('src');
+    }
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
 
-                document.getElementById("days").innerText = String(days).padStart(2, '0');
-                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-            } else {
-                document.getElementById("countdown").innerHTML = "<div class='col-span-4 text-center text-xl font-serif font-bold text-pink-600'>Mutlu Yıllar Kumsal! 🌸🎉</div>";
-            }
-        }
+    /* -------------------- MEKTUP -------------------- */
+    const letterBtn = document.getElementById('letterBtn');
+    const letterContent = document.getElementById('letterContent');
+    letterBtn.addEventListener('click', () => {
+      const open = letterContent.classList.toggle('open');
+      letterBtn.setAttribute('aria-expanded', String(open));
+      letterBtn.innerHTML = open
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"></path><path d="m4 7 8 6 8-6"></path></svg> Notu kapat <span aria-hidden="true">✧</span>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"></path><path d="m4 7 8 6 8-6"></path></svg> Notu aç <span aria-hidden="true">✦</span>';
+    });
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+    /* -------------------- DOĞUM GÜNÜ SÜRPRİZİ -------------------- */
+    const birthdayOverlay = document.getElementById('birthdayOverlay');
+    const closeBirthday = document.getElementById('closeBirthday');
+    let birthdayShown = false;
+    function showBirthdayOverlay() {
+      if (birthdayShown) return;
+      birthdayShown = true;
+      birthdayOverlay.classList.add('show');
+      launchConfetti();
+    }
+    function launchConfetti() {
+      const colors = ['#f5b8c8', '#c9c2f1', '#ffd3b7', '#b9ded2', '#ffffff'];
+      for (let i = 0; i < 65; i++) {
+        const piece = document.createElement('i');
+        piece.className = 'confetti';
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.background = colors[i % colors.length];
+        piece.style.animationDuration = `${3.5 + Math.random() * 3.5}s`;
+        piece.style.animationDelay = `${Math.random() * 1.8}s`;
+        piece.style.setProperty('--drift', `${Math.random() * 180 - 90}px`);
+        piece.style.transform = `rotate(${Math.random() * 180}deg)`;
+        document.body.appendChild(piece);
+        window.setTimeout(() => piece.remove(), 9000);
+      }
+    }
+    closeBirthday.addEventListener('click', () => birthdayOverlay.classList.remove('show'));
 
-        // Konfeti Efekti
-        function triggerCelebration() {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#ff7675', '#e056fd', '#ffeaa7', '#fab1a0', '#fd79a8']
-            });
-        }
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        if (lightbox.classList.contains('open')) closeLightbox();
+        if (birthdayOverlay.classList.contains('show')) birthdayOverlay.classList.remove('show');
+      }
+    });
 
-        // Lightbox Fonksiyonları
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            const lb = document.getElementById('lightbox');
-            lb.classList.remove('hidden');
-            lb.classList.add('flex');
-        }
-
-        function closeLightbox() {
-            const lb = document.getElementById('lightbox');
-            lb.classList.add('hidden');
-            lb.classList.remove('flex');
-        }
-    </script>
+    // Site ilk açıldığında giriş ekranının altındaki sayfayı kaydırmayı engelle.
+    document.body.style.overflow = 'hidden';
+  </script>
 </body>
 </html>
