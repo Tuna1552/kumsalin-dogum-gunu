@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İyi ki Doğdun Kumsal 💚</title>
+    <title>İyi ki Doğdun Kumsal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-    
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        cursive: ['Dancing Script', 'cursive']
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Outfit', 'sans-serif']
                     },
                     colors: {
-                        cosmic: {
-                            900: '#020617',
-                            800: '#0f172a',
-                            700: '#1e293b',
-                            accent: '#10b981',
-                            glow: '#34d399',
-                            soft: '#6ee7b7',
-                            gold: '#fbbf24'
+                        warm: {
+                            950: '#0f0c0a',
+                            900: '#1a1512',
+                            800: '#2a211c',
+                            rose: '#e8a0a0',
+                            soft: '#f5d0c8',
+                            gold: '#e8c9a0',
+                            cream: '#f8f1eb'
                         }
                     }
                 }
@@ -36,12 +36,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Outfit', sans-serif;
-            background: #020617;
-            color: #f1f5f9;
+            background: #0f0c0a;
+            color: #f8f1eb;
             overflow-x: hidden;
         }
 
-        /* Stars background */
         #stars-canvas {
             position: fixed;
             inset: 0;
@@ -51,84 +50,67 @@
 
         .ui-layer { position: relative; z-index: 10; }
 
-        /* Password Gate */
-        .password-gate {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(ellipse at center, #0f172a 0%, #020617 70%);
-        }
-
+        /* Password */
         .gate-card {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            box-shadow: 0 0 60px rgba(16, 185, 129, 0.08), inset 0 0 40px rgba(16, 185, 129, 0.03);
-        }
-
-        .alien-glow {
-            text-shadow: 0 0 20px rgba(52, 211, 153, 0.6);
+            background: rgba(26, 21, 18, 0.75);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(232, 160, 160, 0.12);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
 
         .password-input {
-            background: rgba(2, 6, 23, 0.8);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(15, 12, 10, 0.7);
+            border: 1px solid rgba(232, 160, 160, 0.2);
+            color: #f8f1eb;
+            transition: all 0.35s ease;
         }
         .password-input:focus {
-            border-color: #34d399;
-            box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.15), 0 0 30px rgba(16, 185, 129, 0.2);
+            border-color: #e8a0a0;
+            box-shadow: 0 0 0 3px rgba(232, 160, 160, 0.12);
             outline: none;
         }
+        .password-input::placeholder { color: #6b5d54; }
 
         .enter-btn {
-            background: linear-gradient(135deg, #059669, #10b981);
-            transition: all 0.3s;
+            background: linear-gradient(135deg, #c97b7b, #e8a0a0);
+            transition: all 0.3s ease;
         }
         .enter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(201, 123, 123, 0.35);
         }
 
-        /* Main App */
-        .app-hidden { display: none !important; }
-        .app-visible { display: flex !important; }
-
-        /* Countdown rings */
+        /* Rings */
         .ring-container {
             position: relative;
-            width: 110px;
-            height: 110px;
+            width: 108px;
+            height: 108px;
         }
         @media (min-width: 768px) {
-            .ring-container { width: 140px; height: 140px; }
+            .ring-container { width: 132px; height: 132px; }
         }
-        .ring-svg {
-            transform: rotate(-90deg);
-        }
+        .ring-svg { transform: rotate(-90deg); }
         .ring-bg {
             fill: none;
-            stroke: rgba(16, 185, 129, 0.15);
-            stroke-width: 6;
+            stroke: rgba(232, 160, 160, 0.12);
+            stroke-width: 5;
         }
         .ring-progress {
             fill: none;
-            stroke: #34d399;
-            stroke-width: 6;
+            stroke: #e8a0a0;
+            stroke-width: 5;
             stroke-linecap: round;
-            transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.6));
+            transition: stroke-dashoffset 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 5px rgba(232, 160, 160, 0.45));
         }
 
-        /* Glass panels */
         .glass {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(26, 21, 18, 0.6);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Photo grid */
+        /* Photos */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -137,19 +119,19 @@
         @media (min-width: 768px) {
             .photo-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
+                gap: 18px;
             }
         }
         .photo-card {
             aspect-ratio: 1;
             overflow: hidden;
-            border-radius: 16px;
-            background: #1e293b;
-            position: relative;
+            border-radius: 14px;
+            background: #2a211c;
             cursor: pointer;
+            position: relative;
         }
         @media (min-width: 768px) {
-            .photo-card { aspect-ratio: 4/5; border-radius: 20px; }
+            .photo-card { aspect-ratio: 4/5; border-radius: 18px; }
         }
         .photo-card img {
             width: 100%;
@@ -157,146 +139,126 @@
             object-fit: cover;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .photo-card:hover img { transform: scale(1.08); }
-        .photo-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(2,6,23,0.7) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .photo-card:hover::after { opacity: 1; }
+        .photo-card:hover img { transform: scale(1.07); }
 
-        /* Navigation */
-        .nav-pill {
-            transition: all 0.3s;
-        }
+        /* Nav */
         .nav-pill.active {
-            background: linear-gradient(135deg, #059669, #10b981);
+            background: linear-gradient(135deg, #c97b7b, #e8a0a0);
             color: white;
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+            box-shadow: 0 4px 18px rgba(201, 123, 123, 0.3);
         }
 
-        /* Message typing */
         .typed-cursor::after {
             content: '|';
             animation: blink 1s infinite;
-            color: #34d399;
+            color: #e8a0a0;
         }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Floating animation */
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-        .float { animation: float 4s ease-in-out infinite; }
+        .float { animation: float 4.5s ease-in-out infinite; }
 
-        /* Fade in */
         .fade-in {
-            animation: fadeIn 0.8s ease forwards;
+            animation: fadeIn 0.7s ease forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(24px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 10px; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0f0c0a; }
+        ::-webkit-scrollbar-thumb { background: #c97b7b; border-radius: 10px; }
 
-        /* Lightbox */
         .lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(2, 6, 23, 0.95);
+            background: rgba(15, 12, 10, 0.96);
             z-index: 100;
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 16px;
         }
         .lightbox.active { display: flex; }
         .lightbox img {
-            max-width: 95%;
+            max-width: 96%;
             max-height: 90vh;
             border-radius: 12px;
-            box-shadow: 0 0 60px rgba(16, 185, 129, 0.2);
+            box-shadow: 0 0 50px rgba(232, 160, 160, 0.15);
         }
     </style>
 </head>
 <body>
     <canvas id="stars-canvas"></canvas>
 
-    <!-- PASSWORD GATE -->
-    <div id="password-gate" class="password-gate ui-layer">
-        <div class="gate-card w-full max-w-md mx-4 p-8 md:p-10 rounded-3xl text-center">
-            <div class="mb-6 float">
-                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-500/10 border border-emerald-500/30">
-                    <i class="fas fa-user-astronaut text-4xl text-emerald-400 alien-glow"></i>
+    <!-- PASSWORD -->
+    <div id="password-gate" class="min-h-screen flex items-center justify-center ui-layer px-4">
+        <div class="gate-card w-full max-w-md p-9 md:p-11 rounded-3xl text-center">
+            <div class="mb-7 float">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-rose-400/10 border border-rose-300/20">
+                    <i class="fas fa-heart text-2xl text-warm-rose"></i>
                 </div>
             </div>
-            
-            <h1 class="text-3xl md:text-4xl font-bold mb-2 tracking-tight">
-                Merhaba <span class="text-emerald-400">Kumsal</span>
+
+            <h1 class="font-serif text-3xl md:text-4xl font-semibold tracking-tight mb-2">
+                Merhaba <span class="text-warm-rose">Kumsal</span>
             </h1>
-            <p class="text-slate-400 text-sm mb-8 font-light">
-                Bu site sadece senin için hazırlandı.<br>
-                Giriş için gizli kelimeyi yaz.
+            <p class="text-stone-400 text-sm font-light leading-relaxed mb-9">
+                Bu sayfa senin için hazırlandı.<br>
+                Devam etmek için gizli kelimeyi yaz.
             </p>
 
-            <div class="relative mb-6">
-                <input 
-                    type="password" 
-                    id="password-input" 
-                    class="password-input w-full py-4 px-5 rounded-2xl text-center text-lg tracking-widest text-emerald-100 placeholder:text-slate-600"
-                    placeholder="••••••••••••"
-                    autocomplete="off"
-                    spellcheck="false"
-                >
-            </div>
+            <input 
+                type="password" 
+                id="password-input" 
+                class="password-input w-full py-3.5 px-5 rounded-2xl text-center text-base tracking-widest mb-5"
+                placeholder="••••••••••"
+                autocomplete="off"
+                spellcheck="false"
+            >
 
-            <button id="enter-btn" class="enter-btn w-full py-4 rounded-2xl font-semibold text-white text-sm tracking-wide">
-                Kapıyı Aç
+            <button id="enter-btn" class="enter-btn w-full py-3.5 rounded-2xl font-medium text-sm tracking-wide text-white">
+                Giriş Yap
             </button>
 
-            <p id="error-msg" class="mt-5 text-rose-400 text-sm opacity-0 transition-opacity duration-300">
-                Yanlış şifre, tekrar dene 🌱
+            <p id="error-msg" class="mt-5 text-rose-400/90 text-sm opacity-0 transition-opacity duration-300">
+                Şifre hatalı, tekrar dene
             </p>
         </div>
     </div>
 
-    <!-- MAIN APP -->
-    <div id="app" class="app-hidden flex-col min-h-screen ui-layer">
-        <!-- Content -->
-        <div id="content" class="flex-1 flex flex-col items-center justify-center px-4 pt-8 pb-28 md:pb-32"></div>
+    <!-- APP -->
+    <div id="app" class="hidden flex-col min-h-screen ui-layer">
+        <div id="content" class="flex-1 flex flex-col items-center justify-center px-4 pt-10 pb-28 md:pb-32"></div>
 
         <!-- Mobile Nav -->
-        <nav class="fixed bottom-0 left-0 right-0 h-16 bg-slate-900/90 backdrop-blur-xl border-t border-white/5 flex md:hidden z-30">
-            <button data-page="home" class="nav-btn flex-1 flex flex-col items-center justify-center text-[10px] text-emerald-400 font-medium">
-                <i class="fas fa-home text-lg mb-0.5"></i> Ana
+        <nav class="fixed bottom-0 left-0 right-0 h-15 bg-[#1a1512]/92 backdrop-blur-xl border-t border-white/5 flex md:hidden z-30">
+            <button data-page="home" class="nav-btn flex-1 flex flex-col items-center justify-center text-[10px] text-warm-rose font-medium py-3">
+                <i class="fas fa-home text-base mb-0.5"></i> Ana
             </button>
-            <button data-page="memories" class="nav-btn flex-1 flex flex-col items-center justify-center text-[10px] text-slate-500 font-medium">
-                <i class="fas fa-images text-lg mb-0.5"></i> Anılar
+            <button data-page="memories" class="nav-btn flex-1 flex flex-col items-center justify-center text-[10px] text-stone-500 font-medium py-3">
+                <i class="fas fa-images text-base mb-0.5"></i> Anılar
             </button>
-            <button data-page="message" class="nav-btn flex-1 flex flex-col items-center justify-center text-[10px] text-slate-500 font-medium">
-                <i class="fas fa-heart text-lg mb-0.5"></i> Mesaj
+            <button data-page="message" class="nav-btn flex-1 flex flex-col items-center justify-center text-[10px] text-stone-500 font-medium py-3">
+                <i class="fas fa-heart text-base mb-0.5"></i> Mesaj
             </button>
         </nav>
 
         <!-- Desktop Nav -->
-        <nav class="hidden md:flex fixed bottom-6 left-0 right-0 justify-center z-30">
-            <div class="flex gap-2 p-1.5 rounded-full glass border border-white/10">
-                <button data-page="home" class="nav-pill nav-btn px-7 py-2.5 rounded-full text-sm font-medium active">
-                    <i class="fas fa-home mr-2"></i>Ana Sayfa
+        <nav class="hidden md:flex fixed bottom-7 left-0 right-0 justify-center z-30">
+            <div class="flex gap-1.5 p-1.5 rounded-full glass border border-white/8">
+                <button data-page="home" class="nav-pill nav-btn px-6 py-2.5 rounded-full text-sm font-medium active">
+                    Ana Sayfa
                 </button>
-                <button data-page="memories" class="nav-pill nav-btn px-7 py-2.5 rounded-full text-sm font-medium text-slate-300 hover:text-white">
-                    <i class="fas fa-images mr-2"></i>Anılar
+                <button data-page="memories" class="nav-pill nav-btn px-6 py-2.5 rounded-full text-sm font-medium text-stone-400 hover:text-white">
+                    Anılar
                 </button>
-                <button data-page="message" class="nav-pill nav-btn px-7 py-2.5 rounded-full text-sm font-medium text-slate-300 hover:text-white">
-                    <i class="fas fa-heart mr-2"></i>Mesajımız
+                <button data-page="message" class="nav-pill nav-btn px-6 py-2.5 rounded-full text-sm font-medium text-stone-400 hover:text-white">
+                    Mesajımız
                 </button>
             </div>
         </nav>
@@ -304,29 +266,28 @@
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <img id="lightbox-img" src="" alt="Anı">
+        <img id="lightbox-img" src="" alt="">
     </div>
 
     <script>
-        // ==================== CONFIG ====================
         const BIRTHDAY = new Date('December 3, 2026 00:00:00').getTime();
         const PASSWORD = 'yeşiluzayli';
 
-        // Placeholder photos (kendi fotoğraflarınla değiştir)
-        const FEATURED = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80';
+        // Placeholder — kendi fotoğraflarınla değiştir
+        const FEATURED = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200&q=80';
         const PHOTOS = [
-            'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80',
-            'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
-            'https://images.unsplash.com/photo-1519046904884-4511a1ff54c1?w=600&q=80',
-            'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&q=80',
-            'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=600&q=80',
-            'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
-            'https://images.unsplash.com/photo-1510414842594-a61c6950b1d4?w=600&q=80',
-            'https://images.unsplash.com/photo-1475924156734-496f6cae6c1f?w=600&q=80',
-            'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=600&q=80'
+            'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80',
+            'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80',
+            'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80',
+            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80',
+            'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&q=80',
+            'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=80',
+            'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80',
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80',
+            'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&q=80'
         ];
 
-        // ==================== STARS ====================
+        // Stars (warm soft particles)
         const canvas = document.getElementById('stars-canvas');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -337,14 +298,14 @@
         }
         function createStars() {
             stars = [];
-            const count = Math.floor((innerWidth * innerHeight) / 4000);
+            const count = Math.floor((innerWidth * innerHeight) / 5500);
             for (let i = 0; i < count; i++) {
                 stars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    r: Math.random() * 1.4 + 0.3,
+                    r: Math.random() * 1.2 + 0.2,
                     a: Math.random(),
-                    s: Math.random() * 0.02 + 0.005
+                    s: Math.random() * 0.015 + 0.004
                 });
             }
         }
@@ -355,17 +316,15 @@
                 if (s.a > 1 || s.a < 0) s.s *= -1;
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(52, 211, 153, ${0.15 + s.a * 0.5})`;
+                ctx.fillStyle = `rgba(232, 160, 160, ${0.08 + s.a * 0.35})`;
                 ctx.fill();
             });
             requestAnimationFrame(drawStars);
         }
-        resize();
-        createStars();
-        drawStars();
+        resize(); createStars(); drawStars();
         window.addEventListener('resize', () => { resize(); createStars(); });
 
-        // ==================== PASSWORD ====================
+        // Password
         const gate = document.getElementById('password-gate');
         const app = document.getElementById('app');
         const input = document.getElementById('password-input');
@@ -374,109 +333,91 @@
 
         function checkPassword() {
             if (input.value.trim().toLowerCase() === PASSWORD) {
-                // Success
                 confetti({
-                    particleCount: 120,
-                    spread: 80,
-                    origin: { y: 0.6 },
-                    colors: ['#10b981', '#34d399', '#6ee7b7', '#fbbf24']
+                    particleCount: 90,
+                    spread: 70,
+                    origin: { y: 0.65 },
+                    colors: ['#e8a0a0', '#e8c9a0', '#f5d0c8', '#ffffff']
                 });
                 setTimeout(() => {
-                    confetti({ particleCount: 60, angle: 60, spread: 55, origin: { x: 0 } });
-                    confetti({ particleCount: 60, angle: 120, spread: 55, origin: { x: 1 } });
-                }, 250);
+                    confetti({ particleCount: 40, angle: 60, spread: 50, origin: { x: 0 }, colors: ['#e8a0a0', '#e8c9a0'] });
+                    confetti({ particleCount: 40, angle: 120, spread: 50, origin: { x: 1 }, colors: ['#e8a0a0', '#e8c9a0'] });
+                }, 200);
 
-                gate.style.transition = 'opacity 0.6s, transform 0.6s';
+                gate.style.transition = 'opacity 0.55s, transform 0.55s';
                 gate.style.opacity = '0';
-                gate.style.transform = 'scale(0.95)';
+                gate.style.transform = 'scale(0.97)';
                 setTimeout(() => {
                     gate.classList.add('hidden');
-                    app.classList.remove('app-hidden');
-                    app.classList.add('app-visible');
+                    app.classList.remove('hidden');
+                    app.classList.add('flex');
                     renderPage('home');
-                }, 600);
+                }, 550);
             } else {
                 errorMsg.style.opacity = '1';
-                input.classList.add('border-rose-500');
-                setTimeout(() => {
-                    errorMsg.style.opacity = '0';
-                    input.classList.remove('border-rose-500');
-                }, 2200);
+                setTimeout(() => errorMsg.style.opacity = '0', 2200);
             }
         }
 
         enterBtn.addEventListener('click', checkPassword);
         input.addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
 
-        // ==================== PAGES ====================
+        // Pages
         const content = document.getElementById('content');
 
-        function createRing(id, max, value) {
-            const radius = 54;
+        function createRing(id, max) {
+            const radius = 52;
             const circumference = 2 * Math.PI * radius;
-            const offset = circumference - (value / max) * circumference;
             return `
                 <div class="ring-container mx-auto">
                     <svg class="ring-svg w-full h-full" viewBox="0 0 120 120">
                         <circle class="ring-bg" cx="60" cy="60" r="${radius}"></circle>
                         <circle class="ring-progress" id="ring-${id}" cx="60" cy="60" r="${radius}"
-                            stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"></circle>
+                            stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}"></circle>
                     </svg>
                     <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <span id="${id}" class="text-2xl md:text-4xl font-bold tabular-nums text-white">0</span>
-                        <span class="text-[9px] md:text-[10px] text-emerald-400/80 tracking-widest mt-0.5 uppercase">${id}</span>
+                        <span id="${id}" class="text-2xl md:text-3xl font-semibold tabular-nums text-warm-cream">0</span>
+                        <span class="text-[9px] text-warm-rose/70 tracking-widest mt-0.5 uppercase">${id}</span>
                     </div>
                 </div>
             `;
         }
 
         const homeHTML = `
-            <div class="w-full max-w-5xl fade-in">
-                <div class="text-center mb-10 md:mb-14">
-                    <p class="text-emerald-400/80 text-xs tracking-[0.35em] uppercase mb-3 font-medium">Özel Gün</p>
-                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
-                        İyi ki Doğdun<br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400">Kumsal</span>
-                    </h1>
-                    <p class="mt-4 text-slate-400 text-sm md:text-base font-light">
-                        3 Aralık 2026’ya kalan süre
-                    </p>
-                </div>
+            <div class="w-full max-w-4xl fade-in text-center">
+                <p class="text-warm-rose/70 text-xs tracking-[0.3em] uppercase mb-4 font-medium">3 Aralık 2026</p>
+                <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.15] mb-3">
+                    İyi ki Doğdun<br>
+                    <span class="text-warm-rose">Kumsal</span>
+                </h1>
+                <p class="text-stone-400 text-sm md:text-base font-light mb-12 max-w-md mx-auto">
+                    Bugüne kalan süre
+                </p>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 justify-items-center">
-                    ${createRing('gün', 365, 0)}
-                    ${createRing('saat', 24, 0)}
-                    ${createRing('dakika', 60, 0)}
-                    ${createRing('saniye', 60, 0)}
-                </div>
-
-                <div class="mt-14 text-center">
-                    <p class="text-slate-500 text-xs tracking-wide">
-                        Bu site senin için özenle hazırlandı 💚
-                    </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 justify-items-center">
+                    ${createRing('gün', 365)}
+                    ${createRing('saat', 24)}
+                    ${createRing('dakika', 60)}
+                    ${createRing('saniye', 60)}
                 </div>
             </div>
         `;
 
         const memoriesHTML = `
-            <div class="w-full max-w-6xl fade-in pb-8">
-                <div class="glass rounded-3xl p-6 md:p-8 mb-8 text-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-emerald-500/5"></div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-emerald-400 relative z-10">Güzel Anlarımız</h2>
-                    <p class="text-slate-400 text-sm mt-2 relative z-10 font-light italic">
-                        Her kare bir hatıra, her gülümseme bir hazine
-                    </p>
+            <div class="w-full max-w-5xl fade-in pb-6">
+                <div class="text-center mb-10">
+                    <h2 class="font-serif text-3xl md:text-4xl font-semibold text-warm-cream mb-2">Anılarımız</h2>
+                    <p class="text-stone-400 text-sm font-light">Güzel günlerden kareler</p>
                 </div>
 
-                <!-- Featured -->
-                <div class="mb-8 rounded-2xl md:rounded-3xl overflow-hidden border border-emerald-500/20 shadow-2xl shadow-emerald-900/20">
-                    <img src="${FEATURED}" alt="Öne çıkan" class="w-full max-h-[420px] object-cover">
+                <div class="mb-8 rounded-2xl overflow-hidden border border-white/5 shadow-xl">
+                    <img src="${FEATURED}" alt="Öne çıkan" class="w-full max-h-[400px] object-cover">
                 </div>
 
                 <div class="photo-grid">
                     ${PHOTOS.map((url, i) => `
                         <div class="photo-card" onclick="openLightbox('${url}')">
-                            <img src="${url}" alt="Anı ${i+1}" loading="lazy">
+                            <img src="${url}" alt="Anı" loading="lazy">
                         </div>
                     `).join('')}
                 </div>
@@ -484,32 +425,32 @@
         `;
 
         const messageHTML = `
-            <div class="w-full max-w-2xl fade-in pb-8">
+            <div class="w-full max-w-xl fade-in pb-6">
                 <div id="envelope" class="text-center">
                     <div class="float mb-8">
-                        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-emerald-500/10 border border-emerald-500/30">
-                            <i class="fas fa-envelope-open-text text-4xl text-emerald-400"></i>
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-rose-400/10 border border-rose-300/20">
+                            <i class="fas fa-envelope-open-text text-3xl text-warm-rose"></i>
                         </div>
                     </div>
-                    <p class="text-emerald-400/70 text-[10px] tracking-[0.4em] uppercase mb-6 font-semibold">Sana özel bir not</p>
-                    <button id="open-msg" class="px-10 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white font-semibold text-sm tracking-wide shadow-lg shadow-emerald-900/40 hover:scale-105 transition-transform">
-                        Mesajı Aç
+                    <p class="text-warm-rose/60 text-[10px] tracking-[0.35em] uppercase mb-6">Sana özel bir not</p>
+                    <button id="open-msg" class="px-9 py-3.5 rounded-full bg-gradient-to-r from-[#c97b7b] to-[#e8a0a0] text-white text-sm font-medium tracking-wide shadow-lg shadow-rose-900/20 hover:scale-[1.03] transition-transform">
+                        Mesajı Oku
                     </button>
                 </div>
 
                 <div id="letter" class="hidden">
-                    <div class="glass rounded-[2rem] p-8 md:p-12 relative">
-                        <div id="typed" class="text-slate-200 leading-relaxed text-[15px] md:text-base font-light space-y-5 typed-cursor"></div>
-                        <div id="sign" class="hidden mt-12 pt-8 border-t border-white/5 text-center opacity-0 transition-opacity duration-1000">
-                            <p class="text-[9px] text-emerald-400/60 tracking-[0.35em] uppercase mb-3">Sevgiyle</p>
-                            <h3 class="font-cursive text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-200">
+                    <div class="glass rounded-3xl p-8 md:p-11">
+                        <div id="typed" class="text-stone-200 leading-relaxed text-[15px] font-light space-y-5 typed-cursor"></div>
+                        <div id="sign" class="hidden mt-11 pt-8 border-t border-white/5 text-center opacity-0 transition-opacity duration-1000">
+                            <p class="text-[9px] text-warm-rose/50 tracking-[0.3em] uppercase mb-2">Sevgiyle</p>
+                            <h3 class="font-serif text-2xl md:text-3xl text-warm-soft italic">
                                 Arkadaşların
                             </h3>
                         </div>
                     </div>
                     <div class="mt-6 text-center">
-                        <button onclick="renderPage('message')" class="text-slate-600 hover:text-slate-400 text-[10px] tracking-widest uppercase transition-colors">
-                            <i class="fas fa-redo-alt mr-1.5 text-[8px]"></i> Yeniden oku
+                        <button onclick="renderPage('message')" class="text-stone-600 hover:text-stone-400 text-[10px] tracking-widest uppercase transition-colors">
+                            Yeniden oku
                         </button>
                     </div>
                 </div>
@@ -524,12 +465,12 @@
                 else if (page === 'memories') content.innerHTML = memoriesHTML;
                 else if (page === 'message') {
                     content.innerHTML = messageHTML;
-                    setTimeout(attachMessage, 50);
+                    setTimeout(attachMessage, 40);
                 }
                 updateNav(page);
                 content.style.opacity = '1';
                 if (page === 'home') startCountdown();
-            }, 250);
+            }, 220);
         }
 
         function updateNav(active) {
@@ -537,10 +478,10 @@
                 const isActive = btn.dataset.page === active;
                 if (btn.classList.contains('nav-pill')) {
                     btn.classList.toggle('active', isActive);
-                    btn.classList.toggle('text-slate-300', !isActive);
+                    btn.classList.toggle('text-stone-400', !isActive);
                 } else {
-                    btn.classList.toggle('text-emerald-400', isActive);
-                    btn.classList.toggle('text-slate-500', !isActive);
+                    btn.classList.toggle('text-warm-rose', isActive);
+                    btn.classList.toggle('text-stone-500', !isActive);
                 }
             });
         }
@@ -549,13 +490,12 @@
             btn.addEventListener('click', () => renderPage(btn.dataset.page));
         });
 
-        // ==================== COUNTDOWN ====================
-        let countdownInterval;
+        // Countdown
+        let interval;
         function startCountdown() {
-            clearInterval(countdownInterval);
+            clearInterval(interval);
             function tick() {
-                const now = Date.now();
-                const dist = BIRTHDAY - now;
+                const dist = BIRTHDAY - Date.now();
                 if (dist <= 0) return;
 
                 const d = Math.floor(dist / 86400000);
@@ -565,42 +505,41 @@
 
                 const vals = { gün: d, saat: h, dakika: m, saniye: s };
                 const maxs = { gün: 365, saat: 24, dakika: 60, saniye: 60 };
+                const radius = 52;
+                const circ = 2 * Math.PI * radius;
 
                 Object.keys(vals).forEach(k => {
                     const el = document.getElementById(k);
                     if (el) el.textContent = vals[k];
                     const ring = document.getElementById(`ring-${k}`);
-                    if (ring) {
-                        const radius = 54;
-                        const circ = 2 * Math.PI * radius;
-                        ring.style.strokeDashoffset = circ - (vals[k] / maxs[k]) * circ;
-                    }
+                    if (ring) ring.style.strokeDashoffset = circ - (vals[k] / maxs[k]) * circ;
                 });
             }
             tick();
-            countdownInterval = setInterval(tick, 1000);
+            interval = setInterval(tick, 1000);
         }
 
-        // ==================== MESSAGE ====================
+        // Message
         const lines = [
             "Merhaba Kumsal,",
-            "Bugün senin özel günün. Senin gibi birinin doğum gününü kutlamak bizim için gerçek bir mutluluk.",
-            "Senin enerjin, gülüşün ve içtenliğin etrafındaki herkesi daha iyi hissettiriyor. İyi ki varsın, iyi ki yollarımız kesişti.",
-            "Hayatın sana her zaman güzellikler getirmesini, kalbinin her zaman bu kadar saf ve güçlü kalmasını diliyoruz.",
-            "Daha nice mutlu, sağlıklı ve gülümseyen yıllara... İyi ki doğdun Kumsal."
+            "Bugün senin günün. Senin gibi birinin doğum gününü kutlamak gerçekten özel bir his.",
+            "Gülüşün, enerjin ve içtenliğin etrafındaki herkese iyi geliyor. İyi ki varsın, iyi ki yollarımız kesişti.",
+            "Hayatın sana hep güzellikler getirmesini, kalbinin her zaman bu kadar sıcak kalmasını diliyoruz.",
+            "Daha nice mutlu, sağlıklı ve güzel yıllara... İyi ki doğdun Kumsal."
         ];
 
         function attachMessage() {
             const btn = document.getElementById('open-msg');
             if (!btn) return;
             btn.onclick = async () => {
-                document.getElementById('envelope').style.opacity = '0';
-                document.getElementById('envelope').style.transform = 'scale(0.95)';
+                const env = document.getElementById('envelope');
+                env.style.opacity = '0';
+                env.style.transform = 'scale(0.96)';
                 setTimeout(() => {
-                    document.getElementById('envelope').classList.add('hidden');
+                    env.classList.add('hidden');
                     document.getElementById('letter').classList.remove('hidden');
                     typeMessage();
-                }, 400);
+                }, 380);
             };
         }
 
@@ -613,16 +552,16 @@
                 box.appendChild(p);
                 for (const char of line) {
                     p.textContent += char;
-                    await new Promise(r => setTimeout(r, 22));
+                    await new Promise(r => setTimeout(r, 20));
                 }
-                await new Promise(r => setTimeout(r, 280));
+                await new Promise(r => setTimeout(r, 260));
             }
             box.classList.remove('typed-cursor');
             sign.classList.remove('hidden');
-            setTimeout(() => sign.style.opacity = '1', 100);
+            setTimeout(() => sign.style.opacity = '1', 80);
         }
 
-        // ==================== LIGHTBOX ====================
+        // Lightbox
         function openLightbox(src) {
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').classList.add('active');
@@ -631,8 +570,7 @@
             document.getElementById('lightbox').classList.remove('active');
         }
 
-        // Initial
-        content.style.transition = 'opacity 0.3s';
+        content.style.transition = 'opacity 0.25s';
     </script>
 </body>
 </html>
