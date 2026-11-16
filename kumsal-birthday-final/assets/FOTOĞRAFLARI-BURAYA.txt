@@ -1,1 +1,0 @@
-Kalıcı fotoğraflarını thumbs/ ve photos/ alt klasörlerine koy. Ardından js/config.js içindeki photos dizisine yollarını ekle.
