@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#29232d">
+  <meta name="description" content="Kumsal için hazırlanmış kişisel bir doğum günü sürprizi.">
+  <title>İyi ki doğdun, Kumsal — 03.12.2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="reading-progress" id="reading-progress"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- GİRİŞ EKRANI -->
+  <main class="gate" id="gate">
+    <div class="gate-decoration gate-decoration-a" aria-hidden="true"></div>
+    <div class="gate-decoration gate-decoration-b" aria-hidden="true"></div>
+    <div class="gate-topline"><a class="monogram" href="#" aria-label="Kumsal">K<span>.</span></a><span>KÜÇÜK BİR SÜRPRİZ</span></div>
+    <section class="gate-panel" aria-labelledby="gate-title">
+      <div class="gate-panel-top"><span class="status-dot"></span><span>KUMSAL İÇİN</span><span class="gate-date">03 / 12 / 26</span></div>
+      <div class="gate-emblem" aria-hidden="true"><span class="emblem-orbit orbit-one"></span><span class="emblem-orbit orbit-two"></span><span class="emblem-star">✳</span><span class="emblem-core">K</span></div>
+      <p class="micro-label">SANA BİR ŞEY HAZIRLADIM</p>
+      <h1 id="gate-title">Merhaba,<br><em>Kumsal.</em></h1>
+      <p class="gate-description">Kumsal, senin için küçük bir şey hazırladım.<br>Şifreyi gir, bakalım hoşuna gidecek mi.</p>
+      <form id="password-form" class="gate-form" novalidate>
+        <label for="password-input">ŞİFRE</label>
+        <div class="input-wrap">
+          <input id="password-input" type="password" autocomplete="off" spellcheck="false" placeholder="Şifreyi yaz">
+          <button class="visibility-toggle" type="button" id="toggle-password" aria-label="Şifreyi göster"><span>◉</span></button>
+        </div>
+        <p class="gate-error" id="gate-error" aria-live="polite"></p>
+        <button class="button button-light gate-submit" type="submit"><span>Aç bakalım</span><span class="button-arrow">↗</span></button>
+      </form>
+      <div class="gate-panel-bottom"><span>03 ARALIK 2026</span><span>SENİN İÇİN</span></div>
+    </section>
+    <p class="gate-footer">BİR SÜRPRİZİN VAR.</p>
+  </main>
+
+  <!-- ANA SİTE -->
+  <div class="site is-hidden" id="site">
+    <header class="site-header" id="site-header">
+      <a class="brand" href="#home" aria-label="Ana sayfaya dön"><span class="brand-mark">K<span>.</span></span><span class="brand-divider"></span><span class="brand-caption">KUMSAL’IN<br>GÜNÜ</span></a>
+      <nav class="desktop-navigation" aria-label="Ana navigasyon">
+        <a class="navigation-link is-active" href="#home">Başlangıç <span>01</span></a>
+        <a class="navigation-link" href="#countdown">Geri sayım <span>02</span></a>
+        <a class="navigation-link" href="#memories">Anılar <span>03</span></a>
+        <a class="navigation-link" href="#letter">Sana bir not <span>04</span></a>
+      </nav>
+      <div class="header-date"><span class="header-date-dot"></span><span>03 ARALIK 2026</span></div>
+      <button class="menu-button" id="menu-button" aria-label="Menüyü aç" aria-expanded="false"><span></span><span></span></button>
+    </header>
+    <nav class="mobile-navigation" id="mobile-navigation" aria-label="Mobil navigasyon">
+      <a href="#home">Başlangıç <small>01</small></a><a href="#countdown">Geri sayım <small>02</small></a><a href="#memories">Anılar <small>03</small></a><a href="#letter">Sana bir not <small>04</small></a>
+    </nav>
+    <nav class="mobile-dock" id="mobile-dock" aria-label="Sayfa bölümleri">
+      <a class="mobile-dock-link is-active" href="#home"><span class="dock-icon">⌂</span><span>Başlangıç</span></a>
+      <a class="mobile-dock-link" href="#countdown"><span class="dock-icon">◷</span><span>Sayaç</span></a>
+      <a class="mobile-dock-link" href="#memories"><span class="dock-icon">▦</span><span>Fotoğraflar</span></a>
+      <a class="mobile-dock-link" href="#letter"><span class="dock-icon">✉</span><span>Not</span></a>
+    </nav>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero section-wrap" id="home">
+        <div class="hero-copy">
+          <div class="eyebrow reveal"><span class="eyebrow-mark">✳</span><span>3 ARALIK 2026</span><span class="eyebrow-rule"></span><span>SENİN GÜNÜN</span></div>
+          <p class="hero-kicker reveal">BUGÜN SENİN GÜNÜN.</p>
+          <h1 class="hero-title reveal">İyi ki<br>doğdun,<br><em>Kumsal.</em></h1>
+          <p class="hero-subtitle reveal">Umarım bugün bol bol gülersin.<br class="desktop-break"> Yeni yaşın sana çok iyi gelsin.</p>
+          <a class="text-link reveal" href="#countdown"><span>Biraz aşağı bakalım</span><b>↓</b></a>
+        </div>
+        <div class="hero-visual reveal" aria-label="3 Aralık 2026 temalı doğum günü illüstrasyonu">
+          <div class="visual-index"><span>KUMSAL İÇİN</span><span>03 ARALIK 2026</span></div>
+          <div class="visual-inner">
+            <div class="visual-glow"></div>
+            <div class="visual-orbit visual-orbit-a"></div><div class="visual-orbit visual-orbit-b"></div>
+            <span class="visual-star star-one">✳</span><span class="visual-star star-two">✦</span><span class="visual-star star-three">✳</span>
+            <div class="visual-date"><span>DECEMBER</span><strong>03</strong><i>THURSDAY · 2026</i></div>
+            <div class="visual-ribbon">İYİ Kİ DOĞDUN</div>
+          </div>
+          <div class="visual-bottom"><span>BUGÜNÜN TARİHİ</span><span>03 / 12 / 26</span></div>
+          <div class="visual-side-note">BUGÜN SENİN GÜNÜN <b>↙</b></div>
+        </div>
+        <div class="hero-bottom-note"><span class="bottom-line"></span><span>AŞAĞI İN</span><span class="bottom-note-right">İYİ Kİ DOĞDUN</span></div>
+      </section>
+
+      <!-- COUNTDOWN -->
+      <section class="countdown-section" id="countdown">
+        <div class="section-wrap">
+          <div class="section-intro reveal"><div><p class="section-overline"><span>02</span> GERİ SAYIM</p><h2>Doğum gününe<br><em>ne kadar kaldı?</em></h2></div><p class="section-aside">3 Aralık’a<br>az kaldı.</p></div>
+          <div class="countdown-card reveal">
+            <div class="countdown-card-head"><span><i class="live-dot"></i> CANLI GERİ SAYIM</span><span>KUMSAL’IN DOĞUM GÜNÜNE</span><span class="countdown-date-label">03.12.2026 · 00:00</span></div>
+            <div class="countdown-units" id="countdown-units" aria-live="off">
+              <div class="countdown-unit"><div class="digit-window"><span class="digit-value" id="days">000</span></div><span class="digit-label">GÜN</span></div>
+              <span class="countdown-colon">:</span>
+              <div class="countdown-unit"><div class="digit-window"><span class="digit-value" id="hours">00</span></div><span class="digit-label">SAAT</span></div>
+              <span class="countdown-colon">:</span>
+              <div class="countdown-unit"><div class="digit-window"><span class="digit-value" id="minutes">00</span></div><span class="digit-label">DAKİKA</span></div>
+              <span class="countdown-colon">:</span>
+              <div class="countdown-unit"><div class="digit-window"><span class="digit-value" id="seconds">00</span></div><span class="digit-label">SANİYE</span></div>
+            </div>
+            <div class="countdown-card-foot"><span id="countdown-message">Doğum gününü bekliyoruz.</span><span class="countdown-foot-right">AZ KALDI! <b>✳</b></span></div>
+            <div class="countdown-progress"><span id="countdown-progress-fill"></span></div>
+          </div>
+          <div class="countdown-caption reveal"><span>✳</span> 3 Aralık gelsin artık!</div>
+        </div>
+      </section>
+
+      <!-- EDITORIAL QUOTE -->
+      <section class="quote-section">
+        <div class="quote-inner section-wrap reveal"><span class="quote-ornament">“</span><p>İyi ki tanımışız seni.<br>İyi ki <em>varsın.</em></p><span class="quote-attribution">İYİ Kİ VARSIN.</span><span class="quote-side-number">K / 26</span></div>
+      </section>
+
+      <!-- MEMORIES -->
+      <section class="memories-section section-wrap" id="memories">
+        <div class="section-intro memories-intro reveal"><div><p class="section-overline"><span>03</span> FOTOĞRAFLAR</p><h2>Güzel<br><em>anılarımız.</em></h2></div><p class="section-aside">Fotoğraflarımızı tek bir yerde<br>toplamak istedim.</p></div>
+        <div class="gallery-controls reveal"><div class="gallery-counter"><strong id="photo-count">00</strong><span>FOTOĞRAF</span></div><span class="gallery-intro-note">Biriktirdiğimiz fotoğraflar</span></div>
+        <div class="photo-grid reveal" id="photo-grid">
+          <div class="photo-placeholder placeholder-large"><span class="placeholder-number">01</span><span class="placeholder-decoration">✳</span><strong>GÜZEL<br>GÜNLERDEN</strong><small>FOTOĞRAFLAR BURAYA GELECEK</small></div>
+          <div class="photo-placeholder placeholder-portrait"><span class="placeholder-number">02</span><span class="placeholder-decoration">✦</span><strong>BERABER<br>ÇEKTİKLERİMİZ</strong><small>GÜZEL ANILAR</small></div>
+          <div class="photo-placeholder placeholder-square"><span class="placeholder-number">03</span><span class="placeholder-decoration">✳</span><strong>UNUTMAYACAĞIMIZ<br>ANLAR</strong><small>FOTOĞRAFLARIMIZ</small></div>
+          <div class="photo-placeholder placeholder-wide"><span class="placeholder-number">04</span><span class="placeholder-decoration">✴</span><strong>DAHA<br>ÇOK FOTOĞRAF VAR.</strong><small>HEPSİ BURADA OLACAK</small></div>
+        </div>
+        <div class="gallery-more-wrap" id="gallery-more-wrap" hidden><button class="gallery-more-button" id="show-more-photos" type="button"><span>Daha fazla fotoğraf göster</span><b>↓</b></button><p class="gallery-page-note" id="gallery-page-note"></p></div><div class="gallery-foot reveal"><span><i>✳</i> Daha ekleyecek çok fotoğraf var.</span><span>03.12.2026</span></div>
+      </section>
+
+      <!-- PERSONAL NOTE -->
+      <section class="letter-section" id="letter">
+        <div class="letter-layout section-wrap">
+          <div class="letter-heading reveal"><p class="section-overline"><span>04</span> SANA BİR NOT</p><h2>Sana<br>bir <em>notum var.</em></h2><p class="letter-intro">Doğum gününde söylemek istediklerimi buraya bıraktım.</p><div class="letter-index">KUMSAL’A <span>✳</span></div></div>
+          <article class="letter-paper reveal">
+            <div class="paper-top"><span>KUMSAL’A,</span><div class="paper-stamp">KÜÇÜK<br>BİR NOT</div></div>
+            <div class="paper-body" id="letter-body"><p class="paper-hint">Sana birkaç satır yazdım.<br>Okumak istersen burada.</p></div>
+            <button class="letter-open-button" id="letter-open-button" type="button"><span>Notu aç</span><b>↗</b></button>
+            <div class="paper-bottom"><span>SEVGİLER,</span><strong id="signature-display">T.</strong></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ENDING -->
+      <section class="ending-section section-wrap reveal">
+        <div class="ending-star">✳</div><p class="ending-overline">BİR NOT DAHA</p><h2>İyi ki <em>doğdun.</em></h2><p>Umarım bugün çok güzel geçer. Nice senelere, Kumsal!</p><a href="#home" class="back-to-top">YUKARI ÇIK ↑</a>
+      </section>
+    </main>
+    <footer class="site-footer"><a class="footer-mark" href="#home">K<span>.</span></a><span>03.12.2026 · KUMSAL’IN GÜNÜ</span><span>T.</span></footer>
+
+    <!-- FOTOĞRAF GÖRÜNTÜLEYİCİ -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Fotoğraf görüntüleyici">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Kapat" type="button">×</button>
+      <button class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="Önceki fotoğraf" type="button">‹</button>
+      <img id="lightbox-image" src="" alt="Anı fotoğrafı">
+      <button class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="Sonraki fotoğraf" type="button">›</button>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+      <div class="lightbox-counter" id="lightbox-counter">01 / 01</div>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <canvas id="celebration-canvas" aria-hidden="true"></canvas>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
