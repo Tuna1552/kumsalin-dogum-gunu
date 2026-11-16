@@ -1,1 +1,0 @@
-# kumsalin-dogum-gunu
