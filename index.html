@@ -3,164 +3,2122 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#29232d">
-  <meta name="description" content="Kumsal için hazırlanmış kişisel bir doğum günü sürprizi.">
-  <title>İyi ki doğdun, Kumsal — 03.12.2026</title>
+  <meta name="theme-color" content="#f6f3ee">
+  <title>Kumsal’a — İyi ki Doğdun</title>
+  <meta
+    name="description"
+    content="Kumsal için hazırlanmış küçük bir doğum günü sürprizi."
+  >
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --paper: #f6f3ee;
+      --paper-2: #fffefa;
+      --ink: #292521;
+      --muted: #807970;
+      --line: #e8e2d9;
+      --plum: #735363;
+      --plum-dark: #563c4a;
+      --rose: #d8aaa3;
+      --rose-pale: #f2e2dd;
+      --sage: #8c9884;
+      --gold: #bb945e;
+      --shadow: 0 20px 60px rgba(55, 43, 37, .09);
+      --radius: 24px;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.locked {
+      overflow: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      color: #fff;
+      background: var(--plum);
+    }
+
+    .grain {
+      position: fixed;
+      z-index: 20;
+      inset: 0;
+      pointer-events: none;
+      opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+    }
+
+    .page-shell {
+      width: min(1320px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--plum);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 22px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    .serif {
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: -.045em;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button:focus-visible,
+    .icon-button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid rgba(115, 83, 99, .35);
+      outline-offset: 3px;
+    }
+
+    .button-primary {
+      background: var(--plum);
+      color: white;
+      box-shadow: 0 8px 20px rgba(86, 60, 74, .16);
+    }
+
+    .button-primary:hover {
+      background: var(--plum-dark);
+      box-shadow: 0 12px 26px rgba(86, 60, 74, .22);
+    }
+
+    .button-light {
+      border-color: var(--line);
+      background: rgba(255, 254, 250, .75);
+      color: var(--ink);
+    }
+
+    .button-light:hover {
+      border-color: #cbbbc2;
+      background: white;
+    }
+
+    .button svg,
+    .icon-button svg {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+    }
+
+    /* Şifreli açılış */
+    .gate {
+      position: fixed;
+      z-index: 50;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      overflow: auto;
+      padding: 24px;
+      background:
+        radial-gradient(ellipse at 12% 15%, rgba(216, 170, 163, .27), transparent 32%),
+        radial-gradient(ellipse at 90% 82%, rgba(140, 152, 132, .18), transparent 30%),
+        var(--paper);
+      transition: opacity .65s ease, visibility .65s ease;
+    }
+
+    .gate.is-hidden {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .gate-card {
+      position: relative;
+      width: min(490px, 100%);
+      padding: clamp(30px, 7vw, 58px);
+      border: 1px solid rgba(255, 255, 255, .85);
+      border-radius: 30px;
+      background: rgba(255, 254, 250, .83);
+      box-shadow: var(--shadow);
+      text-align: center;
+      backdrop-filter: blur(18px);
+      animation: card-in .75s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    .gate-mark {
+      display: grid;
+      width: 62px;
+      height: 62px;
+      place-items: center;
+      margin: 0 auto 24px;
+      border: 1px solid #e9d8d5;
+      border-radius: 50%;
+      background: var(--rose-pale);
+      color: var(--plum);
+    }
+
+    .gate-mark svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .gate-card h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(2.7rem, 9vw, 4.4rem);
+      line-height: .98;
+    }
+
+    .gate-card > p {
+      max-width: 320px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+
+    .gate-form {
+      display: flex;
+      gap: 9px;
+      margin-top: 28px;
+    }
+
+    .gate-input-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .gate-input {
+      width: 100%;
+      height: 50px;
+      padding: 0 45px 0 17px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .gate-input:focus {
+      border-color: #b89aaa;
+      box-shadow: 0 0 0 4px rgba(115, 83, 99, .08);
+    }
+
+    .gate-toggle {
+      position: absolute;
+      top: 50%;
+      right: 13px;
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      transform: translateY(-50%);
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .gate-toggle svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .gate-form .button {
+      min-width: 112px;
+      border-radius: 14px;
+    }
+
+    .gate-error {
+      min-height: 22px;
+      margin: 11px 0 0 !important;
+      color: #a44444 !important;
+      font-size: .82rem !important;
+    }
+
+    .gate-footnote {
+      display: block;
+      margin-top: 18px;
+      color: #a39a91;
+      font-size: .73rem;
+    }
+
+    .gate-shape {
+      position: absolute;
+      z-index: -1;
+      border: 1px solid rgba(115, 83, 99, .12);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .gate-shape-one {
+      top: 8%;
+      left: 7%;
+      width: 140px;
+      height: 140px;
+    }
+
+    .gate-shape-two {
+      right: 6%;
+      bottom: 7%;
+      width: 90px;
+      height: 90px;
+    }
+
+    @keyframes card-in {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Üst bar ve menü */
+    .announcement {
+      padding: 10px 16px;
+      background: var(--ink);
+      color: #f8f3ec;
+      text-align: center;
+      font-size: .72rem;
+      letter-spacing: .07em;
+    }
+
+    .announcement span {
+      color: #e5c5bd;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 30;
+      top: 0;
+      border-bottom: 1px solid rgba(232, 226, 217, .85);
+      background: rgba(246, 243, 238, .88);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      display: flex;
+      min-height: 76px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .92rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    .brand-symbol {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--plum);
+      color: white;
+    }
+
+    .brand-symbol svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3vw, 36px);
+      color: #665f58;
+      font-size: .82rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--plum);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-actions .button {
+      min-height: 40px;
+      padding-inline: 16px;
+      font-size: .78rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--paper-2);
+      color: var(--ink);
+    }
+
+    .menu-toggle svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    /* Ana tanıtım alanı */
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 570px;
+      grid-template-columns: 1.03fr .97fr;
+      align-items: center;
+      gap: 42px;
+      padding-top: 70px;
+      padding-bottom: 78px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      padding: 12px 0;
+    }
+
+    .hero-copy h1 {
+      max-width: 650px;
+      margin: 20px 0 18px;
+      font-size: clamp(3.8rem, 8vw, 7.3rem);
+      line-height: .91;
+    }
+
+    .hero-copy h1 em {
+      color: var(--plum);
+      font-style: normal;
+    }
+
+    .hero-lead {
+      max-width: 450px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.12rem);
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+      margin-top: 28px;
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: .79rem;
+    }
+
+    .mini-avatars {
+      display: flex;
+      padding-left: 5px;
+    }
+
+    .mini-avatar {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      margin-left: -5px;
+      border: 2px solid var(--paper);
+      border-radius: 50%;
+      background: var(--rose-pale);
+      color: var(--plum);
+      font-size: .7rem;
+      font-weight: 700;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 445px;
+    }
+
+    .hero-main-card {
+      position: absolute;
+      top: 9px;
+      right: 4%;
+      width: min(78%, 410px);
+      height: 390px;
+      overflow: hidden;
+      border-radius: 190px 190px 25px 25px;
+      background:
+        linear-gradient(155deg, rgba(255,255,255,.14), transparent 42%),
+        linear-gradient(145deg, #d7b6ac 0%, #c89f9b 38%, #9c8290 100%);
+      box-shadow: 0 28px 60px rgba(89, 63, 73, .18);
+    }
+
+    .hero-main-card::before,
+    .hero-main-card::after {
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.47);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .hero-main-card::before {
+      top: 16%;
+      left: 16%;
+      width: 68%;
+      height: 68%;
+    }
+
+    .hero-main-card::after {
+      top: 23%;
+      left: 23%;
+      width: 54%;
+      height: 54%;
+    }
+
+    .hero-orb {
+      position: absolute;
+      top: 24%;
+      left: 50%;
+      display: grid;
+      width: 126px;
+      height: 126px;
+      place-items: center;
+      transform: translateX(-50%);
+      border: 1px solid rgba(255,255,255,.55);
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.95);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-orb svg {
+      width: 44px;
+      height: 44px;
+      stroke-width: 1.2;
+    }
+
+    .hero-photo-label {
+      position: absolute;
+      right: 0;
+      bottom: 26px;
+      left: 0;
+      color: white;
+      text-align: center;
+      text-shadow: 0 2px 15px rgba(40, 25, 34, .2);
+    }
+
+    .hero-photo-label span {
+      display: block;
+      margin-bottom: 8px;
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .hero-photo-label strong {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    .hero-sticker {
+      position: absolute;
+      z-index: 2;
+      top: 15px;
+      left: 0;
+      display: grid;
+      width: 98px;
+      height: 98px;
+      place-items: center;
+      padding: 15px;
+      transform: rotate(-10deg);
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 50%;
+      background: var(--paper-2);
+      box-shadow: 0 10px 30px rgba(50, 35, 32, .09);
+      color: var(--plum);
+      font-size: .67rem;
+      font-weight: 700;
+      line-height: 1.5;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      bottom: 20px;
+      width: 220px;
+      padding: 17px;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 17px;
+      background: rgba(255, 254, 250, .91);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .floating-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: .67rem;
+    }
+
+    .floating-card-top b {
+      color: var(--plum);
+      font-size: .72rem;
+    }
+
+    .floating-card strong {
+      display: block;
+      margin-top: 10px;
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 500;
+    }
+
+    .floating-card small {
+      color: var(--muted);
+      font-size: .72rem;
+    }
+
+    /* Geri sayım */
+    .countdown-section {
+      position: relative;
+      overflow: hidden;
+      padding: 70px 0 76px;
+      background: #302a2c;
+      color: white;
+    }
+
+    .countdown-section::before,
+    .countdown-section::after {
+      position: absolute;
+      width: 310px;
+      height: 310px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .countdown-section::before {
+      top: -210px;
+      left: -70px;
+      box-shadow: 0 0 0 35px rgba(255,255,255,.025), 0 0 0 70px rgba(255,255,255,.02);
+    }
+
+    .countdown-section::after {
+      right: -190px;
+      bottom: -240px;
+      box-shadow: 0 0 0 35px rgba(255,255,255,.025), 0 0 0 70px rgba(255,255,255,.02);
+    }
+
+    .countdown-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .countdown-intro .eyebrow {
+      color: #e0bdb5;
+    }
+
+    .countdown-intro h2 {
+      margin: 16px 0 12px;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+    }
+
+    .countdown-intro p {
+      max-width: 350px;
+      margin: 0;
+      color: #c5bdba;
+      font-size: .92rem;
+      line-height: 1.7;
+    }
+
+    .birthday-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 22px;
+      color: #e8d7cf;
+      font-size: .82rem;
+      font-weight: 600;
+    }
+
+    .birthday-date svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .time-card {
+      position: relative;
+      display: flex;
+      min-height: 153px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 20px;
+      background: rgba(255,255,255,.055);
+      text-align: center;
+    }
+
+    .time-card::before {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      transform: scaleX(var(--progress, .35));
+      transform-origin: left;
+      background: #d6aaa4;
+      content: "";
+      transition: transform .5s ease;
+    }
+
+    .time-value {
+      font-variant-numeric: tabular-nums;
+      font-size: clamp(2.3rem, 5vw, 3.9rem);
+      font-weight: 600;
+      letter-spacing: -.07em;
+      line-height: 1;
+    }
+
+    .time-label {
+      margin-top: 12px;
+      color: #c9bfc0;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .countdown-message {
+      grid-column: 1 / -1;
+      min-height: 22px;
+      margin: 3px 0 0;
+      color: #e2c5bd;
+      font-size: .8rem;
+      text-align: center;
+    }
+
+    /* Genel bölüm stilleri */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      max-width: 620px;
+      margin: 14px 0 0;
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1;
+    }
+
+    .section-heading p {
+      max-width: 360px;
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.7;
+    }
+
+    /* Galeri */
+    .gallery-section {
+      background: var(--paper-2);
+    }
+
+    .gallery-tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .photo-input {
+      display: none;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-template-rows: 245px 245px;
+      gap: 14px;
+    }
+
+    .gallery-item {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(41,37,33,.05);
+      border-radius: 20px;
+      background: #e8ddd5;
+      cursor: zoom-in;
+      isolation: isolate;
+    }
+
+    .gallery-item:first-child {
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(2) {
+      background: #e5d9cf;
+    }
+
+    .gallery-item:nth-child(3) {
+      background: #d8d8cd;
+    }
+
+    .gallery-item:nth-child(4) {
+      background: #e8d9da;
+    }
+
+    .gallery-item:nth-child(5) {
+      background: #d5d1c8;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-art {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .gallery-art::before,
+    .gallery-art::after {
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.62);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .gallery-art::before {
+      width: 62%;
+      aspect-ratio: 1;
+    }
+
+    .gallery-art::after {
+      width: 44%;
+      aspect-ratio: 1;
+    }
+
+    .gallery-art span {
+      z-index: 1;
+      display: grid;
+      width: 78px;
+      height: 78px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.62);
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      color: rgba(255,255,255,.9);
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      backdrop-filter: blur(7px);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      z-index: 2;
+      right: 17px;
+      bottom: 16px;
+      left: 17px;
+      color: white;
+      font-size: .78rem;
+      font-weight: 600;
+      text-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    .gallery-empty-note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    /* Anı kartları */
+    .memories-section {
+      background:
+        radial-gradient(ellipse at 95% 15%, rgba(216,170,163,.13), transparent 30%),
+        var(--paper);
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .memory-card {
+      position: relative;
+      min-height: 240px;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,254,250,.75);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .memory-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .memory-index {
+      display: inline-flex;
+      width: 39px;
+      height: 39px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 13px;
+      background: var(--rose-pale);
+      color: var(--plum);
+      font-family: var(--serif);
+      font-size: 1.15rem;
+    }
+
+    .memory-card:nth-child(2) .memory-index {
+      background: #e8ebe2;
+      color: #63715d;
+    }
+
+    .memory-card:nth-child(3) .memory-index {
+      background: #f0e8d9;
+      color: #9b7747;
+    }
+
+    .memory-card h3 {
+      margin: 26px 0 9px;
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      letter-spacing: -.03em;
+    }
+
+    .memory-card p {
+      max-width: 300px;
+      margin: 0;
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.75;
+    }
+
+    .memory-decoration {
+      position: absolute;
+      right: -22px;
+      bottom: -42px;
+      width: 130px;
+      height: 130px;
+      border: 1px solid rgba(115,83,99,.1);
+      border-radius: 50%;
+    }
+
+    .memory-decoration::before,
+    .memory-decoration::after {
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(115,83,99,.1);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .memory-decoration::after {
+      inset: 30px;
+    }
+
+    /* Mektup */
+    .letter-section {
+      padding-top: 30px;
+      padding-bottom: 110px;
+    }
+
+    .letter-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 35px;
+      padding: clamp(30px, 6vw, 64px);
+      overflow: hidden;
+      border-radius: 28px;
+      background: #e8ddd8;
+    }
+
+    .letter-card::after {
+      position: absolute;
+      top: -110px;
+      right: 9%;
+      width: 290px;
+      height: 290px;
+      border: 1px solid rgba(115,83,99,.14);
+      border-radius: 50%;
+      box-shadow: 0 0 0 30px rgba(255,255,255,.12), 0 0 0 60px rgba(255,255,255,.08);
+      content: "";
+      pointer-events: none;
+    }
+
+    .letter-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .letter-copy h2 {
+      margin: 14px 0 10px;
+      font-size: clamp(2.3rem, 5vw, 4.2rem);
+      line-height: 1;
+    }
+
+    .letter-copy p {
+      max-width: 620px;
+      margin: 0;
+      color: #6e625e;
+      font-size: .94rem;
+      line-height: 1.8;
+    }
+
+    .letter-button {
+      position: relative;
+      z-index: 1;
+      white-space: nowrap;
+    }
+
+    .letter-content {
+      display: none;
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin-top: 25px;
+      padding: 22px 24px;
+      border: 1px solid rgba(115,83,99,.13);
+      border-radius: 18px;
+      background: rgba(255,254,250,.62);
+      color: #554b48;
+      font-family: var(--serif);
+      font-size: 1.13rem;
+      line-height: 1.9;
+      animation: card-in .35s ease both;
+    }
+
+    .letter-content.is-open {
+      display: block;
+    }
+
+    /* Alt alan */
+    .site-footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    .footer-signature {
+      color: var(--plum);
+      font-family: var(--serif);
+      font-size: 1rem;
+    }
+
+    /* Fotoğraf büyütme penceresi */
+    .lightbox {
+      position: fixed;
+      z-index: 60;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 25px;
+      background: rgba(29, 25, 27, .88);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease, visibility .2s ease;
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox img {
+      display: block;
+      max-width: min(100%, 1050px);
+      max-height: 82vh;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 24px 70px rgba(0,0,0,.3);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      display: grid;
+      width: 45px;
+      height: 45px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      color: white;
+    }
+
+    .lightbox-close svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    /* Sürpriz konfeti */
+    .confetti-piece {
+      position: fixed;
+      z-index: 80;
+      top: -12px;
+      width: 8px;
+      height: 13px;
+      pointer-events: none;
+      animation: confetti-fall 2.2s ease-in forwards;
+    }
+
+    @keyframes confetti-fall {
+      to {
+        transform: translate3d(var(--drift), 105vh, 0) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Giriş sonrası görünürlük ve animasyonlar */
+    .site-content {
+      opacity: 0;
+      transition: opacity .7s ease;
+    }
+
+    .site-content.is-visible {
+      opacity: 1;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* Tablet */
+    @media (max-width: 900px) {
+      .hero {
+        min-height: 500px;
+        gap: 15px;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+      }
+
+      .hero-main-card {
+        height: 340px;
+      }
+
+      .countdown-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .countdown-intro {
+        text-align: center;
+      }
+
+      .countdown-intro p {
+        margin-inline: auto;
+      }
+
+      .birthday-date {
+        justify-content: center;
+      }
+
+      .memory-grid {
+        gap: 12px;
+      }
+
+      .memory-card {
+        padding: 22px;
+      }
+    }
+
+    /* Telefon */
+    @media (max-width: 680px) {
+      .page-shell {
+        width: min(100% - 34px, 520px);
+      }
+
+      .announcement {
+        padding: 9px 12px;
+        font-size: .65rem;
+      }
+
+      .nav-inner {
+        min-height: 66px;
+      }
+
+      .brand {
+        font-size: .82rem;
+      }
+
+      .nav-actions > .button {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: grid;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 1px);
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 17px 17px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(246,243,238,.98);
+        box-shadow: 0 14px 20px rgba(50,40,35,.05);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav-links a {
+        padding: 13px 3px;
+        border-bottom: 1px solid rgba(232,226,217,.75);
+      }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding-top: 57px;
+        padding-bottom: 52px;
+      }
+
+      .hero-copy h1 {
+        max-width: 490px;
+        font-size: clamp(3.7rem, 18vw, 6rem);
+      }
+
+      .hero-lead {
+        max-width: 420px;
+        font-size: .96rem;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+        margin-top: 10px;
+      }
+
+      .hero-main-card {
+        right: 7%;
+        width: 76%;
+        height: 345px;
+      }
+
+      .hero-sticker {
+        top: 18px;
+        left: 2%;
+        width: 82px;
+        height: 82px;
+        font-size: .59rem;
+      }
+
+      .floating-card {
+        right: 0;
+        bottom: 9px;
+        width: 195px;
+      }
+
+      .countdown-section {
+        padding: 58px 0;
+      }
+
+      .countdown-grid {
+        gap: 8px;
+      }
+
+      .time-card {
+        min-height: 112px;
+        border-radius: 16px;
+      }
+
+      .time-value {
+        font-size: clamp(2rem, 10vw, 3rem);
+      }
+
+      .time-label {
+        margin-top: 8px;
+        font-size: .58rem;
+        letter-spacing: .11em;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 25px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(2.6rem, 12vw, 3.7rem);
+      }
+
+      .section-heading p {
+        max-width: 430px;
+      }
+
+      .gallery-tools {
+        width: 100%;
+      }
+
+      .gallery-tools .button {
+        width: 100%;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 230px 160px 160px;
+        gap: 9px;
+      }
+
+      .gallery-item:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+      }
+
+      .gallery-item {
+        border-radius: 15px;
+      }
+
+      .gallery-art span {
+        width: 59px;
+        height: 59px;
+        font-size: 1.4rem;
+      }
+
+      .gallery-caption {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        font-size: .7rem;
+      }
+
+      .memory-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .memory-card {
+        min-height: 205px;
+      }
+
+      .memory-card h3 {
+        margin-top: 20px;
+      }
+
+      .letter-section {
+        padding-top: 0;
+        padding-bottom: 75px;
+      }
+
+      .letter-card {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 30px 24px;
+      }
+
+      .letter-card::after {
+        right: -140px;
+      }
+
+      .letter-button {
+        justify-self: start;
+      }
+
+      .letter-content {
+        padding: 18px;
+        font-size: 1.02rem;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .gate-form {
+        flex-direction: column;
+      }
+
+      .gate-form .button {
+        width: 100%;
+      }
+
+      .hero-buttons .button {
+        width: 100%;
+      }
+
+      .time-card {
+        min-height: 98px;
+      }
+
+      .time-label {
+        font-size: .52rem;
+      }
+    }
+  </style>
 </head>
-<body>
-  <div class="reading-progress" id="reading-progress"></div>
+
+<body class="locked">
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- GİRİŞ EKRANI -->
-  <main class="gate" id="gate">
-    <div class="gate-decoration gate-decoration-a" aria-hidden="true"></div>
-    <div class="gate-decoration gate-decoration-b" aria-hidden="true"></div>
-    <div class="gate-topline"><a class="monogram" href="#" aria-label="Kumsal">K<span>.</span></a><span>KÜÇÜK BİR SÜRPRİZ</span></div>
-    <section class="gate-panel" aria-labelledby="gate-title">
-      <div class="gate-panel-top"><span class="status-dot"></span><span>KUMSAL İÇİN</span><span class="gate-date">03 / 12 / 26</span></div>
-      <div class="gate-emblem" aria-hidden="true"><span class="emblem-orbit orbit-one"></span><span class="emblem-orbit orbit-two"></span><span class="emblem-star">✳</span><span class="emblem-core">K</span></div>
-      <p class="micro-label">SANA BİR ŞEY HAZIRLADIM</p>
-      <h1 id="gate-title">Merhaba,<br><em>Kumsal.</em></h1>
-      <p class="gate-description">Kumsal, senin için küçük bir şey hazırladım.<br>Şifreyi gir, bakalım hoşuna gidecek mi.</p>
-      <form id="password-form" class="gate-form" novalidate>
-        <label for="password-input">ŞİFRE</label>
-        <div class="input-wrap">
-          <input id="password-input" type="password" autocomplete="off" spellcheck="false" placeholder="Şifreyi yaz">
-          <button class="visibility-toggle" type="button" id="toggle-password" aria-label="Şifreyi göster"><span>◉</span></button>
-        </div>
-        <p class="gate-error" id="gate-error" aria-live="polite"></p>
-        <button class="button button-light gate-submit" type="submit"><span>Aç bakalım</span><span class="button-arrow">↗</span></button>
-      </form>
-      <div class="gate-panel-bottom"><span>03 ARALIK 2026</span><span>SENİN İÇİN</span></div>
-    </section>
-    <p class="gate-footer">BİR SÜRPRİZİN VAR.</p>
-  </main>
+  <!-- Şifre ekranı -->
+  <section class="gate" id="gate" aria-label="Şifreli giriş">
+    <span class="gate-shape gate-shape-one" aria-hidden="true"></span>
+    <span class="gate-shape gate-shape-two" aria-hidden="true"></span>
 
-  <!-- ANA SİTE -->
-  <div class="site is-hidden" id="site">
-    <header class="site-header" id="site-header">
-      <a class="brand" href="#home" aria-label="Ana sayfaya dön"><span class="brand-mark">K<span>.</span></span><span class="brand-divider"></span><span class="brand-caption">KUMSAL’IN<br>GÜNÜ</span></a>
-      <nav class="desktop-navigation" aria-label="Ana navigasyon">
-        <a class="navigation-link is-active" href="#home">Başlangıç <span>01</span></a>
-        <a class="navigation-link" href="#countdown">Geri sayım <span>02</span></a>
-        <a class="navigation-link" href="#memories">Anılar <span>03</span></a>
-        <a class="navigation-link" href="#letter">Sana bir not <span>04</span></a>
-      </nav>
-      <div class="header-date"><span class="header-date-dot"></span><span>03 ARALIK 2026</span></div>
-      <button class="menu-button" id="menu-button" aria-label="Menüyü aç" aria-expanded="false"><span></span><span></span></button>
+    <div class="gate-card">
+      <div class="gate-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/>
+        </svg>
+      </div>
+
+      <span class="eyebrow">Küçük bir sürpriz</span>
+      <h1 class="serif">Sana özel,<br><em style="color:var(--plum)">Kumsal.</em></h1>
+      <p>Bu sayfa, güzel bir günün hatırına hazırlandı. İçeri girmek için küçük şifreyi yaz.</p>
+
+      <form class="gate-form" id="gateForm">
+        <div class="gate-input-wrap">
+          <input
+            class="gate-input"
+            id="passwordInput"
+            type="password"
+            placeholder="Şifre"
+            autocomplete="off"
+            aria-label="Site şifresi"
+            required
+          >
+          <button
+            class="gate-toggle"
+            id="togglePassword"
+            type="button"
+            aria-label="Şifreyi göster"
+            title="Şifreyi göster"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <button class="button button-primary" type="submit">
+          Aç <span aria-hidden="true">↗</span>
+        </button>
+      </form>
+
+      <p class="gate-error" id="gateError" aria-live="polite"></p>
+      <span class="gate-footnote">Sadece senin için hazırlandı · 03.12.2026</span>
+    </div>
+  </section>
+
+  <div class="site-content" id="siteContent">
+    <div class="announcement">
+      03.12.2026 <span>·</span> Güzel şeyler için küçük bir geri sayım
+    </div>
+
+    <header class="site-header">
+      <div class="page-shell nav-inner">
+        <a class="brand" href="#anasayfa" aria-label="Kumsal'a özel ana sayfa">
+          <span class="brand-symbol" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/>
+            </svg>
+          </span>
+          <span>Kumsal’a, sevgiyle</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks" aria-label="Ana menü">
+          <a href="#anasayfa">Ana sayfa</a>
+          <a href="#geri-sayim">Geri sayım</a>
+          <a href="#fotograflar">Fotoğraflar</a>
+          <a href="#anilar">Güzel şeyler</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a class="button button-primary" href="#mektup">
+            Sana bir not var
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M7 17 17 7M7 7h10v10"/>
+            </svg>
+          </a>
+          <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Menüyü aç"
+            aria-expanded="false"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 7h16M4 12h16M4 17h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
     </header>
-    <nav class="mobile-navigation" id="mobile-navigation" aria-label="Mobil navigasyon">
-      <a href="#home">Başlangıç <small>01</small></a><a href="#countdown">Geri sayım <small>02</small></a><a href="#memories">Anılar <small>03</small></a><a href="#letter">Sana bir not <small>04</small></a>
-    </nav>
-    <nav class="mobile-dock" id="mobile-dock" aria-label="Sayfa bölümleri">
-      <a class="mobile-dock-link is-active" href="#home"><span class="dock-icon">⌂</span><span>Başlangıç</span></a>
-      <a class="mobile-dock-link" href="#countdown"><span class="dock-icon">◷</span><span>Sayaç</span></a>
-      <a class="mobile-dock-link" href="#memories"><span class="dock-icon">▦</span><span>Fotoğraflar</span></a>
-      <a class="mobile-dock-link" href="#letter"><span class="dock-icon">✉</span><span>Not</span></a>
-    </nav>
 
     <main>
-      <!-- HERO -->
-      <section class="hero section-wrap" id="home">
-        <div class="hero-copy">
-          <div class="eyebrow reveal"><span class="eyebrow-mark">✳</span><span>3 ARALIK 2026</span><span class="eyebrow-rule"></span><span>SENİN GÜNÜN</span></div>
-          <p class="hero-kicker reveal">BUGÜN SENİN GÜNÜN.</p>
-          <h1 class="hero-title reveal">İyi ki<br>doğdun,<br><em>Kumsal.</em></h1>
-          <p class="hero-subtitle reveal">Umarım bugün bol bol gülersin.<br class="desktop-break"> Yeni yaşın sana çok iyi gelsin.</p>
-          <a class="text-link reveal" href="#countdown"><span>Biraz aşağı bakalım</span><b>↓</b></a>
-        </div>
-        <div class="hero-visual reveal" aria-label="3 Aralık 2026 temalı doğum günü illüstrasyonu">
-          <div class="visual-index"><span>KUMSAL İÇİN</span><span>03 ARALIK 2026</span></div>
-          <div class="visual-inner">
-            <div class="visual-glow"></div>
-            <div class="visual-orbit visual-orbit-a"></div><div class="visual-orbit visual-orbit-b"></div>
-            <span class="visual-star star-one">✳</span><span class="visual-star star-two">✦</span><span class="visual-star star-three">✳</span>
-            <div class="visual-date"><span>DECEMBER</span><strong>03</strong><i>THURSDAY · 2026</i></div>
-            <div class="visual-ribbon">İYİ Kİ DOĞDUN</div>
+      <section class="page-shell hero" id="anasayfa">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Özel bir gün yaklaşıyor</span>
+          <h1 class="serif">İyi ki<br><em>doğdun,</em><br>Kumsal.</h1>
+          <p class="hero-lead">
+            Yeni yaşın; bol kahkahalı, güzel sürprizli ve dönüp baktığında
+            “ne güzel gündü” dedirten anlarla dolsun.
+          </p>
+          <div class="hero-buttons">
+            <a class="button button-primary" href="#geri-sayim">
+              Geri sayıma göz at
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <path d="M7 17 17 7M7 7h10v10"/>
+              </svg>
+            </a>
+            <a class="button button-light" href="#fotograflar">
+              Fotoğraflara git
+            </a>
           </div>
-          <div class="visual-bottom"><span>BUGÜNÜN TARİHİ</span><span>03 / 12 / 26</span></div>
-          <div class="visual-side-note">BUGÜN SENİN GÜNÜN <b>↙</b></div>
+          <div class="hero-note">
+            <span class="mini-avatars" aria-hidden="true">
+              <span class="mini-avatar">K</span>
+              <span class="mini-avatar">✦</span>
+              <span class="mini-avatar">♡</span>
+            </span>
+            <span>Senin için, özenle hazırlandı.</span>
+          </div>
         </div>
-        <div class="hero-bottom-note"><span class="bottom-line"></span><span>AŞAĞI İN</span><span class="bottom-note-right">İYİ Kİ DOĞDUN</span></div>
-      </section>
 
-      <!-- COUNTDOWN -->
-      <section class="countdown-section" id="countdown">
-        <div class="section-wrap">
-          <div class="section-intro reveal"><div><p class="section-overline"><span>02</span> GERİ SAYIM</p><h2>Doğum gününe<br><em>ne kadar kaldı?</em></h2></div><p class="section-aside">3 Aralık’a<br>az kaldı.</p></div>
-          <div class="countdown-card reveal">
-            <div class="countdown-card-head"><span><i class="live-dot"></i> CANLI GERİ SAYIM</span><span>KUMSAL’IN DOĞUM GÜNÜNE</span><span class="countdown-date-label">03.12.2026 · 00:00</span></div>
-            <div class="countdown-units" id="countdown-units" aria-live="off">
-              <div class="countdown-unit"><div class="digit-window"><span class="digit-value" id="days">000</span></div><span class="digit-label">GÜN</span></div>
-              <span class="countdown-colon">:</span>
-              <div class="countdown-unit"><div class="digit-window"><span class="digit-value" id="hours">00</span></div><span class="digit-label">SAAT</span></div>
-              <span class="countdown-colon">:</span>
-              <div class="countdown-unit"><div class="digit-window"><span class="digit-value" id="minutes">00</span></div><span class="digit-label">DAKİKA</span></div>
-              <span class="countdown-colon">:</span>
-              <div class="countdown-unit"><div class="digit-window"><span class="digit-value" id="seconds">00</span></div><span class="digit-label">SANİYE</span></div>
+        <div class="hero-visual reveal" aria-label="Kumsal için özel tasarlanmış görsel alan">
+          <div class="hero-main-card">
+            <div class="hero-orb" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/>
+              </svg>
             </div>
-            <div class="countdown-card-foot"><span id="countdown-message">Doğum gününü bekliyoruz.</span><span class="countdown-foot-right">AZ KALDI! <b>✳</b></span></div>
-            <div class="countdown-progress"><span id="countdown-progress-fill"></span></div>
+            <div class="hero-photo-label">
+              <span>Bugün ve her gün</span>
+              <strong>Senin günün.</strong>
+            </div>
           </div>
-          <div class="countdown-caption reveal"><span>✳</span> 3 Aralık gelsin artık!</div>
+
+          <div class="hero-sticker">Güzel anılar<br>biriktirmeye</div>
+
+          <div class="floating-card">
+            <div class="floating-card-top">
+              <span>Takvimde işaretli</span>
+              <b>♡</b>
+            </div>
+            <strong>3 Aralık 2026</strong>
+            <small>Çünkü bugün biraz daha özel.</small>
+          </div>
         </div>
       </section>
 
-      <!-- EDITORIAL QUOTE -->
-      <section class="quote-section">
-        <div class="quote-inner section-wrap reveal"><span class="quote-ornament">“</span><p>İyi ki tanımışız seni.<br>İyi ki <em>varsın.</em></p><span class="quote-attribution">İYİ Kİ VARSIN.</span><span class="quote-side-number">K / 26</span></div>
-      </section>
+      <section class="countdown-section" id="geri-sayim">
+        <div class="page-shell countdown-inner">
+          <div class="countdown-intro reveal">
+            <span class="eyebrow">Takvimdeki güzel gün</span>
+            <h2 class="serif">Az kaldı.<br>Çok güzel olacak.</h2>
+            <p>
+              Yeni yaşına kavuşmana kalan zamanı birlikte sayıyoruz.
+              Her saniye, kutlamaya biraz daha yakın.
+            </p>
+            <div class="birthday-date">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <rect x="3" y="5" width="18" height="16" rx="2"/>
+                <path d="M16 3v4M8 3v4M3 10h18"/>
+              </svg>
+              3 Aralık 2026
+            </div>
+          </div>
 
-      <!-- MEMORIES -->
-      <section class="memories-section section-wrap" id="memories">
-        <div class="section-intro memories-intro reveal"><div><p class="section-overline"><span>03</span> FOTOĞRAFLAR</p><h2>Güzel<br><em>anılarımız.</em></h2></div><p class="section-aside">Fotoğraflarımızı tek bir yerde<br>toplamak istedim.</p></div>
-        <div class="gallery-controls reveal"><div class="gallery-counter"><strong id="photo-count">00</strong><span>FOTOĞRAF</span></div><span class="gallery-intro-note">Biriktirdiğimiz fotoğraflar</span></div>
-        <div class="photo-grid reveal" id="photo-grid">
-          <div class="photo-placeholder placeholder-large"><span class="placeholder-number">01</span><span class="placeholder-decoration">✳</span><strong>GÜZEL<br>GÜNLERDEN</strong><small>FOTOĞRAFLAR BURAYA GELECEK</small></div>
-          <div class="photo-placeholder placeholder-portrait"><span class="placeholder-number">02</span><span class="placeholder-decoration">✦</span><strong>BERABER<br>ÇEKTİKLERİMİZ</strong><small>GÜZEL ANILAR</small></div>
-          <div class="photo-placeholder placeholder-square"><span class="placeholder-number">03</span><span class="placeholder-decoration">✳</span><strong>UNUTMAYACAĞIMIZ<br>ANLAR</strong><small>FOTOĞRAFLARIMIZ</small></div>
-          <div class="photo-placeholder placeholder-wide"><span class="placeholder-number">04</span><span class="placeholder-decoration">✴</span><strong>DAHA<br>ÇOK FOTOĞRAF VAR.</strong><small>HEPSİ BURADA OLACAK</small></div>
+          <div class="countdown-grid reveal" aria-label="Doğum gününe kalan süre">
+            <div class="time-card" id="daysCard">
+              <span class="time-value" id="days">00</span>
+              <span class="time-label">Gün</span>
+            </div>
+            <div class="time-card" id="hoursCard">
+              <span class="time-value" id="hours">00</span>
+              <span class="time-label">Saat</span>
+            </div>
+            <div class="time-card" id="minutesCard">
+              <span class="time-value" id="minutes">00</span>
+              <span class="time-label">Dakika</span>
+            </div>
+            <div class="time-card" id="secondsCard">
+              <span class="time-value" id="seconds">00</span>
+              <span class="time-label">Saniye</span>
+            </div>
+            <p class="countdown-message" id="countdownMessage" aria-live="polite"></p>
+          </div>
         </div>
-        <div class="gallery-more-wrap" id="gallery-more-wrap" hidden><button class="gallery-more-button" id="show-more-photos" type="button"><span>Daha fazla fotoğraf göster</span><b>↓</b></button><p class="gallery-page-note" id="gallery-page-note"></p></div><div class="gallery-foot reveal"><span><i>✳</i> Daha ekleyecek çok fotoğraf var.</span><span>03.12.2026</span></div>
       </section>
 
-      <!-- PERSONAL NOTE -->
-      <section class="letter-section" id="letter">
-        <div class="letter-layout section-wrap">
-          <div class="letter-heading reveal"><p class="section-overline"><span>04</span> SANA BİR NOT</p><h2>Sana<br>bir <em>notum var.</em></h2><p class="letter-intro">Doğum gününde söylemek istediklerimi buraya bıraktım.</p><div class="letter-index">KUMSAL’A <span>✳</span></div></div>
-          <article class="letter-paper reveal">
-            <div class="paper-top"><span>KUMSAL’A,</span><div class="paper-stamp">KÜÇÜK<br>BİR NOT</div></div>
-            <div class="paper-body" id="letter-body"><p class="paper-hint">Sana birkaç satır yazdım.<br>Okumak istersen burada.</p></div>
-            <button class="letter-open-button" id="letter-open-button" type="button"><span>Notu aç</span><b>↗</b></button>
-            <div class="paper-bottom"><span>SEVGİLER,</span><strong id="signature-display">T.</strong></div>
-          </article>
+      <section class="section gallery-section" id="fotograflar">
+        <div class="page-shell">
+          <div class="section-heading reveal">
+            <div>
+              <span class="eyebrow">Biriktirdiğimiz güzellikler</span>
+              <h2 class="serif">Küçük bir<br>anı galerisi.</h2>
+            </div>
+            <div>
+              <p>
+                En sevdiğiniz fotoğrafları ekleyince burası sizin hikâyenizin
+                en güzel köşesi olacak.
+              </p>
+              <div class="gallery-tools" style="margin-top:16px">
+                <label class="button button-primary" for="photoUpload">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                    <path d="M12 16V4m0 0L7 9m5-5 5 5"/>
+                    <path d="M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"/>
+                  </svg>
+                  Fotoğraf seç
+                </label>
+                <input
+                  class="photo-input"
+                  id="photoUpload"
+                  type="file"
+                  accept="image/*"
+                  multiple
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery-grid" id="galleryGrid">
+            <button class="gallery-item" type="button" aria-label="Fotoğraf alanı 1">
+              <span class="gallery-art" style="background:linear-gradient(145deg,#c9a69f,#9f8290)">
+                <span>01</span>
+              </span>
+              <span class="gallery-caption">En güzel anlardan biri</span>
+            </button>
+            <button class="gallery-item" type="button" aria-label="Fotoğraf alanı 2">
+              <span class="gallery-art" style="background:linear-gradient(145deg,#d8c4ae,#b18f82)">
+                <span>02</span>
+              </span>
+              <span class="gallery-caption">Beraberken daha güzel</span>
+            </button>
+            <button class="gallery-item" type="button" aria-label="Fotoğraf alanı 3">
+              <span class="gallery-art" style="background:linear-gradient(145deg,#bbc2ae,#829080)">
+                <span>03</span>
+              </span>
+              <span class="gallery-caption">Bir başka güzel gün</span>
+            </button>
+            <button class="gallery-item" type="button" aria-label="Fotoğraf alanı 4">
+              <span class="gallery-art" style="background:linear-gradient(145deg,#d8b6b0,#a7808d)">
+                <span>04</span>
+              </span>
+              <span class="gallery-caption">Kahkahası bol bir an</span>
+            </button>
+            <button class="gallery-item" type="button" aria-label="Fotoğraf alanı 5">
+              <span class="gallery-art" style="background:linear-gradient(145deg,#c8bba7,#8d817b)">
+                <span>05</span>
+              </span>
+              <span class="gallery-caption">Devamı gelecek…</span>
+            </button>
+          </div>
+
+          <p class="gallery-empty-note">
+            Fotoğrafları bu sayfada seçerek önizleyebilirsin. Herkese görünmesi için fotoğrafları ayrıca site dosyalarına eklemek gerekir.
+          </p>
         </div>
       </section>
 
-      <!-- ENDING -->
-      <section class="ending-section section-wrap reveal">
-        <div class="ending-star">✳</div><p class="ending-overline">BİR NOT DAHA</p><h2>İyi ki <em>doğdun.</em></h2><p>Umarım bugün çok güzel geçer. Nice senelere, Kumsal!</p><a href="#home" class="back-to-top">YUKARI ÇIK ↑</a>
+      <section class="section memories-section" id="anilar">
+        <div class="page-shell">
+          <div class="section-heading reveal">
+            <div>
+              <span class="eyebrow">Bugün için küçük notlar</span>
+              <h2 class="serif">Yeni yaşına<br>üç güzel dilek.</h2>
+            </div>
+            <p>
+              Bir doğum günü yalnızca yeni bir yaş değil;
+              yeni anılar için de harika bir başlangıç.
+            </p>
+          </div>
+
+          <div class="memory-grid">
+            <article class="memory-card reveal">
+              <span class="memory-index">01</span>
+              <h3>Bol bol kahkaha</h3>
+              <p>
+                En sıradan günleri bile unutulmaz yapan o güzel kahkahan
+                bu yaşında hiç eksik olmasın.
+              </p>
+              <span class="memory-decoration" aria-hidden="true"></span>
+            </article>
+
+            <article class="memory-card reveal">
+              <span class="memory-index">02</span>
+              <h3>İçine sinen güzellikler</h3>
+              <p>
+                Dilediğin şeyler bir bir gerçekleşsin; karşına hep
+                sana iyi gelen insanlar ve fırsatlar çıksın.
+              </p>
+              <span class="memory-decoration" aria-hidden="true"></span>
+            </article>
+
+            <article class="memory-card reveal">
+              <span class="memory-index">03</span>
+              <h3>Bolca güzel anı</h3>
+              <p>
+                Dönüp baktığında yüzünde kocaman bir gülümseme bırakacak
+                günlerle dolu bir yaş olsun.
+              </p>
+              <span class="memory-decoration" aria-hidden="true"></span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-shell letter-section" id="mektup">
+        <div class="letter-card reveal">
+          <div class="letter-copy">
+            <span class="eyebrow">Son olarak</span>
+            <h2 class="serif">Sana küçük<br>bir not bıraktım.</h2>
+            <p>
+              Hazır olduğunda aç. Bugün, güzel şeyleri söylemek için
+              bahaneye ihtiyacımız yok ama doğum günün harika bir fırsat.
+            </p>
+            <div class="letter-content" id="letterContent">
+              Kumsal, yeni yaşın sana kalbin kadar güzel günler getirsin.
+              İyi ki varsın, iyi ki hayatımdasın. Birlikte daha nice güzel
+              anılar biriktirelim. Doğum günün kutlu olsun! ♡
+            </div>
+          </div>
+          <button
+            class="button button-primary letter-button"
+            id="letterButton"
+            type="button"
+            aria-expanded="false"
+            aria-controls="letterContent"
+          >
+            <span id="letterButtonText">Notu aç</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+        </div>
       </section>
     </main>
-    <footer class="site-footer"><a class="footer-mark" href="#home">K<span>.</span></a><span>03.12.2026 · KUMSAL’IN GÜNÜ</span><span>T.</span></footer>
 
-    <!-- FOTOĞRAF GÖRÜNTÜLEYİCİ -->
-    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Fotoğraf görüntüleyici">
-      <button class="lightbox-close" id="lightbox-close" aria-label="Kapat" type="button">×</button>
-      <button class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="Önceki fotoğraf" type="button">‹</button>
-      <img id="lightbox-image" src="" alt="Anı fotoğrafı">
-      <button class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="Sonraki fotoğraf" type="button">›</button>
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-      <div class="lightbox-counter" id="lightbox-counter">01 / 01</div>
-    </div>
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    <canvas id="celebration-canvas" aria-hidden="true"></canvas>
+    <footer class="site-footer">
+      <div class="page-shell footer-inner">
+        <span>03.12.2026 · Bu sayfanın en güzel sebebi sensin.</span>
+        <span class="footer-signature">Sevgiyle, senin arkadaşın ♡</span>
+      </div>
+    </footer>
   </div>
-  <script src="js/config.js"></script>
-  <script src="js/app.js"></script>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Büyütülmüş fotoğraf">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Kapat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <path d="m18 6-12 12M6 6l12 12"/>
+      </svg>
+    </button>
+    <img id="lightboxImage" alt="Seçilen fotoğraf">
+  </div>
+
+  <script>
+    // Şifreli giriş
+    const gate = document.querySelector("#gate");
+    const gateForm = document.querySelector("#gateForm");
+    const passwordInput = document.querySelector("#passwordInput");
+    const gateError = document.querySelector("#gateError");
+    const siteContent = document.querySelector("#siteContent");
+    const correctPassword = "kumsal";
+
+    function unlockSite() {
+      gate.classList.add("is-hidden");
+      document.body.classList.remove("locked");
+      siteContent.classList.add("is-visible");
+
+      window.setTimeout(() => {
+        gate.setAttribute("aria-hidden", "true");
+        startRevealObserver();
+      }, 650);
+    }
+
+    gateForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (passwordInput.value.trim().toLowerCase() === correctPassword) {
+        gateError.textContent = "";
+        unlockSite();
+      } else {
+        gateError.textContent = "Şifre doğru görünmüyor, tekrar dene.";
+        passwordInput.value = "";
+        passwordInput.focus();
+      }
+    });
+
+    document.querySelector("#togglePassword").addEventListener("click", (event) => {
+      const isPassword = passwordInput.type === "password";
+      passwordInput.type = isPassword ? "text" : "password";
+      event.currentTarget.setAttribute(
+        "aria-label",
+        isPassword ? "Şifreyi gizle" : "Şifreyi göster"
+      );
+    });
+
+    // Geri sayım: ziyaretçinin cihazındaki yerel saate göre 3 Aralık 2026 00.00.
+    const birthday = new Date(2026, 11, 3, 0, 0, 0);
+
+    const countdownElements = {
+      days: document.querySelector("#days"),
+      hours: document.querySelector("#hours"),
+      minutes: document.querySelector("#minutes"),
+      seconds: document.querySelector("#seconds")
+    };
+
+    const countdownCards = {
+      days: document.querySelector("#daysCard"),
+      hours: document.querySelector("#hoursCard"),
+      minutes: document.querySelector("#minutesCard"),
+      seconds: document.querySelector("#secondsCard")
+    };
+
+    const countdownMessage = document.querySelector("#countdownMessage");
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function setProgress(card, value) {
+      card.style.setProperty("--progress", `${Math.max(0, Math.min(value, 1))}`);
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const remaining = birthday.getTime() - now.getTime();
+
+      if (remaining <= 0) {
+        countdownElements.days.textContent = "00";
+        countdownElements.hours.textContent = "00";
+        countdownElements.minutes.textContent = "00";
+        countdownElements.seconds.textContent = "00";
+        countdownMessage.textContent = "Bugün Kumsal’ın günü! İyi ki doğdun! ♡";
+        setProgress(countdownCards.days, 1);
+        setProgress(countdownCards.hours, 1);
+        setProgress(countdownCards.minutes, 1);
+        setProgress(countdownCards.seconds, 1);
+        return;
+      }
+
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      countdownElements.days.textContent = String(days).padStart(2, "0");
+      countdownElements.hours.textContent = pad(hours);
+      countdownElements.minutes.textContent = pad(minutes);
+      countdownElements.seconds.textContent = pad(seconds);
+
+      setProgress(countdownCards.days, (days % 30) / 30);
+      setProgress(countdownCards.hours, hours / 24);
+      setProgress(countdownCards.minutes, minutes / 60);
+      setProgress(countdownCards.seconds, seconds / 60);
+
+      countdownMessage.textContent =
+        "Güzel gününe her saniye biraz daha yaklaşıyoruz.";
+    }
+
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
+
+    // Mobil menü
+    const menuToggle = document.querySelector("#menuToggle");
+    const navLinks = document.querySelector("#navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Menüyü kapat" : "Menüyü aç");
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Menüyü aç");
+      });
+    });
+
+    // Bölümler ekrana geldikçe yumuşakça görünür.
+    let revealObserver;
+
+    function startRevealObserver() {
+      const elements = document.querySelectorAll(".reveal");
+
+      if (!("IntersectionObserver" in window)) {
+        elements.forEach((element) => element.classList.add("is-visible"));
+        return;
+      }
+
+      revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      elements.forEach((element) => revealObserver.observe(element));
+    }
+
+    // Fotoğrafları bu tarayıcıda seçip önizle.
+    const photoUpload = document.querySelector("#photoUpload");
+    const galleryGrid = document.querySelector("#galleryGrid");
+    const lightbox = document.querySelector("#lightbox");
+    const lightboxImage = document.querySelector("#lightboxImage");
+    const lightboxClose = document.querySelector("#lightboxClose");
+
+    photoUpload.addEventListener("change", (event) => {
+      const files = Array.from(event.target.files || []);
+      const imageFiles = files.filter((file) => file.type.startsWith("image/"));
+
+      imageFiles.forEach((file) => {
+        const imageUrl = URL.createObjectURL(file);
+        const item = document.createElement("button");
+        item.type = "button";
+        item.className = "gallery-item";
+        item.setAttribute("aria-label", `Fotoğraf: ${file.name}`);
+
+        const image = document.createElement("img");
+        image.src = imageUrl;
+        image.alt = file.name.replace(/\.[^/.]+$/, "");
+
+        const caption = document.createElement("span");
+        caption.className = "gallery-caption";
+        caption.textContent = image.alt || "Güzel bir anı";
+
+        item.append(image, caption);
+        galleryGrid.prepend(item);
+      });
+
+      event.target.value = "";
+    });
+
+    galleryGrid.addEventListener("click", (event) => {
+      const item = event.target.closest(".gallery-item");
+      if (!item) return;
+
+      const image = item.querySelector("img");
+      if (!image) return;
+
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      lightbox.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      lightboxClose.focus();
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      document.body.style.overflow = "";
+      lightboxImage.removeAttribute("src");
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+        closeLightbox();
+      }
+    });
+
+    // Mektup açma-kapama
+    const letterButton = document.querySelector("#letterButton");
+    const letterContent = document.querySelector("#letterContent");
+    const letterButtonText = document.querySelector("#letterButtonText");
+
+    letterButton.addEventListener("click", () => {
+      const isOpen = letterContent.classList.toggle("is-open");
+      letterButton.setAttribute("aria-expanded", String(isOpen));
+      letterButtonText.textContent = isOpen ? "Notu kapat" : "Notu aç";
+
+      if (isOpen) {
+        makeConfetti();
+      }
+    });
+
+    // Mektup açılınca kısa, hafif bir kutlama animasyonu.
+    function makeConfetti() {
+      const colors = ["#735363", "#d8aaa3", "#bb945e", "#8c9884", "#efe3d4"];
+      const pieceCount = 55;
+
+      for (let index = 0; index < pieceCount; index += 1) {
+        const piece = document.createElement("span");
+        piece.className = "confetti-piece";
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.background = colors[index % colors.length];
+        piece.style.setProperty("--drift", `${Math.random() * 180 - 90}px`);
+        piece.style.animationDelay = `${Math.random() * 0.45}s`;
+        piece.style.transform = `rotate(${Math.random() * 180}deg)`;
+        document.body.appendChild(piece);
+
+        window.setTimeout(() => piece.remove(), 3000);
+      }
+    }
+  </script>
 </body>
 </html>
