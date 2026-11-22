@@ -368,28 +368,205 @@ body.birthday-gate-open{overflow:hidden}body.birthday-mode .countdown-card{backg
 <button class="back-to-top" id="backToTop" type="button" aria-label="Sayfanın başına dön">↑</button>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici"><button type="button" aria-label="Kapat">×</button><img alt="Büyütülmüş anı"></div>
 <script>
-/* FOTOĞRAF AYARLARI
-   Ana görsel ve logo bu dosyaya gömülüdür.
-   Anılarımız bölümünde galleryPhotos dizisine kendi doğrudan img.bb bağlantılarını ekle.
-   Film şeridi için filmPhotos dizisine 100–200 fotoğraf bağlantısı ekleyebilirsin. */
+/* KUMSAL 10.0 — FOTOĞRAF KÜTÜPHANESİ
+   Fotoğraflar site paketinin içindeki images/ klasöründe yer alır.
+   Galeri tüm seçilmiş kareleri, film şeridi ise dengeli bir seçkiyi kullanır. */
 const galleryPhotos = [
-  "FOTO_LINKI_1","FOTO_LINKI_2","FOTO_LINKI_3","FOTO_LINKI_4","FOTO_LINKI_5","FOTO_LINKI_6",
-  "FOTO_LINKI_7","FOTO_LINKI_8","FOTO_LINKI_9","FOTO_LINKI_10","FOTO_LINKI_11","FOTO_LINKI_12"
+  "images/photo-001.webp",
+  "images/photo-002.webp",
+  "images/photo-003.webp",
+  "images/photo-004.webp",
+  "images/photo-005.webp",
+  "images/photo-006.webp",
+  "images/photo-007.webp",
+  "images/photo-008.webp",
+  "images/photo-009.webp",
+  "images/photo-010.webp",
+  "images/photo-011.webp",
+  "images/photo-012.webp",
+  "images/photo-013.webp",
+  "images/photo-014.webp",
+  "images/photo-015.webp",
+  "images/photo-016.webp",
+  "images/photo-017.webp",
+  "images/photo-018.webp",
+  "images/photo-019.webp",
+  "images/photo-020.webp",
+  "images/photo-021.webp",
+  "images/photo-022.webp",
+  "images/photo-023.webp",
+  "images/photo-024.webp",
+  "images/photo-025.webp",
+  "images/photo-026.webp",
+  "images/photo-027.webp",
+  "images/photo-028.webp",
+  "images/photo-029.webp",
+  "images/photo-030.webp",
+  "images/photo-031.webp",
+  "images/photo-032.webp",
+  "images/photo-033.webp",
+  "images/photo-034.webp",
+  "images/photo-035.webp",
+  "images/photo-036.webp",
+  "images/photo-037.webp",
+  "images/photo-038.webp",
+  "images/photo-039.webp",
+  "images/photo-040.webp",
+  "images/photo-041.webp",
+  "images/photo-042.webp",
+  "images/photo-043.webp",
+  "images/photo-044.webp",
+  "images/photo-045.webp",
+  "images/photo-046.webp",
+  "images/photo-047.webp",
+  "images/photo-048.webp",
+  "images/photo-049.webp",
+  "images/photo-050.webp",
+  "images/photo-051.webp",
+  "images/photo-052.webp",
+  "images/photo-053.webp",
+  "images/photo-054.webp",
+  "images/photo-055.webp",
+  "images/photo-056.webp",
+  "images/photo-057.webp",
+  "images/photo-058.webp",
+  "images/photo-059.webp",
+  "images/photo-060.webp",
+  "images/photo-061.webp",
+  "images/photo-062.webp",
+  "images/photo-063.webp",
+  "images/photo-064.webp",
+  "images/photo-065.webp",
+  "images/photo-066.webp",
+  "images/photo-067.webp",
+  "images/photo-068.webp",
+  "images/photo-069.webp",
+  "images/photo-070.webp",
+  "images/photo-071.webp",
+  "images/photo-072.webp",
+  "images/photo-073.webp",
+  "images/photo-074.webp",
+  "images/photo-075.webp",
+  "images/photo-076.webp",
+  "images/photo-077.webp",
+  "images/photo-078.webp",
+  "images/photo-079.webp",
+  "images/photo-080.webp",
+  "images/photo-081.webp",
+  "images/photo-082.webp",
+  "images/photo-083.webp",
+  "images/photo-084.webp",
+  "images/photo-085.webp",
+  "images/photo-086.webp",
+  "images/photo-087.webp",
+  "images/photo-088.webp",
+  "images/photo-089.webp",
+  "images/photo-090.webp",
+  "images/photo-091.webp",
+  "images/photo-092.webp",
+  "images/photo-093.webp",
+  "images/photo-094.webp",
+  "images/photo-095.webp",
+  "images/photo-096.webp",
+  "images/photo-097.webp",
+  "images/photo-098.webp",
+  "images/photo-099.webp",
+  "images/photo-100.webp",
+  "images/photo-101.webp",
+  "images/photo-102.webp",
+  "images/photo-103.webp",
+  "images/photo-104.webp",
+  "images/photo-105.webp",
+  "images/photo-106.webp",
+  "images/photo-107.webp",
+  "images/photo-108.webp",
+  "images/photo-109.webp",
+  "images/photo-110.webp",
+  "images/photo-111.webp",
+  "images/photo-112.webp",
+  "images/photo-113.webp",
+  "images/photo-114.webp",
+  "images/photo-115.webp",
+  "images/photo-116.webp",
+  "images/photo-117.webp",
+  "images/photo-118.webp",
+  "images/photo-119.webp",
+  "images/photo-120.webp",
+  "images/photo-121.webp",
+  "images/photo-122.webp",
+  "images/photo-123.webp",
+  "images/photo-124.webp",
+  "images/photo-125.webp",
+  "images/photo-126.webp",
+  "images/photo-127.webp",
+  "images/photo-128.webp",
+  "images/photo-129.webp",
+  "images/photo-130.webp",
+  "images/photo-131.webp"
 ];
 const galleryCaptions = ["En güzel günlerden biri","Birlikte gülmek","Küçük bir macera","İyi ki o gün","Favori karelerim","Hep hatırlayacağım","Bizim enerjimiz","Bir başka güzel an","Devamı gelecek ♡"];
-const filmPhotos = ["FOTO_LINKI_1","FOTO_LINKI_2","FOTO_LINKI_3","FOTO_LINKI_4","FOTO_LINKI_5","FOTO_LINKI_6","FOTO_LINKI_7","FOTO_LINKI_8","FOTO_LINKI_9","FOTO_LINKI_10","FOTO_LINKI_11","FOTO_LINKI_12"];
-const valid = value => typeof value === "string" && /^https?:\/\//i.test(value) && !/FOTO_LINKI/.test(value);
+const filmPhotos = [
+  "images/photo-001.webp",
+  "images/photo-002.webp",
+  "images/photo-003.webp",
+  "images/photo-004.webp",
+  "images/photo-005.webp",
+  "images/photo-006.webp",
+  "images/photo-007.webp",
+  "images/photo-008.webp",
+  "images/photo-009.webp",
+  "images/photo-010.webp",
+  "images/photo-011.webp",
+  "images/photo-012.webp",
+  "images/photo-013.webp",
+  "images/photo-014.webp",
+  "images/photo-015.webp",
+  "images/photo-016.webp",
+  "images/photo-017.webp",
+  "images/photo-018.webp",
+  "images/photo-019.webp",
+  "images/photo-020.webp",
+  "images/photo-021.webp",
+  "images/photo-022.webp",
+  "images/photo-023.webp",
+  "images/photo-024.webp",
+  "images/photo-025.webp",
+  "images/photo-026.webp",
+  "images/photo-027.webp",
+  "images/photo-028.webp",
+  "images/photo-029.webp",
+  "images/photo-030.webp",
+  "images/photo-031.webp",
+  "images/photo-032.webp",
+  "images/photo-033.webp",
+  "images/photo-034.webp",
+  "images/photo-035.webp",
+  "images/photo-036.webp",
+  "images/photo-037.webp",
+  "images/photo-038.webp",
+  "images/photo-039.webp",
+  "images/photo-040.webp",
+  "images/photo-041.webp",
+  "images/photo-042.webp",
+  "images/photo-043.webp",
+  "images/photo-044.webp",
+  "images/photo-045.webp",
+  "images/photo-046.webp",
+  "images/photo-047.webp",
+  "images/photo-048.webp"
+];
+const valid = value => typeof value === "string" && /^(https?:\/\/|images\/)/i.test(value);
 
 // Build the memory gallery from the links above; unused slots remain elegant placeholders.
 const gallery = document.getElementById("memoryGrid");
 galleryPhotos.forEach((src,i)=>{
- const card=document.createElement("article");card.className="memory-card";card.tabIndex=0;card.setAttribute("role","button");card.setAttribute("aria-label","Anıyı büyüt: "+(galleryCaptions[i]||"Güzel bir an"));
+ const card=document.createElement("article");card.className="memory-card";card.tabIndex=0;card.setAttribute("role","button");card.setAttribute("aria-label","Anıyı büyüt: "+(galleryCaptions[i%galleryCaptions.length]||"Güzel bir an"));
  const image=document.createElement("div");image.className="memory-image";image.dataset.placeholder=["♡","✳","K","✦","❀","♡"][i%6];
  if(valid(src)){const img=document.createElement("img");img.src=src;img.alt="Kumsal ile anı "+(i+1);img.loading="lazy";img.decoding="async";image.append(img)}
- card.append(image);const caption=document.createElement("p");caption.textContent=galleryCaptions[i]||"Güzel bir an ♡";card.append(caption);const num=document.createElement("small");num.textContent="ANI / "+String(i+1).padStart(2,"0");card.append(num);gallery.append(card);
+ card.append(image);const caption=document.createElement("p");caption.textContent=galleryCaptions[i%galleryCaptions.length]||"Güzel bir an ♡";card.append(caption);const num=document.createElement("small");num.textContent="ANI / "+String(i+1).padStart(2,"0");card.append(num);gallery.append(card);
 });
 
-// Continuous film strip: 120 frames minimum, automatically expands for larger albums.
+// Continuous film strip: curated photo selection, duplicated for seamless scrolling.
 const validFilm=filmPhotos.filter(valid);
 const filmSource=validFilm.length?validFilm:[];
 const frameCount=filmSource.length?Math.max(24,filmSource.length):18;
@@ -404,7 +581,7 @@ function makeFilmFrame(src,i){
 const buildRun=document.createDocumentFragment();
 for(let i=0;i<frameCount;i++)buildRun.append(makeFilmFrame(filmSource.length?filmSource[i%filmSource.length]:null,i));
 track.append(buildRun);
-track.style.animationDuration=Math.max(42,frameCount*.78)+"s";
+track.style.animationDuration=Math.max(48,frameCount*1.05)+"s";
 const duplicate=track.cloneNode(true);while(duplicate.firstChild)track.append(duplicate.firstChild);
 
 // Single-view navigation + history support.
