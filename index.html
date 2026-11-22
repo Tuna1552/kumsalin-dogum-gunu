@@ -9,7 +9,7 @@
 <meta property="og:title" content="İyi ki doğdun Kumsal ♡">
 <meta property="og:description" content="Senin için hazırladığımız küçük dünyaya hoş geldin.">
 <meta property="og:type" content="website">
-<title>İyi ki doğdun Kumsal</title>
+<title>İyi ki doğdun Kumsal · 11.0 ULTRA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -386,6 +386,20 @@ body.birthday-gate-open{overflow:hidden}body.birthday-mode .countdown-card{backg
 @media(prefers-reduced-motion:reduce){.memory-image img,.memory-card,.voice-card,.voice-front,.voice-back,.secret-envelope-overlay,.secret-envelope-card,.film-credits,.film-frame{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 html.low-motion .film-track{animation-duration:180s!important}html.low-motion .memory-card:hover,html.low-motion .film-frame:hover{transform:none!important}html.low-motion .view{animation-duration:.16s!important}
 
+
+/* KUMSAL 11.0 ULTRA — persistent site-wide music player */
+.music-dock{position:fixed;left:clamp(12px,2.2vw,30px);bottom:max(16px,env(safe-area-inset-bottom));z-index:95;width:min(338px,calc(100vw - 82px));display:grid;grid-template-columns:42px minmax(0,1fr) 62px;align-items:center;gap:11px;padding:10px 12px;border:1px solid #ddcbc2;border-radius:15px;background:rgba(255,250,245,.96);box-shadow:0 12px 34px rgba(48,26,48,.17);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:box-shadow .2s,transform .2s}
+.music-dock.is-playing{box-shadow:0 13px 36px rgba(72,40,63,.22),0 0 0 1px #c9a6a0}
+.music-toggle{width:42px;height:42px;border:1px solid var(--plum);border-radius:50%;background:var(--plum);color:#fff8ef;display:grid;place-items:center;font:17px var(--sans);line-height:1;box-shadow:0 3px 0 var(--plum-dark);transition:transform .18s,background .18s}
+.music-toggle:hover{transform:translateY(-2px)}.music-toggle:active{transform:translateY(2px);box-shadow:0 1px 0 var(--plum-dark)}
+.music-main{min-width:0}.music-kicker{font:7px var(--mono);letter-spacing:.16em;color:#a16f78;text-transform:uppercase;margin-bottom:3px}.music-title{font:600 12px var(--serif);color:#3b2937;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.music-track-row{display:flex;align-items:center;gap:7px;margin-top:5px}.music-seek{width:100%;min-width:0;height:4px;margin:0;border:0;border-radius:99px;appearance:none;-webkit-appearance:none;background:linear-gradient(to right,#a36e7a 0%,#a36e7a var(--music-progress,0%),#e6d9d1 var(--music-progress,0%),#e6d9d1 100%);cursor:pointer;touch-action:pan-y}
+.music-seek::-webkit-slider-thumb{-webkit-appearance:none;width:9px;height:9px;border-radius:50%;background:var(--plum);border:1px solid #fffaf5;box-shadow:0 0 0 1px #a36e7a}.music-seek::-moz-range-thumb{width:8px;height:8px;border-radius:50%;background:var(--plum);border:1px solid #fffaf5;box-shadow:0 0 0 1px #a36e7a}
+.music-time{display:flex;justify-content:space-between;margin-top:3px;font:7px var(--mono);color:#8d7e7c;font-variant-numeric:tabular-nums}
+.music-volume-wrap{display:flex;align-items:center;justify-content:flex-end;gap:5px;color:#806773}.music-volume-icon{font-size:13px;line-height:1}.music-volume{width:48px;height:4px;appearance:none;-webkit-appearance:none;border-radius:99px;background:#e4d7ce;cursor:pointer}.music-volume::-webkit-slider-thumb{-webkit-appearance:none;width:9px;height:9px;border-radius:50%;background:var(--rose);border:1px solid white}.music-volume::-moz-range-thumb{width:8px;height:8px;border-radius:50%;background:var(--rose);border:1px solid white}
+.song-inline-player{display:flex;align-items:center;gap:15px;margin:22px 0 14px;padding:15px 17px;border:1px solid #73556b;border-radius:12px;background:linear-gradient(110deg,#483047,#302432);box-shadow:0 8px 22px #24182724;color:#fff8ef}.song-inline-toggle{width:46px;height:46px;flex:none;border:1px solid #a7858d;border-radius:50%;background:#f4e9de;color:#48283f;font:18px var(--sans);display:grid;place-items:center;box-shadow:0 3px 0 #b99b91}.song-inline-meta{min-width:0;display:grid;gap:5px}.song-inline-meta strong{font:600 14px var(--serif);color:#fff8ef}.song-inline-meta small{font:9px/1.5 var(--mono);letter-spacing:.04em;color:#d9c7cc}.song-inline-note{margin-left:auto;color:#d7b68e;font:25px var(--serif)}
+@media(max-width:640px){.music-dock{left:10px;bottom:max(10px,env(safe-area-inset-bottom));width:calc(100vw - 78px);grid-template-columns:38px minmax(0,1fr);gap:9px;padding:8px 10px;border-radius:13px}.music-toggle{width:38px;height:38px;font-size:15px}.music-volume-wrap{display:none}.music-kicker{font-size:6px}.music-title{font-size:11px}.music-time{font-size:6px}.song-inline-player{gap:12px;padding:13px}.song-inline-toggle{width:42px;height:42px}.song-inline-meta strong{font-size:13px}.song-inline-meta small{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.music-dock,.music-toggle{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -515,7 +529,12 @@ html.low-motion .film-track{animation-duration:180s!important}html.low-motion .m
 </section>
 <section class="view" id="view-song">
  <div class="page-hero"><div class="page-kicker">SENİN ŞARKIN</div><h1 class="page-title">Bir şarkı, <em>bir sürü his.</em></h1><p class="page-description">Bazı şarkılar birini hatırlatır. Bu da senin için, Kumsal. Sesi açıp bu küçük anın tadını çıkar.</p></div>
- <div class="page-body"><div class="song-stage"><div class="album-art" aria-label="Sign of the Times için özel kapak"></div><div class="song-copy"><div class="page-kicker">KUMSAL'IN FAVORİSİ</div><h2>Sign of the Times</h2><p>Harry Styles · 2017 · 5:40</p><iframe class="spotify-frame" src="https://open.spotify.com/embed/track/5Ohxk2dO5COHF1krpoPigN?utm_source=generator&amp;theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Sign of the Times by Harry Styles"></iframe><div class="song-note"><span aria-hidden="true">♫</span><p><strong>Şarkıyı başlat, sonra diğer sayfalara geçebilirsin.</strong><br>Tam sürüm Spotify oturumuna ve tarayıcı desteğine bağlı. Kısa önizleme açılırsa Spotify'da açmayı dene.</p></div><a class="external-song" href="https://open.spotify.com/track/5Ohxk2dO5COHF1krpoPigN" target="_blank" rel="noopener">SPOTIFY'DA AÇ ↗</a></div></div></div>
+ <div class="page-body"><div class="song-stage"><div class="album-art" aria-label="Sign of the Times için özel kapak"></div><div class="song-copy"><div class="page-kicker">KUMSAL'IN FAVORİSİ</div><h2>Sign of the Times</h2><p>Harry Styles · 2017 · 5:40</p><div class="song-inline-player">
+ <button class="song-inline-toggle" id="songInlineToggle" type="button" data-music-control aria-label="Şarkıyı başlat">▶</button>
+ <div class="song-inline-meta"><strong id="songInlineTitle">Şarkıyı başlat</strong><small id="songInlineStatus">Müzik, siteyi gezerken kesilmeden devam eder.</small></div>
+ <span class="song-inline-note" aria-hidden="true">♫</span>
+</div>
+<div class="song-note"><span aria-hidden="true">♫</span><p><strong>Bu şarkı, bu küçük dünyanın müziği.</strong><br>Bir kez başlatman yeterli; anılara, mektuba ve diğer bölümlere geçerken çalmaya devam eder.</p></div></div></div></div>
 </section>
 
 <section class="view finale-page" id="view-finale">
@@ -561,6 +580,17 @@ html.low-motion .film-track{animation-duration:180s!important}html.low-motion .m
  <div class="secret-envelope-card"><button class="secret-envelope-close" id="secretEnvelopeClose" type="button" aria-label="Kapat">×</button><div class="envelope-stamp" aria-hidden="true">♡</div><div class="envelope-kicker">BİR KÖŞEYE SAKLADIK</div><h2 id="secretEnvelopeTitle">Küçük bir<br><em>hatırlatma.</em></h2><p>Her fotoğraf bir anı, her anı ayrı bir mutluluk. Ama bu sayfanın en güzel tarafı fotoğraflar değil; hepsinin içinde senin de olman. İyi ki varsın, Kumsal. ♡</p><div class="envelope-sign">Seni seven arkadaşların</div><div class="envelope-names">BENNA · ÇAĞLAR · İSMET · TUNA</div></div>
 </div>
 </div>
+<audio id="siteAudio" src="kumsal-site-sarkisi.mp3" preload="none" loop></audio>
+<aside class="music-dock" id="musicDock" aria-label="Site müzik oynatıcısı">
+ <button class="music-toggle" id="musicToggle" type="button" data-music-control aria-label="Şarkıyı başlat" title="Şarkıyı başlat">▶</button>
+ <div class="music-main">
+  <div class="music-kicker" id="musicKicker">MÜZİĞİ BAŞLAT</div>
+  <div class="music-title">Sign of the Times · Harry Styles</div>
+  <div class="music-track-row"><input class="music-seek" id="musicSeek" type="range" min="0" max="1000" step="1" value="0" aria-label="Şarkıda ilerle"></div>
+  <div class="music-time"><span id="musicCurrentTime">0:00</span><span id="musicDuration">5:42</span></div>
+ </div>
+ <label class="music-volume-wrap" aria-label="Ses düzeyi"><span class="music-volume-icon" aria-hidden="true">♫</span><input class="music-volume" id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.72" aria-label="Ses düzeyi"></label>
+</aside>
 <button class="back-to-top" id="backToTop" type="button" aria-label="Sayfanın başına dön">↑</button>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici" aria-hidden="true">
  <button class="lightbox-close" type="button" aria-label="Kapat">×</button>
@@ -1056,6 +1086,70 @@ const scrollProgressFill=document.getElementById("scrollProgressFill"),backToTop
 function updateReadingProgress(){const root=document.documentElement;const max=Math.max(1,root.scrollHeight-innerHeight);const amount=Math.max(0,Math.min(100,scrollY/max*100));scrollProgressFill.style.width=amount+"%";backToTop.classList.toggle("visible",scrollY>480)}
 window.addEventListener("scroll",updateReadingProgress,{passive:true});window.addEventListener("resize",updateReadingProgress);updateReadingProgress();
 backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}));
+
+
+
+// KUMSAL 11.0 ULTRA — one persistent audio player for every site section.
+// The track starts only after a visitor interacts with the site or uses the play button.
+(()=>{
+ const audio=document.getElementById("siteAudio");
+ const dock=document.getElementById("musicDock");
+ const toggle=document.getElementById("musicToggle");
+ const kicker=document.getElementById("musicKicker");
+ const seek=document.getElementById("musicSeek");
+ const current=document.getElementById("musicCurrentTime");
+ const duration=document.getElementById("musicDuration");
+ const volume=document.getElementById("musicVolume");
+ const inlineToggle=document.getElementById("songInlineToggle");
+ const inlineTitle=document.getElementById("songInlineTitle");
+ const inlineStatus=document.getElementById("songInlineStatus");
+ if(!audio||!dock||!toggle||!seek||!volume)return;
+ audio.volume=0.72;
+ audio.loop=true;
+ let hasStarted=false;
+ const formatTime=value=>{if(!Number.isFinite(value)||value<0)return "0:00";const whole=Math.round(value);return Math.floor(whole/60)+":"+String(whole%60).padStart(2,"0")};
+ function paint(){
+  const playing=!audio.paused&&!audio.ended;
+  dock.classList.toggle("is-playing",playing);
+  toggle.textContent=playing?"Ⅱ":"▶";
+  toggle.setAttribute("aria-label",playing?"Şarkıyı duraklat":"Şarkıyı başlat");
+  toggle.title=playing?"Duraklat":"Şarkıyı başlat";
+  kicker.textContent=playing?"ŞU AN ÇALIYOR":(hasStarted?"DURAKLATILDI":"MÜZİĞİ BAŞLAT");
+  if(inlineToggle){inlineToggle.textContent=playing?"Ⅱ":"▶";inlineToggle.setAttribute("aria-label",playing?"Şarkıyı duraklat":"Şarkıyı başlat")}
+  if(inlineTitle)inlineTitle.textContent=playing?"Şarkı çalıyor":"Şarkıyı başlat";
+  if(inlineStatus)inlineStatus.textContent=playing?"Diğer bölümlere geçebilirsin; müzik devam edecek.":(hasStarted?"Dilediğin zaman kaldığın yerden devam et.":"Müzik, siteyi gezerken kesilmeden devam eder.");
+ }
+ function paintProgress(){
+  const total=Number.isFinite(audio.duration)?audio.duration:342;
+  const amount=total>0?Math.min(100,Math.max(0,audio.currentTime/total*100)):0;
+  seek.value=String(Math.round(amount*10));
+  seek.style.setProperty("--music-progress",amount+"%");
+  current.textContent=formatTime(audio.currentTime);
+  if(Number.isFinite(audio.duration))duration.textContent=formatTime(audio.duration);
+ }
+ async function playMusic(){
+  try{await audio.play();hasStarted=true;paint();}
+  catch(error){hasStarted=false;kicker.textContent="TEKRAR BAŞLATMAK İÇİN DOKUN";if(inlineStatus)inlineStatus.textContent="Tarayıcı oynatmayı engelledi; tekrar dokunarak başlat.";}
+ }
+ function toggleMusic(){if(audio.paused){playMusic()}else{audio.pause();hasStarted=true;paint()}}
+ toggle.addEventListener("click",toggleMusic);
+ if(inlineToggle)inlineToggle.addEventListener("click",toggleMusic);
+ // The first meaningful site control a visitor uses can begin the soundtrack.
+ // This keeps the home page uncluttered while making the soundtrack feel integral.
+ document.addEventListener("click",event=>{
+  if(hasStarted||!audio.paused)return;
+  if(event.target.closest("[data-music-control]"))return;
+  if(event.target.closest("button,a,[role='button']")){playMusic()}
+ },true);
+ audio.addEventListener("play",()=>{hasStarted=true;paint()});
+ audio.addEventListener("pause",paint);
+ audio.addEventListener("timeupdate",paintProgress);
+ audio.addEventListener("loadedmetadata",()=>{duration.textContent=formatTime(audio.duration);paintProgress()});
+ audio.addEventListener("error",()=>{kicker.textContent="MÜZİK DOSYASI BULUNAMADI";if(inlineStatus)inlineStatus.textContent="MP3 dosyasının index.html ile aynı klasörde olduğundan emin olun."});
+ seek.addEventListener("input",()=>{if(Number.isFinite(audio.duration)){audio.currentTime=(Number(seek.value)/1000)*audio.duration;paintProgress()}});
+ volume.addEventListener("input",()=>{audio.volume=Number(volume.value)});
+ paint();paintProgress();
+})();
 
 </script>
 </body>
