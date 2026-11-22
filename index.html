@@ -227,6 +227,26 @@ body.birthday-gate-open{overflow:hidden}body.birthday-mode .countdown-card{backg
 @media(max-width:640px){.birthday-overlay{padding:16px}.birthday-content{border-radius:24px;padding:33px 20px 30px}.birthday-kicker{font-size:7px;letter-spacing:.13em;gap:8px}.birthday-crown{width:50px;height:50px;margin-top:20px}.birthday-content h2{font-size:clamp(48px,13vw,68px);margin:17px 0}.birthday-message{font-size:15px}.birthday-enter{width:min(100%,320px);min-height:58px}.birthday-under{font-size:7px;letter-spacing:.08em}.birthday-foot{font-size:7px;letter-spacing:.15em}.spark-one{left:5%;top:9%}.spark-two{right:5%;top:13%}.spark-three{left:7%;bottom:8%}.spark-four{right:6%;bottom:11%}.back-to-top{right:15px;bottom:15px;width:42px;height:42px}.wish-panel{padding:34px 20px}.wish-message{padding:20px 16px;min-height:150px}.final-secret{padding:28px 20px}.final-secret-top{font-size:7px}.final-secret p{font-size:14px;line-height:1.85}}
 @media(prefers-reduced-motion:reduce){.birthday-overlay:before,.birthday-overlay:after,.birthday-content,.birthday-spark,.birthday-confetti,.birthday-crown,.wish-orbit span{animation:none!important}.birthday-overlay,.birthday-enter,.wish-next,.wish-final-trigger,.final-secret,.wish-message{transition:none!important}.birthday-enter:before{display:none!important}}
 
+
+/* Kumsal 10.0 — desktop alignment, filled avatar, and faster photo album */
+@media (min-width:1201px){
+  .header{display:flex;align-items:center;justify-content:space-between;gap:clamp(10px,1.1vw,18px);padding-inline:clamp(22px,3vw,54px)}
+  .brand{flex:0 0 auto;max-width:290px;min-width:0}
+  .brand-name{white-space:nowrap}
+  .brand-name small{font-size:7px;letter-spacing:.085em;white-space:nowrap;margin-top:5px}
+  .nav{flex:1 1 auto;min-width:0;max-width:none;justify-content:flex-end;gap:1px}
+  .nav-btn{flex:0 0 auto;padding:10px clamp(4px,.42vw,8px);font-size:clamp(8px,.55vw,9px);letter-spacing:.005em}
+  .header-note{display:none}
+  .memory-image{height:clamp(250px,22vw,320px)}
+  .memory-image--contain img{object-fit:contain;background:#f1e7df}
+  .gallery-sentinel{grid-column:1/-1;height:1px;pointer-events:none}
+}
+@media (max-width:1200px){
+  .header{display:flex;align-items:center;justify-content:space-between;min-width:0}
+  .brand-mark img{object-position:50% 62%;transform:scale(1.30)}
+  .gallery-sentinel{grid-column:1/-1;height:1px;pointer-events:none}
+}
+@media (min-width:1201px){.brand-mark img{object-position:50% 62%;transform:scale(1.30)}}
 </style>
 </head>
 <body>
@@ -250,7 +270,7 @@ body.birthday-gate-open{overflow:hidden}body.birthday-mode .countdown-card{backg
 <div class="site-shell">
 <div class="top-rule"></div>
 <header class="header">
- <a class="brand" href="#home" aria-label="Ana sayfaya dön"><span class="brand-mark"><img src="https://i.supaimg.com/51cbff16-55c6-497a-88dc-d2dd5323e019/66537b85-5d6a-4a19-bb60-0d340131c887.jpg" alt="Arkadaş grubunuz"></span><span class="brand-name">İyi ki Doğdun Kumsal<small>Doğum Günün Kutlu Olsun · 03 ARALIK</small></span></a>
+ <a class="brand" href="#home" aria-label="Ana sayfaya dön"><span class="brand-mark"><img src="https://i.supaimg.com/51cbff16-55c6-497a-88dc-d2dd5323e019/66537b85-5d6a-4a19-bb60-0d340131c887.jpg" alt="Arkadaş grubunuz"></span><span class="brand-name">İyi ki Doğdun Kumsal<small>03 ARALIK · 2026 · İYİ Kİ DOĞDUN</small></span></a>
  <nav class="nav" aria-label="Ana menü">
   <button class="nav-btn active" data-view="home">Ana sayfa</button><button class="nav-btn" data-view="memories">Anılarımız</button><button class="nav-btn" data-view="film">Film şeridi</button><button class="nav-btn" data-view="story">Tanışma Hikâyemiz</button><button class="nav-btn" data-view="reasons">Küçük notlar</button><button class="nav-btn" data-view="letter">Mektubum</button><button class="nav-btn" data-view="song">Sevdiğin Bir Şarkı</button><button class="nav-btn" data-view="finale">Son sürpriz <span aria-hidden="true">✦</span></button>
  </nav>
@@ -559,88 +579,160 @@ const valid = value => typeof value === "string" && /^(https?:\/\/|images\/)/i.t
 
 const photoFocalY = {
  "images/photo-001.webp":45,
- "images/photo-002.webp":42,
- "images/photo-004.webp":52,
+ "images/photo-002.webp":29,
+ "images/photo-004.webp":88,
  "images/photo-005.webp":31,
+ "images/photo-006.webp":0,
  "images/photo-007.webp":27,
+ "images/photo-010.webp":1,
  "images/photo-014.webp":51,
  "images/photo-015.webp":39,
- "images/photo-016.webp":33,
+ "images/photo-016.webp":0,
  "images/photo-017.webp":48,
- "images/photo-018.webp":50,
+ "images/photo-018.webp":73,
  "images/photo-019.webp":74,
+ "images/photo-020.webp":0,
  "images/photo-023.webp":51,
- "images/photo-026.webp":26,
+ "images/photo-024.webp":0,
+ "images/photo-026.webp":0,
  "images/photo-027.webp":35,
  "images/photo-029.webp":41,
  "images/photo-031.webp":21,
- "images/photo-032.webp":39,
+ "images/photo-032.webp":30,
  "images/photo-033.webp":37,
+ "images/photo-034.webp":98,
  "images/photo-035.webp":30,
- "images/photo-036.webp":53,
+ "images/photo-036.webp":86,
  "images/photo-037.webp":82,
  "images/photo-039.webp":34,
- "images/photo-040.webp":32,
+ "images/photo-040.webp":0,
  "images/photo-041.webp":59,
- "images/photo-042.webp":63,
+ "images/photo-042.webp":94,
  "images/photo-043.webp":57,
- "images/photo-044.webp":18,
+ "images/photo-044.webp":8,
  "images/photo-045.webp":35,
- "images/photo-046.webp":44,
+ "images/photo-046.webp":13,
  "images/photo-047.webp":42,
+ "images/photo-048.webp":22,
  "images/photo-049.webp":44,
  "images/photo-053.webp":32,
  "images/photo-055.webp":31,
- "images/photo-056.webp":44,
+ "images/photo-056.webp":48,
  "images/photo-057.webp":26,
- "images/photo-058.webp":49,
+ "images/photo-058.webp":71,
  "images/photo-059.webp":41,
- "images/photo-064.webp":48,
+ "images/photo-060.webp":0,
+ "images/photo-064.webp":65,
  "images/photo-065.webp":29,
- "images/photo-066.webp":35,
+ "images/photo-066.webp":0,
  "images/photo-067.webp":38,
  "images/photo-069.webp":31,
- "images/photo-070.webp":45,
+ "images/photo-070.webp":36,
  "images/photo-071.webp":42,
  "images/photo-073.webp":47,
- "images/photo-074.webp":41,
+ "images/photo-074.webp":20,
  "images/photo-075.webp":39,
  "images/photo-079.webp":56,
  "images/photo-081.webp":32,
- "images/photo-082.webp":37,
+ "images/photo-082.webp":21,
  "images/photo-085.webp":28,
- "images/photo-086.webp":37,
+ "images/photo-086.webp":0,
  "images/photo-087.webp":49,
  "images/photo-089.webp":34,
  "images/photo-092.webp":40,
+ "images/photo-093.webp":0,
  "images/photo-096.webp":48,
- "images/photo-097.webp":40,
- "images/photo-098.webp":53,
- "images/photo-102.webp":52,
- "images/photo-107.webp":65,
- "images/photo-108.webp":40,
- "images/photo-109.webp":42,
- "images/photo-110.webp":47,
- "images/photo-111.webp":36,
- "images/photo-112.webp":38,
+ "images/photo-097.webp":13,
+ "images/photo-098.webp":96,
+ "images/photo-102.webp":87,
+ "images/photo-107.webp":98,
+ "images/photo-108.webp":0,
+ "images/photo-109.webp":37,
+ "images/photo-110.webp":92,
+ "images/photo-111.webp":0,
+ "images/photo-112.webp":2,
+ "images/photo-117.webp":26,
  "images/photo-118.webp":71,
- "images/photo-120.webp":33,
- "images/photo-121.webp":36,
- "images/photo-125.webp":38,
+ "images/photo-120.webp":0,
+ "images/photo-121.webp":16,
+ "images/photo-125.webp":27,
  "images/photo-126.webp":53,
- "images/photo-127.webp":50,
- "images/photo-131.webp":32
+ "images/photo-127.webp":78,
+ "images/photo-128.webp":84,
+ "images/photo-131.webp":0
 };
 const photoPosition = src => "50% " + (photoFocalY[src] ?? 55) + "%";
+const headerAvatar=document.querySelector(".brand-mark img");
+const homepageHeroImage=document.querySelector(".hero-photo img");
+if(headerAvatar && homepageHeroImage) headerAvatar.src=homepageHeroImage.currentSrc || homepageHeroImage.src;
 
-// Build the memory gallery from the links above; unused slots remain elegant placeholders.
+// Fast, progressive memory gallery. All photos remain in the album; cards are
+// appended in small batches as the visitor approaches the end of the grid.
 const gallery = document.getElementById("memoryGrid");
-galleryPhotos.forEach((src,i)=>{
- const card=document.createElement("article");card.className="memory-card";card.tabIndex=0;card.setAttribute("role","button");card.setAttribute("aria-label","Anıyı büyüt: "+(galleryCaptions[i%galleryCaptions.length]||"Güzel bir an"));
- const image=document.createElement("div");image.className="memory-image";image.dataset.placeholder=["♡","✳","K","✦","❀","♡"][i%6];
- if(valid(src)){const img=document.createElement("img");img.src=src;img.alt="Kumsal ile anı "+(i+1);img.loading="lazy";img.decoding="async";img.fetchPriority="low";img.style.objectPosition=photoPosition(src);image.append(img)}
- card.append(image);const caption=document.createElement("p");caption.textContent=galleryCaptions[i%galleryCaptions.length]||"Güzel bir an ♡";card.append(caption);const num=document.createElement("small");num.textContent="ANI / "+String(i+1).padStart(2,"0");card.append(num);gallery.append(card);
-});
+const galleryContainPhotos = new Set([
+  "images/photo-088.webp", "images/photo-092.webp", "images/photo-105.webp",
+  "images/photo-118.webp", "images/photo-126.webp"
+]);
+let galleryIndex = 0;
+let galleryObserver = null;
+const galleryBatchSize = 16;
+const gallerySentinel = document.createElement("div");
+gallerySentinel.className = "gallery-sentinel";
+gallerySentinel.setAttribute("aria-hidden", "true");
+gallery.after(gallerySentinel);
+function appendGalleryBatch(){
+  if (galleryIndex >= galleryPhotos.length) {
+    galleryObserver?.disconnect();
+    gallerySentinel.remove();
+    return;
+  }
+  const batch = document.createDocumentFragment();
+  const stopAt = Math.min(galleryIndex + galleryBatchSize, galleryPhotos.length);
+  for (; galleryIndex < stopAt; galleryIndex++) {
+    const src = galleryPhotos[galleryIndex], i = galleryIndex;
+    const card = document.createElement("article");
+    card.className = "memory-card";
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", "Anıyı büyüt: " + (galleryCaptions[i % galleryCaptions.length] || "Güzel bir an"));
+    const image = document.createElement("div");
+    image.className = "memory-image";
+    image.dataset.placeholder = ["♡","✳","K","✦","❀","♡"][i % 6];
+    if (galleryContainPhotos.has(src)) image.classList.add("memory-image--contain");
+    if (valid(src)) {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "Kumsal ile anı " + (i + 1);
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.fetchPriority = "low";
+      img.style.objectPosition = photoPosition(src);
+      image.append(img);
+    }
+    card.append(image);
+    const caption = document.createElement("p");
+    caption.textContent = galleryCaptions[i % galleryCaptions.length] || "Güzel bir an ♡";
+    card.append(caption);
+    const num = document.createElement("small");
+    num.textContent = "ANI / " + String(i + 1).padStart(2, "0");
+    card.append(num);
+    batch.append(card);
+  }
+  gallery.append(batch);
+  if (galleryIndex >= galleryPhotos.length) {
+    galleryObserver?.disconnect();
+    gallerySentinel.remove();
+  }
+}
+if ("IntersectionObserver" in window) {
+  galleryObserver = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.isIntersecting)) appendGalleryBatch();
+  }, { rootMargin: "600px 0px" });
+  galleryObserver.observe(gallerySentinel);
+  appendGalleryBatch();
+} else {
+  while (galleryIndex < galleryPhotos.length) appendGalleryBatch();
+}
 
 // Continuous film strip: curated photo selection, duplicated for seamless scrolling.
 const validFilm=filmPhotos.filter(valid);
@@ -674,6 +766,9 @@ function showView(name,updateHash=true){
  document.querySelectorAll(".view").forEach(v=>{const active=v===target;v.classList.toggle("active",active);v.setAttribute("aria-hidden",String(!active));});
  document.querySelectorAll(".nav-btn").forEach(b=>{const active=b.dataset.view===name;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active));if(active)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
  document.querySelectorAll(".menu-item").forEach(b=>b.classList.toggle("active",b.dataset.view===name));
+ if(name==="memories" && matchMedia("(min-width:1201px)").matches){
+  gallery.querySelectorAll("img").forEach((img,index)=>{if(index<8){img.loading="eager";img.fetchPriority="high";}});
+ }
  closeMenu();
  if(updateHash && location.hash!=="#"+name)history.pushState({view:name},"","#"+name);
  window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
