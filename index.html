@@ -387,18 +387,78 @@ body.birthday-gate-open{overflow:hidden}body.birthday-mode .countdown-card{backg
 html.low-motion .film-track{animation-duration:180s!important}html.low-motion .memory-card:hover,html.low-motion .film-frame:hover{transform:none!important}html.low-motion .view{animation-duration:.16s!important}
 
 
-/* KUMSAL 11.0 ULTRA — persistent site-wide music player */
-.music-dock{position:fixed;left:clamp(12px,2.2vw,30px);bottom:max(16px,env(safe-area-inset-bottom));z-index:95;width:min(338px,calc(100vw - 82px));display:grid;grid-template-columns:42px minmax(0,1fr) 62px;align-items:center;gap:11px;padding:10px 12px;border:1px solid #ddcbc2;border-radius:15px;background:rgba(255,250,245,.96);box-shadow:0 12px 34px rgba(48,26,48,.17);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:box-shadow .2s,transform .2s}
-.music-dock.is-playing{box-shadow:0 13px 36px rgba(72,40,63,.22),0 0 0 1px #c9a6a0}
-.music-toggle{width:42px;height:42px;border:1px solid var(--plum);border-radius:50%;background:var(--plum);color:#fff8ef;display:grid;place-items:center;font:17px var(--sans);line-height:1;box-shadow:0 3px 0 var(--plum-dark);transition:transform .18s,background .18s}
-.music-toggle:hover{transform:translateY(-2px)}.music-toggle:active{transform:translateY(2px);box-shadow:0 1px 0 var(--plum-dark)}
-.music-main{min-width:0}.music-kicker{font:7px var(--mono);letter-spacing:.16em;color:#a16f78;text-transform:uppercase;margin-bottom:3px}.music-title{font:600 12px var(--serif);color:#3b2937;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.music-track-row{display:flex;align-items:center;gap:7px;margin-top:5px}.music-seek{width:100%;min-width:0;height:4px;margin:0;border:0;border-radius:99px;appearance:none;-webkit-appearance:none;background:linear-gradient(to right,#a36e7a 0%,#a36e7a var(--music-progress,0%),#e6d9d1 var(--music-progress,0%),#e6d9d1 100%);cursor:pointer;touch-action:pan-y}
-.music-seek::-webkit-slider-thumb{-webkit-appearance:none;width:9px;height:9px;border-radius:50%;background:var(--plum);border:1px solid #fffaf5;box-shadow:0 0 0 1px #a36e7a}.music-seek::-moz-range-thumb{width:8px;height:8px;border-radius:50%;background:var(--plum);border:1px solid #fffaf5;box-shadow:0 0 0 1px #a36e7a}
-.music-time{display:flex;justify-content:space-between;margin-top:3px;font:7px var(--mono);color:#8d7e7c;font-variant-numeric:tabular-nums}
-.music-volume-wrap{display:flex;align-items:center;justify-content:flex-end;gap:5px;color:#806773}.music-volume-icon{font-size:13px;line-height:1}.music-volume{width:48px;height:4px;appearance:none;-webkit-appearance:none;border-radius:99px;background:#e4d7ce;cursor:pointer}.music-volume::-webkit-slider-thumb{-webkit-appearance:none;width:9px;height:9px;border-radius:50%;background:var(--rose);border:1px solid white}.music-volume::-moz-range-thumb{width:8px;height:8px;border-radius:50%;background:var(--rose);border:1px solid white}
-.song-inline-player{display:flex;align-items:center;gap:15px;margin:22px 0 14px;padding:15px 17px;border:1px solid #73556b;border-radius:12px;background:linear-gradient(110deg,#483047,#302432);box-shadow:0 8px 22px #24182724;color:#fff8ef}.song-inline-toggle{width:46px;height:46px;flex:none;border:1px solid #a7858d;border-radius:50%;background:#f4e9de;color:#48283f;font:18px var(--sans);display:grid;place-items:center;box-shadow:0 3px 0 #b99b91}.song-inline-meta{min-width:0;display:grid;gap:5px}.song-inline-meta strong{font:600 14px var(--serif);color:#fff8ef}.song-inline-meta small{font:9px/1.5 var(--mono);letter-spacing:.04em;color:#d9c7cc}.song-inline-note{margin-left:auto;color:#d7b68e;font:25px var(--serif)}
-@media(max-width:640px){.music-dock{left:10px;bottom:max(10px,env(safe-area-inset-bottom));width:calc(100vw - 78px);grid-template-columns:38px minmax(0,1fr);gap:9px;padding:8px 10px;border-radius:13px}.music-toggle{width:38px;height:38px;font-size:15px}.music-volume-wrap{display:none}.music-kicker{font-size:6px}.music-title{font-size:11px}.music-time{font-size:6px}.song-inline-player{gap:12px;padding:13px}.song-inline-toggle{width:42px;height:42px}.song-inline-meta strong{font-size:13px}.song-inline-meta small{font-size:8px}}
-@media(prefers-reduced-motion:reduce){.music-dock,.music-toggle{transition:none!important}}
+/* KUMSAL 11.0 ULTRA — compact Dynamic-Island-inspired soundtrack controls */
+.music-island{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);transform:translateX(-50%);z-index:150;width:min(365px,calc(100vw - 28px));color:#3b2937;pointer-events:none;filter:drop-shadow(0 12px 28px rgba(48,26,48,.16));}
+.music-island-capsule{min-height:62px;display:grid;grid-template-columns:minmax(0,1fr) 42px;align-items:center;gap:9px;padding:7px 9px 7px 10px;border:1px solid #ddcbc2;border-radius:999px;background:linear-gradient(145deg,rgba(255,252,247,.97),rgba(242,232,224,.96));box-shadow:inset 0 1px 0 #fff,0 5px 16px rgba(48,26,48,.08);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);pointer-events:auto;transition:border-radius .28s,background .28s,box-shadow .28s;}
+.music-island.island-open .music-island-capsule{border-color:#c9a7a0;border-radius:22px 22px 13px 13px;box-shadow:inset 0 1px 0 #fff,0 2px 7px rgba(48,26,48,.05);}
+.music-island-expand{min-width:0;width:100%;height:46px;display:flex;align-items:center;gap:11px;padding:0 4px;border:0;background:transparent;color:inherit;text-align:left;cursor:pointer;border-radius:999px;}
+.music-island-expand:focus-visible,.music-island button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.music-island-art{width:40px;height:40px;flex:none;display:grid;place-items:center;position:relative;overflow:hidden;border-radius:50%;background:radial-gradient(circle at 32% 28%,#d8bdab 0,#9c737b 42%,#51384f 76%,#2d2334 100%);border:1px solid #fffaf4;box-shadow:0 0 0 1px #c5a49d,0 3px 7px #48283f25;}
+.music-island-art:before{content:"";position:absolute;inset:5px;border:1px solid #f6e8d6a8;border-radius:50%;}
+.music-equalizer{height:17px;display:flex;align-items:center;gap:2px;position:relative;z-index:1;}
+.music-equalizer i{display:block;width:2px;height:5px;border-radius:3px;background:#fff7ee;opacity:.95;transform-origin:center;}
+.music-island.is-playing .music-equalizer i{animation:island-eq .72s ease-in-out infinite alternate;}
+.music-island.is-playing .music-equalizer i:nth-child(2){animation-delay:-.22s}.music-island.is-playing .music-equalizer i:nth-child(3){animation-delay:-.47s}.music-island.is-playing .music-equalizer i:nth-child(4){animation-delay:-.12s}.music-island.is-playing .music-equalizer i:nth-child(5){animation-delay:-.36s}
+@keyframes island-eq{from{height:4px}to{height:15px}}
+.music-island-copy{min-width:0;display:grid;gap:3px;}
+.music-island-status{font:7px var(--mono);letter-spacing:.16em;color:#a16f78;text-transform:uppercase;white-space:nowrap;}
+.music-island-title{font:600 12px var(--serif);color:#382735;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.music-island-chevron{margin-left:auto;padding:0 5px;color:#8e7279;font:15px var(--sans);transition:transform .25s;}
+.music-island.island-open .music-island-chevron{transform:rotate(180deg);}
+.music-island-compact-toggle,.music-island-play{width:40px;height:40px;display:grid;place-items:center;flex:none;border:1px solid #70445e;border-radius:50%;background:linear-gradient(145deg,#754a65,#48283f);color:#fff8ef;font:16px var(--sans);line-height:1;box-shadow:0 3px 0 #301a30,0 6px 13px #48283f20;transition:transform .18s,filter .18s,box-shadow .18s;cursor:pointer;pointer-events:auto;}
+.music-island-compact-toggle:hover,.music-island-play:hover{filter:brightness(1.1);transform:translateY(-2px);}
+.music-island-compact-toggle:active,.music-island-play:active{transform:translateY(2px);box-shadow:0 1px 0 #301a30;}
+.music-island-panel{margin-top:7px;padding:15px 16px 14px;border:1px solid #d9c5ba;border-radius:19px;background:linear-gradient(145deg,rgba(255,252,247,.985),rgba(242,232,224,.98));box-shadow:0 18px 46px rgba(48,26,48,.19),inset 0 1px 0 #fff;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);pointer-events:auto;transform-origin:bottom center;animation:island-panel-in .22s cubic-bezier(.2,.75,.25,1) both;}
+.music-island-panel[hidden]{display:none!important;}
+@keyframes island-panel-in{from{opacity:0;transform:translateY(9px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.music-panel-top{display:grid;grid-template-columns:49px minmax(0,1fr) 34px;align-items:center;gap:11px;}
+.music-panel-cover{width:49px;height:49px;display:grid;place-items:center;border-radius:11px;background:radial-gradient(circle at 50% 35%,#d6b3a4 0 8%,transparent 9%),linear-gradient(145deg,#b98884,#73566f 58%,#34283d);border:1px solid #fff7ee;box-shadow:0 0 0 1px #c8aaa1,0 5px 13px #48283f1b;color:#fff5e9;font:italic 13px var(--serif);letter-spacing:.12em;}
+.music-panel-meta{min-width:0;display:grid;gap:3px;}
+.music-panel-meta small{font:7px var(--mono);letter-spacing:.14em;color:#a16f78;text-transform:uppercase;}
+.music-panel-meta strong{font:600 14px var(--serif);color:#382735;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.music-panel-meta span{font:8px var(--mono);color:#8d7e7c;}
+.music-island-collapse{width:32px;height:32px;border:1px solid #e2d2c8;border-radius:50%;background:#fffaf5;color:#68465e;font:18px var(--sans);display:grid;place-items:center;cursor:pointer;transition:transform .18s,background .18s;}
+.music-island-collapse:hover{background:#f1e5dd;transform:translateY(-1px);}
+.music-panel-progress{margin-top:13px;}
+.music-seek{display:block;width:100%;min-width:0;height:5px;margin:0;border:0;border-radius:99px;appearance:none;-webkit-appearance:none;background:linear-gradient(to right,#a36e7a 0%,#a36e7a var(--music-progress,0%),#e6d9d1 var(--music-progress,0%),#e6d9d1 100%);cursor:pointer;touch-action:pan-y;}
+.music-seek::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--plum);border:2px solid #fffaf5;box-shadow:0 0 0 1px #a36e7a;}
+.music-seek::-moz-range-thumb{width:10px;height:10px;border-radius:50%;background:var(--plum);border:2px solid #fffaf5;box-shadow:0 0 0 1px #a36e7a;}
+.music-time{display:flex;justify-content:space-between;margin-top:6px;font:8px var(--mono);color:#8d7e7c;font-variant-numeric:tabular-nums;}
+.music-panel-controls{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:11px;margin-top:12px;}
+.music-panel-status{font:8px var(--mono);color:#816d74;line-height:1.45;}
+.music-panel-volume{display:flex;align-items:center;gap:7px;color:#806773;font:13px var(--sans);}
+.music-volume{width:75px;height:4px;appearance:none;-webkit-appearance:none;border-radius:99px;background:#e4d7ce;cursor:pointer;}
+.music-volume::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;border-radius:50%;background:var(--rose);border:1px solid white;box-shadow:0 0 0 1px #b77d88;}
+.music-volume::-moz-range-thumb{width:9px;height:9px;border-radius:50%;background:var(--rose);border:1px solid white;box-shadow:0 0 0 1px #b77d88;}
+.music-mute{width:31px;height:31px;border:1px solid #e2d2c8;border-radius:50%;background:#fffaf5;color:#68465e;display:grid;place-items:center;font:14px var(--sans);cursor:pointer;}
+.music-mute:hover{background:#f1e5dd;}
+.music-island-error{display:none;margin-top:10px;color:#9b5361;font:8px/1.5 var(--mono);}
+.music-island.has-error .music-island-error{display:block;}
+.song-inline-player{display:flex;align-items:center;gap:15px;margin:22px 0 14px;padding:15px 17px;border:1px solid #73556b;border-radius:12px;background:linear-gradient(110deg,#483047,#302432);box-shadow:0 8px 22px #24182724;color:#fff8ef;}
+.song-inline-toggle{width:46px;height:46px;flex:none;border:1px solid #a7858d;border-radius:50%;background:#f4e9de;color:#48283f;font:18px var(--sans);display:grid;place-items:center;box-shadow:0 3px 0 #b99b91;}
+.song-inline-meta{min-width:0;display:grid;gap:5px;}
+.song-inline-meta strong{font:600 14px var(--serif);color:#fff8ef;}
+.song-inline-meta small{font:9px/1.5 var(--mono);letter-spacing:.04em;color:#d9c7cc;}
+.song-inline-note{margin-left:auto;color:#d7b68e;font:25px var(--serif);}
+@media(max-width:640px){
+ .music-island{width:min(360px,calc(100vw - 24px));bottom:calc(env(safe-area-inset-bottom,0px) + 10px);}
+ .music-island-capsule{min-height:58px;padding:6px 8px 6px 9px;grid-template-columns:minmax(0,1fr) 40px;gap:7px;}
+ .music-island-art{width:37px;height:37px;}
+ .music-island-title{font-size:11px;}
+ .music-island-status{font-size:6px;}
+ .music-island-compact-toggle,.music-island-play{width:38px;height:38px;font-size:15px;}
+ .music-island-panel{padding:13px 13px 12px;border-radius:17px;}
+ .music-panel-controls{grid-template-columns:40px minmax(0,1fr) auto;gap:8px;}
+ .music-volume{width:66px;}
+ body.music-island-expanded .back-to-top{bottom:210px;}
+ .song-inline-player{gap:12px;padding:13px;}
+ .song-inline-toggle{width:42px;height:42px;}
+ .song-inline-meta strong{font-size:13px;}
+ .song-inline-meta small{font-size:8px;}
+}
+@media(max-width:360px){.music-panel-controls{grid-template-columns:38px minmax(0,1fr);}.music-panel-volume{grid-column:2;justify-content:flex-end}.music-mute{grid-column:1;grid-row:2}}
+@media(prefers-reduced-motion:reduce){.music-island,.music-island *{transition:none!important;animation:none!important}.music-equalizer i{height:5px!important}.music-island-panel{animation:none!important}}
+html.low-motion .music-equalizer i{height:5px!important;animation:none!important;}
 
 </style>
 </head>
@@ -581,15 +641,30 @@ html.low-motion .film-track{animation-duration:180s!important}html.low-motion .m
 </div>
 </div>
 <audio id="siteAudio" src="kumsal-site-sarkisi.mp3" preload="none" loop></audio>
-<aside class="music-dock" id="musicDock" aria-label="Site müzik oynatıcısı">
- <button class="music-toggle" id="musicToggle" type="button" data-music-control aria-label="Şarkıyı başlat" title="Şarkıyı başlat">▶</button>
- <div class="music-main">
-  <div class="music-kicker" id="musicKicker">MÜZİĞİ BAŞLAT</div>
-  <div class="music-title">Sign of the Times · Harry Styles</div>
-  <div class="music-track-row"><input class="music-seek" id="musicSeek" type="range" min="0" max="1000" step="1" value="0" aria-label="Şarkıda ilerle"></div>
-  <div class="music-time"><span id="musicCurrentTime">0:00</span><span id="musicDuration">5:42</span></div>
+<aside class="music-island" id="musicDock" aria-label="Site müzik oynatıcısı" data-music-control>
+ <div class="music-island-capsule">
+  <button class="music-island-expand" id="musicIslandExpand" type="button" aria-expanded="false" aria-controls="musicIslandPanel" aria-label="Müzik kontrollerini aç" data-music-control>
+   <span class="music-island-art" aria-hidden="true"><span class="music-equalizer"><i></i><i></i><i></i><i></i><i></i></span></span>
+   <span class="music-island-copy"><span class="music-island-status" id="musicKicker">MÜZİĞİ BAŞLAT</span><strong class="music-island-title">Sign of the Times</strong></span>
+   <span class="music-island-chevron" aria-hidden="true">⌃</span>
+  </button>
+  <button class="music-island-compact-toggle" id="musicToggleCompact" type="button" data-music-control aria-label="Şarkıyı başlat" title="Şarkıyı başlat">▶</button>
  </div>
- <label class="music-volume-wrap" aria-label="Ses düzeyi"><span class="music-volume-icon" aria-hidden="true">♫</span><input class="music-volume" id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.72" aria-label="Ses düzeyi"></label>
+ <section class="music-island-panel" id="musicIslandPanel" aria-label="Gelişmiş müzik kontrolleri" hidden>
+  <div class="music-panel-top">
+   <div class="music-panel-cover" aria-hidden="true">ST</div>
+   <div class="music-panel-meta"><small>SİTENİN MÜZİĞİ</small><strong>Sign of the Times</strong><span>Harry Styles · Kumsal için</span></div>
+   <button class="music-island-collapse" id="musicIslandCollapse" type="button" data-music-control aria-label="Müzik panelini küçült">⌄</button>
+  </div>
+  <div class="music-panel-progress"><input class="music-seek" id="musicSeek" type="range" min="0" max="1000" step="1" value="0" aria-label="Şarkıda ilerle"><div class="music-time"><span id="musicCurrentTime">0:00</span><span id="musicDuration">5:42</span></div></div>
+  <div class="music-panel-controls">
+   <button class="music-island-play" id="musicToggle" type="button" data-music-control aria-label="Şarkıyı başlat" title="Şarkıyı başlat">▶</button>
+   <span class="music-panel-status" id="musicExpandedStatus">Müziği başlat, siteyi gezerken yanında kalsın.</span>
+   <label class="music-panel-volume" aria-label="Ses düzeyi"><span aria-hidden="true">♫</span><input class="music-volume" id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.72" aria-label="Ses düzeyi"></label>
+   <button class="music-mute" id="musicMute" type="button" data-music-control aria-label="Sesi kapat" title="Sesi kapat">◖))</button>
+  </div>
+  <div class="music-island-error" id="musicError" role="status">Müzik dosyası yüklenemedi. MP3 dosyasının index.html ile aynı klasörde olduğundan emin olun.</div>
+ </section>
 </aside>
 <button class="back-to-top" id="backToTop" type="button" aria-label="Sayfanın başına dön">↑</button>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici" aria-hidden="true">
@@ -1089,35 +1164,52 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
 
 
 
-// KUMSAL 11.0 ULTRA — one persistent audio player for every site section.
-// The track starts only after a visitor interacts with the site or uses the play button.
+// KUMSAL 11.0 ULTRA — persistent soundtrack with a compact, expandable music island.
 (()=>{
  const audio=document.getElementById("siteAudio");
  const dock=document.getElementById("musicDock");
- const toggle=document.getElementById("musicToggle");
+ const expand=document.getElementById("musicIslandExpand");
+ const collapse=document.getElementById("musicIslandCollapse");
+ const panel=document.getElementById("musicIslandPanel");
+ const toggles=[document.getElementById("musicToggle"),document.getElementById("musicToggleCompact")].filter(Boolean);
  const kicker=document.getElementById("musicKicker");
  const seek=document.getElementById("musicSeek");
  const current=document.getElementById("musicCurrentTime");
  const duration=document.getElementById("musicDuration");
  const volume=document.getElementById("musicVolume");
+ const mute=document.getElementById("musicMute");
+ const expandedStatus=document.getElementById("musicExpandedStatus");
+ const errorMessage=document.getElementById("musicError");
  const inlineToggle=document.getElementById("songInlineToggle");
  const inlineTitle=document.getElementById("songInlineTitle");
  const inlineStatus=document.getElementById("songInlineStatus");
- if(!audio||!dock||!toggle||!seek||!volume)return;
- audio.volume=0.72;
+ if(!audio||!dock||!expand||!panel||!toggles.length||!seek||!volume)return;
+ audio.volume=Number(volume.value)||0.72;
  audio.loop=true;
  let hasStarted=false;
+ let lastVolume=audio.volume||0.72;
  const formatTime=value=>{if(!Number.isFinite(value)||value<0)return "0:00";const whole=Math.round(value);return Math.floor(whole/60)+":"+String(whole%60).padStart(2,"0")};
+ function setExpanded(open){
+  dock.classList.toggle("island-open",open);
+  panel.hidden=!open;
+  expand.setAttribute("aria-expanded",String(open));
+  expand.setAttribute("aria-label",open?"Müzik kontrollerini küçült":"Müzik kontrollerini aç");
+  document.body.classList.toggle("music-island-expanded",open);
+ }
  function paint(){
   const playing=!audio.paused&&!audio.ended;
   dock.classList.toggle("is-playing",playing);
-  toggle.textContent=playing?"Ⅱ":"▶";
-  toggle.setAttribute("aria-label",playing?"Şarkıyı duraklat":"Şarkıyı başlat");
-  toggle.title=playing?"Duraklat":"Şarkıyı başlat";
+  toggles.forEach(button=>{
+   button.textContent=playing?"Ⅱ":"▶";
+   button.setAttribute("aria-label",playing?"Şarkıyı duraklat":"Şarkıyı başlat");
+   button.title=playing?"Duraklat":"Şarkıyı başlat";
+  });
   kicker.textContent=playing?"ŞU AN ÇALIYOR":(hasStarted?"DURAKLATILDI":"MÜZİĞİ BAŞLAT");
+  if(expandedStatus)expandedStatus.textContent=playing?"Şarkı çalıyor · diğer bölümlere geçebilirsin.":(hasStarted?"Kaldığın yerden devam etmeye hazır.":"Müziği başlat, siteyi gezerken yanında kalsın.");
   if(inlineToggle){inlineToggle.textContent=playing?"Ⅱ":"▶";inlineToggle.setAttribute("aria-label",playing?"Şarkıyı duraklat":"Şarkıyı başlat")}
   if(inlineTitle)inlineTitle.textContent=playing?"Şarkı çalıyor":"Şarkıyı başlat";
   if(inlineStatus)inlineStatus.textContent=playing?"Diğer bölümlere geçebilirsin; müzik devam edecek.":(hasStarted?"Dilediğin zaman kaldığın yerden devam et.":"Müzik, siteyi gezerken kesilmeden devam eder.");
+  if(mute){mute.textContent=(audio.muted||audio.volume===0)?"×♫":"◖))";mute.setAttribute("aria-label",(audio.muted||audio.volume===0)?"Sesi aç":"Sesi kapat");mute.title=(audio.muted||audio.volume===0)?"Sesi aç":"Sesi kapat";}
  }
  function paintProgress(){
   const total=Number.isFinite(audio.duration)?audio.duration:342;
@@ -1128,26 +1220,50 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
   if(Number.isFinite(audio.duration))duration.textContent=formatTime(audio.duration);
  }
  async function playMusic(){
-  try{await audio.play();hasStarted=true;paint();}
-  catch(error){hasStarted=false;kicker.textContent="TEKRAR BAŞLATMAK İÇİN DOKUN";if(inlineStatus)inlineStatus.textContent="Tarayıcı oynatmayı engelledi; tekrar dokunarak başlat.";}
+  try{
+   await audio.play();hasStarted=true;dock.classList.remove("has-error");
+   if(errorMessage)errorMessage.textContent="";
+   paint();
+  }catch(error){
+   hasStarted=false;dock.classList.add("has-error");
+   if(errorMessage)errorMessage.textContent="Tarayıcı oynatmayı başlatamadı. Oynat düğmesine tekrar dokun.";
+   if(inlineStatus)inlineStatus.textContent="Tarayıcı oynatmayı engelledi; tekrar dokunarak başlat.";
+  }
  }
  function toggleMusic(){if(audio.paused){playMusic()}else{audio.pause();hasStarted=true;paint()}}
- toggle.addEventListener("click",toggleMusic);
+ expand.addEventListener("click",()=>setExpanded(!dock.classList.contains("island-open")));
+ if(collapse)collapse.addEventListener("click",()=>setExpanded(false));
+ toggles.forEach(button=>button.addEventListener("click",toggleMusic));
  if(inlineToggle)inlineToggle.addEventListener("click",toggleMusic);
- // The first meaningful site control a visitor uses can begin the soundtrack.
- // This keeps the home page uncluttered while making the soundtrack feel integral.
+ document.addEventListener("click",event=>{
+  if(dock.classList.contains("island-open")&&!dock.contains(event.target))setExpanded(false);
+ },true);
+ document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dock.classList.contains("island-open"))setExpanded(false)});
+ // The first meaningful site control can start the soundtrack once; navigating between views never resets it.
  document.addEventListener("click",event=>{
   if(hasStarted||!audio.paused)return;
   if(event.target.closest("[data-music-control]"))return;
-  if(event.target.closest("button,a,[role='button']")){playMusic()}
+  if(event.target.closest("button,a,[role='button']"))playMusic();
  },true);
- audio.addEventListener("play",()=>{hasStarted=true;paint()});
+ audio.addEventListener("play",()=>{hasStarted=true;dock.classList.remove("has-error");paint()});
  audio.addEventListener("pause",paint);
  audio.addEventListener("timeupdate",paintProgress);
  audio.addEventListener("loadedmetadata",()=>{duration.textContent=formatTime(audio.duration);paintProgress()});
- audio.addEventListener("error",()=>{kicker.textContent="MÜZİK DOSYASI BULUNAMADI";if(inlineStatus)inlineStatus.textContent="MP3 dosyasının index.html ile aynı klasörde olduğundan emin olun."});
+ audio.addEventListener("error",()=>{dock.classList.add("has-error");if(errorMessage)errorMessage.textContent="Müzik dosyası yüklenemedi. MP3 dosyasının index.html ile aynı klasörde olduğundan emin olun.";kicker.textContent="MÜZİK DOSYASI BULUNAMADI";if(inlineStatus)inlineStatus.textContent="MP3 dosyasının index.html ile aynı klasörde olduğundan emin olun."});
  seek.addEventListener("input",()=>{if(Number.isFinite(audio.duration)){audio.currentTime=(Number(seek.value)/1000)*audio.duration;paintProgress()}});
- volume.addEventListener("input",()=>{audio.volume=Number(volume.value)});
+ volume.addEventListener("input",()=>{const next=Number(volume.value);audio.volume=next;audio.muted=false;if(next>0)lastVolume=next;paint()});
+ if(mute)mute.addEventListener("click",()=>{if(audio.muted||audio.volume===0){audio.muted=false;audio.volume=lastVolume||0.72;volume.value=String(audio.volume)}else{lastVolume=audio.volume||lastVolume;audio.muted=true}paint()});
+ // Optional system media controls on supported browsers.
+ if("mediaSession" in navigator){
+  try{
+   navigator.mediaSession.metadata=new MediaMetadata({title:"Sign of the Times",artist:"Harry Styles",album:"Kumsal için"});
+   navigator.mediaSession.setActionHandler("play",playMusic);
+   navigator.mediaSession.setActionHandler("pause",()=>{audio.pause();hasStarted=true;paint()});
+   navigator.mediaSession.setActionHandler("seekbackward",details=>{audio.currentTime=Math.max(0,audio.currentTime-(details.seekOffset||10));paintProgress()});
+   navigator.mediaSession.setActionHandler("seekforward",details=>{audio.currentTime=Math.min(audio.duration||342,audio.currentTime+(details.seekOffset||10));paintProgress()});
+   navigator.mediaSession.setActionHandler("seekto",details=>{if(Number.isFinite(details.seekTime))audio.currentTime=details.seekTime;paintProgress()});
+  }catch(error){/* Media Session is optional; the on-page controls remain available. */}
+ }
  paint();paintProgress();
 })();
 
