@@ -637,6 +637,51 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
 @media(max-width:360px){.music-time{gap:4px}.music-skip{padding:0 5px;font-size:6px}}
 @media(prefers-reduced-motion:reduce){.music-island.is-playing .music-panel-meta small:after{animation:none}.wish-message.is-revealing:after{animation:none}.music-skip{transition:none}}
 
+
+/* Kumsal 11.3 — Tanışma hikâyesi: daha kişisel, okunmaya değer bir bölüm */
+.story-page{background:radial-gradient(ellipse at 5% 42%,rgba(231,211,198,.46),transparent 33%),linear-gradient(180deg,#f8f2eb 0%,#f1e6de 100%)}
+.story-hero{background:radial-gradient(ellipse at 88% 8%,rgba(220,190,184,.58),transparent 36%),linear-gradient(132deg,#faf5ef,#f0e4dc)}
+.story-hero .page-description{max-width:620px}
+.story-body{max-width:1280px;padding-top:clamp(28px,4vw,52px)}
+.story-intro-card{display:grid;grid-template-columns:minmax(230px,.78fr) minmax(0,1.42fr);align-items:center;gap:clamp(28px,5vw,66px);padding:clamp(28px,5vw,58px);overflow:hidden;position:relative;border:1px solid #6b4a6044;border-radius:22px;background:radial-gradient(circle at 12% 20%,#76566b 0,transparent 34%),linear-gradient(130deg,#48283f 0%,#372337 72%,#503448 100%);box-shadow:0 22px 54px rgba(55,31,46,.16);color:#fff7ef}
+.story-intro-card:after{content:"";position:absolute;width:430px;height:430px;right:-260px;bottom:-300px;border:1px solid #f4dfc51c;border-radius:50%;box-shadow:0 0 0 35px #f4dfc50a,0 0 0 80px #f4dfc508;pointer-events:none}
+.story-intro-art{min-height:260px;position:relative;display:grid;place-items:center;isolation:isolate}
+.story-art-orbit{position:absolute;width:min(100%,260px);aspect-ratio:1;border:1px solid #e8cbb455;border-radius:50%;z-index:-1}
+.story-art-orbit-one:before,.story-art-orbit-one:after{content:"";position:absolute;inset:16px;border:1px dashed #e8cbb444;border-radius:50%}.story-art-orbit-one:after{inset:39px;border-style:solid;opacity:.65}
+.story-art-orbit-two{width:min(82%,212px);border-style:dashed;transform:rotate(24deg);opacity:.65}
+.story-stamp{width:156px;height:156px;border:1px solid #e5c69eaa;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:radial-gradient(circle,#69485f 0,#4a2c47 70%);box-shadow:0 0 0 9px #ffffff08,0 18px 45px #1b101b35;transform:rotate(-8deg);color:#e8c99c}
+.story-stamp span{font:8px var(--mono);letter-spacing:.25em}.story-stamp strong{font:58px/1 var(--serif);font-weight:400;color:#f1d7b3}
+.story-handnote{position:absolute;bottom:5px;right:2%;font:clamp(20px,2.4vw,27px) var(--hand);color:#efd4bc;transform:rotate(-8deg)}
+.story-intro-copy{position:relative;z-index:1;max-width:700px}.story-label{font:9px var(--mono);letter-spacing:.2em;color:#e0bd9b}.story-intro-copy h2{font:400 clamp(32px,4.1vw,52px)/1.13 var(--serif);letter-spacing:-.04em;margin:17px 0 20px;color:#fff8f0;text-wrap:balance}.story-intro-copy h2 em{font-weight:400;color:#e6bcb0}.story-intro-copy p{max-width:660px;color:#e1d0d0;font-size:13px;line-height:2;margin:0}.story-signoff{display:flex;align-items:center;gap:10px;margin-top:24px;padding-top:17px;border-top:1px solid #ffffff25;color:#f1d6b6;font:21px var(--hand)}.story-signoff span{font:15px var(--sans);color:#dca8a5}
+.story-timeline-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:clamp(42px,6vw,70px) 0 22px}.story-timeline-heading>span{font:9px var(--mono);letter-spacing:.18em;color:#9a7079;padding-bottom:6px}.story-timeline-heading h2{font:400 clamp(27px,3.2vw,39px)/1.15 var(--serif);letter-spacing:-.03em;color:#3e2a38;margin:0}.story-timeline-heading h2 em{color:#a56f79;font-weight:400}
+.story-timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;position:relative}
+.story-stop{position:relative;min-height:245px;padding:23px 23px 25px;border:1px solid #e4d5ca;border-radius:15px;background:linear-gradient(155deg,#fffaf5,#f4eae2);box-shadow:0 10px 26px rgba(55,31,46,.055);transition:transform .22s,box-shadow .22s,border-color .22s;overflow:hidden}
+.story-stop:hover{transform:translateY(-4px);border-color:#d2b4aa;box-shadow:0 16px 32px rgba(55,31,46,.10)}
+.story-stop:after{content:"";position:absolute;width:145px;height:145px;right:-75px;bottom:-88px;border:1px solid #c99a8d35;border-radius:50%;box-shadow:0 0 0 16px #c99a8d0c;pointer-events:none}
+.story-stop-top{display:flex;align-items:center;gap:11px;margin-bottom:27px}.story-stop-icon{width:37px;height:37px;display:grid;place-items:center;border-radius:50%;background:#efe0d9;border:1px solid #e5cec2;color:#946572;font:20px var(--serif)}.story-stop-label{font:8px var(--mono);letter-spacing:.18em;color:#9b7478}
+.story-stop h3{font:400 25px/1.2 var(--serif);color:#432d3d;margin:0 0 12px;max-width:270px}.story-stop p{font-size:12px;line-height:1.9;color:#7a6d6e;margin:0;max-width:360px}
+.story-last-note{display:grid;grid-template-columns:48px 1fr 32px;align-items:center;gap:18px;margin-top:18px;padding:25px 29px;border:1px solid #e2d1c7;border-radius:14px;background:linear-gradient(110deg,#eee1d7,#f8f0e9 70%);}
+.story-last-flower{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#fffaf4;color:#a9777e;box-shadow:0 3px 0 #dfcec3;font-size:21px}.story-last-kicker{font:8px var(--mono);letter-spacing:.2em;color:#987178}.story-last-note h2{font:400 clamp(21px,2.6vw,29px)/1.2 var(--serif);color:#482d3e;margin:7px 0 6px}.story-last-note p{font-size:11px;line-height:1.8;color:#827276;margin:0;max-width:760px}.story-last-heart{justify-self:end;color:#b78083;font-size:25px}
+@media(max-width:900px){.story-intro-card{grid-template-columns:210px minmax(0,1fr);gap:24px;padding:28px}.story-intro-art{min-height:220px}.story-stamp{width:135px;height:135px}.story-timeline{grid-template-columns:1fr}.story-stop{min-height:0}.story-stop-top{margin-bottom:17px}.story-stop h3{max-width:none}}
+@media(max-width:640px){.story-body{padding-top:22px}.story-intro-card{grid-template-columns:1fr;gap:16px;padding:25px 21px 27px;border-radius:17px}.story-intro-art{min-height:170px}.story-art-orbit{width:170px}.story-art-orbit-two{width:145px}.story-stamp{width:112px;height:112px}.story-stamp strong{font-size:44px}.story-stamp span{font-size:7px}.story-handnote{right:8%;bottom:-1px;font-size:20px}.story-intro-copy h2{font-size:34px;margin:12px 0 14px}.story-intro-copy p{font-size:12px;line-height:1.9}.story-signoff{margin-top:18px;padding-top:14px;font-size:20px}.story-timeline-heading{display:block;margin:37px 0 17px}.story-timeline-heading>span{display:block;margin-bottom:10px}.story-timeline-heading h2{font-size:29px}.story-timeline{gap:11px}.story-stop{padding:19px 18px 21px;border-radius:13px}.story-stop-top{margin-bottom:15px}.story-stop h3{font-size:23px;margin-bottom:8px}.story-stop p{font-size:11px;line-height:1.85}.story-last-note{grid-template-columns:35px 1fr;gap:12px;padding:19px 16px;margin-top:13px}.story-last-flower{width:34px;height:34px;font-size:17px}.story-last-note h2{font-size:23px}.story-last-note p{font-size:10px}.story-last-heart{display:none}}
+@media(prefers-reduced-motion:reduce){.story-stop{transition:none!important}}
+
+
+/* Kumsal 11.4 — Tanışma hikâyesindeki grup fotoğrafı */
+.story-intro-art{min-height:0;padding:14px 8px 20px;position:relative;display:grid;place-items:center;isolation:isolate}
+.story-art-orbit{pointer-events:none}
+.story-photo-frame{position:relative;z-index:1;width:min(100%,370px);margin:0;padding:10px 10px 13px;background:linear-gradient(145deg,#fffdf8,#f7eee4);border:1px solid #eadbd0;border-radius:4px;box-shadow:0 20px 42px rgba(18,10,20,.27),0 2px 0 #fff;transform:rotate(-2deg);transition:transform .35s ease,box-shadow .35s ease}
+.story-photo-frame:before{content:"";position:absolute;top:-10px;left:50%;width:74px;height:21px;transform:translateX(-50%) rotate(2deg);background:rgba(235,211,177,.78);border:1px solid rgba(255,255,255,.38);box-shadow:0 2px 7px rgba(30,20,20,.08);z-index:2}
+.story-photo-frame:hover{transform:rotate(0) translateY(-3px);box-shadow:0 25px 48px rgba(18,10,20,.32),0 2px 0 #fff}
+.story-photo-kicker{display:flex;align-items:center;justify-content:space-between;padding:2px 3px 9px;color:#9a7475;font:8px var(--mono);letter-spacing:.19em}
+.story-photo-kicker span{color:#bd936a;font-size:12px}
+.story-photo-frame img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 48%;border:1px solid #e2d4c9;border-radius:2px;filter:saturate(.91) contrast(.98);background:#e9ddd4}
+.story-photo-frame figcaption{display:flex;justify-content:center;align-items:center;gap:9px;padding:10px 2px 0;color:#765264;font:22px var(--hand);line-height:1.1}
+.story-photo-frame figcaption span{color:#b47e82;font:15px var(--sans)}
+@media(max-width:900px){.story-intro-art{min-height:0;padding:9px 3px 15px}.story-photo-frame{width:min(100%,310px)}}
+@media(max-width:640px){.story-intro-art{min-height:0;padding:6px 8px 12px}.story-photo-frame{width:min(100%,390px);padding:9px 9px 12px}.story-photo-kicker{font-size:7px}.story-photo-frame figcaption{font-size:21px}}
+@media(prefers-reduced-motion:reduce){.story-photo-frame{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -681,7 +726,7 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
   <button class="menu-item" data-view="home"><span class="menu-icon">⌂</span><span><strong>Ana sayfa</strong><small>Doğum günü & sayaç</small></span></button>
   <button class="menu-item" data-view="memories"><span class="menu-icon">▧</span><span><strong>Anılar</strong><small>Fotoğraf albümü</small></span></button>
   <button class="menu-item" data-view="film"><span class="menu-icon">▤</span><span><strong>Film şeridi</strong><small>Hareketli hatıralar</small></span></button>
-  <button class="menu-item" data-view="story"><span class="menu-icon">✧</span><span><strong>Tanışma Hikâyemiz</strong><small>Birlikte geçen zaman</small></span></button>
+  <button class="menu-item" data-view="story"><span class="menu-icon">✧</span><span><strong>Tanışma Hikâyemiz</strong><small>İlk günden bugüne</small></span></button>
   <button class="menu-item" data-view="reasons"><span class="menu-icon">♡</span><span><strong>Küçük notlar</strong><small>Sana özel altı kart</small></span></button>
   <button class="menu-item" data-view="letter"><span class="menu-icon">✉</span><span><strong>Mektubum</strong><small>Kalpten birkaç satır</small></span></button>
   <button class="menu-item" data-view="song"><span class="menu-icon">♫</span><span><strong>Sevdiğin bir şarkı</strong><small>Sign of the Times</small></span></button>
@@ -720,9 +765,28 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
  <div class="page-hero"><div class="page-kicker">Albümden Geriye Kalanlar</div><h1 class="page-title">Bizim küçük <em>film şeridimiz.</em></h1><p class="page-description">Birlikte geçirdiğimiz zamanların küçük kareleri. Film şeridi kendi kendine akıyor; durdurabilir, tekrar başlatabilir ve fotoğrafa tıklayarak kareyi büyütebilirsin.</p></div>
  <div class="page-body"><div class="film-intro"><div><div class="page-kicker">HATIRA RULOSU · SÜREKLİ HAREKET HALİNDE</div><p style="font:24px var(--serif);margin-top:8px;color:#fff4ed">Her karede başka bir biz.</p></div><div class="film-controls"><p>AKIŞI İSTEDİĞİNDE KONTROL ET ♡</p><button class="film-toggle" id="filmToggle" type="button" aria-pressed="false">AKIŞI DURDUR <span aria-hidden="true">Ⅱ</span></button></div></div><div class="film-viewport" id="filmViewport"><div class="film-track" id="filmTrack"></div></div><p class="film-help">Kareler burada küçük bir film gibi akıyor. Akışı durdurabilir ya da bir kareye dokunup onu büyük ekranda açabilirsin, İyi Seyirler Kumsal.</p></div>
 </section>
-<section class="view" id="view-story">
- <div class="page-hero"><div class="page-kicker">TANIŞMA HİKÂYEMİZ</div><h1 class="page-title">İyi ki seni <em>tanımışız.</em></h1><p class="page-description">Her güzel arkadaşlığın küçük başlangıçları, unutulmaz anları ve devam eden bir hikâyesi var. Burası bizimkini anlatmak için.</p></div>
- <div class="page-body"><div class="story-layout"><aside class="story-aside"><div class="big-star">✳</div><h3>Seninle biriktirdiğimiz her şey ve geçirdiğimiz her saniye bizler için çok kıymetli Kumsal.</h3><p>Bu hikâyenin en güzel tarafıysa, içinde daha yaşanmamış bir sürü güzel günün de olması.</p></aside><div class="chapters"><article class="chapter"><div class="chapter-num">BÖLÜM 01</div><div><h3>İyi ki tanışmışız</h3><p>Bazı tanışmaların ne zaman böyle değerli bir arkadaşlığa dönüştüğünü fark etmiyorsun. Bir bakıyorsun, en güzel anılarının içinde o kişi de var.</p></div></article><article class="chapter"><div class="chapter-num">BÖLÜM 02</div><div><h3>Küçük anlar, büyük hatıralar</h3><p>Bazen en özel şey büyük planlar değil; beraber edilen bir kahkaha, uzayan bir sohbet ve sıradan bir günü güzelleştiren küçücük şeyler.</p></div></article><article class="chapter"><div class="chapter-num">BÖLÜM 03</div><div><h3>İyi ki dediğim yer</h3><p>İyi ki hayatımdasın diyebilmek, bazen tek başına kocaman bir teşekkür. Bana kattığın her güzel şey için iyi ki.</p></div></article><article class="chapter"><div class="chapter-num">BÖLÜM 04</div><div><h3>Daha anlatılacak çok şey var</h3><p>Bu hikâyenin en sevdiğim yanı bitmemiş olması. Daha bir sürü yeni anı, fotoğraf, kahkaha ve yıllar sonra hatırlayıp gülümseyeceğimiz gün var.</p></div></article></div></div></div>
+<section class="view story-page" id="view-story">
+ <div class="page-hero story-hero"><div class="page-kicker">TANIŞTIĞIMIZDAN BUGÜNE</div><h1 class="page-title">İyi ki yollarımız <em>kesişmiş.</em></h1><p class="page-description">Bu sayfa, ilk tanıştığımız günden çok, sonrasında birlikte biriktirdiğimiz şeyler için. Biraz geçmişe bakalım istedik, Kumsal. ♡</p></div>
+ <div class="page-body story-body">
+  <div class="story-intro-card">
+   <div class="story-intro-art">
+    <span class="story-art-orbit story-art-orbit-one" aria-hidden="true"></span><span class="story-art-orbit story-art-orbit-two" aria-hidden="true"></span>
+    <figure class="story-photo-frame">
+     <div class="story-photo-kicker">BİZDEN BİR KARE <span>✦</span></div>
+     <img src="https://i.ibb.co/39Z7RpTV/kumsal-caglar-ismet-benna-denizli-arkadan-foto-3.jpg" alt="Kumsal, Benna, Çağlar ve İsmet birlikte bir gezi anısında" loading="lazy" decoding="async">
+     <figcaption>iyi ki tanışmışız <span aria-hidden="true">♡</span></figcaption>
+    </figure>
+   </div>
+   <div class="story-intro-copy"><span class="story-label">BİRAZ BİZDEN, BİRAZ SENDEN</span><h2>Tanıştık... sonra <em>bir sürü güzel şey birikti.</em></h2><p>Tanıştığımız günü düşündüğümüzde aklımıza sadece ilk an değil, sonrasında yaşadığımız her şey geliyor. Beraber güldüğümüz günler, fotoğraflara sığan anlar, aklımıza geldikçe hâlâ gülümsediğimiz küçük şeyler... Hepsi zamanla bizim için çok kıymetli oldu. Şimdi dönüp bakınca, bütün bu güzel şeylerin içinde senin de olmasına ne kadar sevindiğimizi bir kez daha anlıyoruz.</p><div class="story-signoff">İyi ki tanışmışız, Kumsal. <span>♡</span></div></div>
+  </div>
+  <div class="story-timeline-heading"><span>GERİYE DÖNÜP BAKINCA</span><h2>Bizim için güzel olan <em>birkaç şey...</em></h2></div>
+  <div class="story-timeline">
+   <article class="story-stop"><div class="story-stop-top"><span class="story-stop-icon">✧</span><span class="story-stop-label">İLK ZAMANLAR</span></div><h3>Birbirimizi tanımaya başladık.</h3><p>Önce tanıştık, sonra konuşmalar ve birlikte geçirilen zamanlar çoğaldı. Fark etmeden hayatımızda kendine ait güzel bir yer edindin.</p></article>
+   <article class="story-stop"><div class="story-stop-top"><span class="story-stop-icon">♡</span><span class="story-stop-label">BİRİKENLER</span></div><h3>Bir sürü şey paylaştık.</h3><p>Bazen bir fotoğraf, bazen aklımıza düşen küçücük bir olay yetiyor; o günü ve birlikte nasıl güldüğümüzü yeniden hatırlıyoruz. Biriktirdiklerimizin en güzel tarafı da bu.</p></article>
+   <article class="story-stop"><div class="story-stop-top"><span class="story-stop-icon">✦</span><span class="story-stop-label">BUGÜN</span></div><h3>İyi ki dediğimiz yerdeyiz.</h3><p>Bu sayfayı hazırlarken sana yalnızca doğum günün kutlu olsun demek değil, hayatımızda olduğun için teşekkür etmek de istedik. Bizim için yerin gerçekten ayrı.</p></article>
+  </div>
+  <div class="story-last-note"><span class="story-last-flower" aria-hidden="true">✳</span><div><span class="story-last-kicker">VE DAHA BİTMEDİ...</span><h2>Önümüzde birlikte yaşayacağımız daha çok şey var.</h2><p>Umarız yıllar sonra da yeni fotoğraflara bakıp “Hatırlıyor musun?” diye başlayacağımız bir sürü anımız olur. Şimdilik bu sayfaya birkaçını sığdırabildik.</p></div><span class="story-last-heart" aria-hidden="true">♡</span></div>
+ </div>
 </section>
 <section class="view" id="view-reasons">
  <div class="page-hero"><div class="page-kicker">SANA BIRAKTIĞIMIZ KÜÇÜK AMA İÇTEN NOTLAR</div><h1 class="page-title">Bizler için neden bu kadar <em>değerlisin?</em></h1><p class="page-description">Her kartın içinde sana söylemek istediğimiz küçük şeyler var. Bir tanesine dokun; arkasında ne saklı olduğunu gör. ♡</p></div>
