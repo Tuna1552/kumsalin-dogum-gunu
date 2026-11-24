@@ -460,6 +460,144 @@ html.low-motion .film-track{animation-duration:180s!important}html.low-motion .m
 @media(prefers-reduced-motion:reduce){.music-island,.music-island *{transition:none!important;animation:none!important}.music-equalizer i{height:5px!important}.music-island-panel{animation:none!important}}
 html.low-motion .music-equalizer i{height:5px!important;animation:none!important;}
 
+
+/* KUMSAL 11.1 — careful refinements */
+.album-art{overflow:hidden;border-radius:2px;background:#241b24;box-shadow:0 18px 42px #17111d55}
+.album-art:before{content:none!important}
+.album-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9);transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s}
+.album-art:hover img{transform:scale(1.035);filter:saturate(1)}
+.album-art:after{content:"";position:absolute;inset:0;border:1px solid #ffffff22;pointer-events:none;box-shadow:inset 0 0 45px #1c122522}
+.memory-intro-note{margin:0 auto 25px!important;padding:0 1px;color:#897b79;font:11px/1.75 var(--sans)}
+.memory-toolbar{margin-bottom:15px}
+.memory-card{border-radius:3px}
+.memory-card p{font:21px var(--hand);color:#684b5a;letter-spacing:.01em}
+.memory-card small{letter-spacing:.16em}
+@media(max-width:640px){.memory-intro-note{font-size:10px;margin-bottom:17px!important}.memory-card p{font-size:18px}}
+
+/* A more tactile, editorial menu drawer. The original two-column layout remains. */
+.menu-panel{padding:24px 23px 18px;border-radius:20px;background:linear-gradient(145deg,#fffdf9,#f7eee7);border-color:#e4d3c8}
+.menu-panel-head{align-items:flex-start;margin-bottom:20px}
+.menu-heading-copy{display:grid;gap:7px;min-width:0}
+.menu-panel-kicker{display:block!important;font:8px var(--mono)!important;letter-spacing:.2em!important;color:#a06f78!important;margin:0!important}
+.menu-panel-head strong{display:block;font:400 clamp(22px,3vw,27px)/1.12 var(--serif)!important;color:#3e2b3b}
+.menu-heading-copy>span{font:11px/1.6 var(--sans);color:#897a79}
+.menu-close{flex:none;margin-top:1px}
+.menu-grid{gap:9px}
+.menu-item{position:relative;min-height:73px;padding:12px 13px;border-radius:12px;background:linear-gradient(145deg,#fffdf9,#fbf5ef);border-color:#e9ddd4;box-shadow:0 2px 0 #eee2d9;transition:transform .22s,border-color .22s,box-shadow .22s,background .22s}
+.menu-item:before{content:"";position:absolute;left:0;top:13px;bottom:13px;width:2px;border-radius:3px;background:transparent;transition:background .2s}
+.menu-item.active{border-color:#c9a6a0;background:linear-gradient(145deg,#fffaf5,#f4e7df);box-shadow:0 3px 0 #e1cfc4}
+.menu-item.active:before{background:#a56e7b}
+.menu-item.active .menu-icon{background:#ead6d0;color:#75475a;box-shadow:inset 0 0 0 1px #dfc3b9}
+.menu-item.active strong{color:#74485b}
+.menu-item .menu-icon{width:37px;height:37px;border-radius:11px;font-size:18px}
+.menu-item strong{font-size:12px}
+.menu-item small{font-size:8px;letter-spacing:.025em}
+.menu-panel-footer{display:flex;align-items:center;gap:8px;margin-top:16px;padding:12px 2px 0;border-top:1px solid #eaded5;color:#856f73;font:11px var(--serif)}
+.menu-footer-heart{color:#b47b83;font-size:16px}
+.menu-panel-footer small{margin-left:auto;font:7px var(--mono);letter-spacing:.13em;color:#aa9290}
+@media(max-width:640px){
+ .menu-panel{padding:18px 16px 14px}
+ .menu-panel-head{margin-bottom:15px}
+ .menu-heading-copy>span{font-size:10px}
+ .menu-grid{gap:8px}
+ .menu-item{min-height:67px;padding:10px 10px}
+ .menu-item .menu-icon{width:33px;height:33px}
+ .menu-item strong{font-size:11px}
+ .menu-item small{font-size:7px}
+ .menu-panel-footer{margin-top:12px;padding-top:10px}
+}
+@media(max-width:365px){.menu-grid{grid-template-columns:1fr}.menu-item{min-height:60px}.menu-panel{max-height:calc(100svh - 92px);overflow:auto}}
+
+/* Better spacing between letter text and the stationery rules. */
+.letter-paper{background:linear-gradient(90deg,transparent 0 39px,rgba(202,151,146,.14) 39px 40px,transparent 40px),repeating-linear-gradient(180deg,#fffaf4 0,#fffaf4 40px,#f1e8e1 41px)}
+.letter-copy p{padding-bottom:2px}
+@media(max-width:640px){
+ .letter-paper{background:linear-gradient(90deg,transparent 0 21px,rgba(202,151,146,.12) 21px 22px,transparent 22px),repeating-linear-gradient(180deg,#fffaf4 0,#fffaf4 36px,#f1e8e1 37px)}
+ .letter-copy p{padding-bottom:2px}
+}
+
+/* Personal notes now open as a focused keepsake, not a cramped card flip. */
+.voice-card{min-height:212px;border-radius:8px;box-shadow:0 8px 22px #513e3710;background:linear-gradient(145deg,#fffdf9,#f7eee6)}
+.voice-card:nth-child(2),.voice-card:nth-child(3),.voice-card:nth-child(4){transform:none}
+.voice-card:hover{transform:translateY(-4px);box-shadow:0 15px 32px #513e371c}
+.voice-front{position:absolute;inset:0;opacity:1!important;transform:none!important;padding:20px 15px;background:radial-gradient(circle at 50% 0,#ead9d2 0,transparent 55%),linear-gradient(145deg,#fffdf9,#f7eee6)}
+.voice-back{display:none!important}
+.voice-card[aria-expanded=true]{border-color:#bc9293;box-shadow:0 0 0 3px #d9bcb444,0 15px 32px #513e371c}
+.voice-hint{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid #e5d3c8;border-radius:999px;background:#fffaf4}
+.voice-note-overlay{position:fixed;inset:0;z-index:800;display:grid;place-items:center;padding:20px;background:rgba(35,23,34,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s,visibility .28s}
+.voice-note-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
+.voice-note-paper{position:relative;width:min(100%,520px);max-height:min(84svh,760px);overflow:auto;padding:clamp(28px,6vw,52px) clamp(25px,6vw,58px) 35px;text-align:center;border:1px solid #ead8ca;background:linear-gradient(90deg,transparent 0 30px,rgba(202,151,146,.13) 30px 31px,transparent 31px),repeating-linear-gradient(180deg,#fffaf4 0,#fffaf4 39px,#f0e7df 40px);box-shadow:0 32px 90px #0006,0 3px 0 #fffdf9;transform:translateY(18px) scale(.975);transition:transform .38s cubic-bezier(.2,.8,.2,1)}
+.voice-note-overlay.open .voice-note-paper{transform:translateY(0) scale(1);animation:voice-note-in .48s cubic-bezier(.2,.8,.2,1) both}
+.voice-note-paper:before{content:"";position:absolute;inset:12px;border:1px solid #ead8ca;pointer-events:none}
+.voice-note-close{position:absolute;right:19px;top:17px;z-index:2;width:36px;height:36px;border:1px solid #e2d1c7;border-radius:50%;background:#fffdf8;color:#70465a;font-size:22px}
+.voice-note-topline{display:flex;justify-content:space-between;color:#a27b7b;font:8px var(--mono);letter-spacing:.19em}
+.voice-note-seal{width:58px;height:58px;margin:29px auto 18px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(145deg,#6b435d,#402a43);color:#f8e8dc;box-shadow:0 0 0 6px #ead9ce,0 0 0 7px #c9a89c;font:25px var(--serif)}
+.voice-note-kicker{font:8px var(--mono);letter-spacing:.19em;color:#a06e78}
+.voice-note-paper h3{font:400 clamp(31px,5vw,43px)/1.1 var(--serif);color:#432d3e;margin:17px 0 20px}
+.voice-note-text{position:relative;z-index:1;margin:0 auto;max-width:390px;color:#65525a;font:clamp(17px,2.4vw,20px)/1.85 var(--serif)}
+.voice-note-sign{margin:27px 0 0;color:#916579;font:24px var(--hand)}
+.voice-note-sign span{display:block;margin-top:4px;font:600 11px var(--mono);letter-spacing:.16em;color:#71535f}
+.voice-note-bottom{margin-top:30px;color:#b78c84;letter-spacing:.25em}
+@keyframes voice-note-in{0%{opacity:.65;clip-path:inset(8% 0 0);transform:translateY(20px) scale(.97)}100%{opacity:1;clip-path:inset(0);transform:translateY(0) scale(1)}}
+@media(max-width:640px){
+ .voice-note-overlay{padding:14px}
+ .voice-note-paper{padding:28px 24px 28px;max-height:86svh}
+ .voice-note-seal{width:52px;height:52px;margin:25px auto 16px}
+ .voice-note-paper h3{font-size:34px}
+ .voice-note-text{font-size:16px;line-height:1.8}
+}
+@media(prefers-reduced-motion:reduce){.voice-note-overlay,.voice-note-paper{transition:none!important;animation:none!important}}
+
+/* Refined dynamic island: real cover art, live progress, quiet glass depth. */
+.music-island{width:min(392px,calc(100vw - 24px));bottom:calc(env(safe-area-inset-bottom,0px) + 13px);filter:drop-shadow(0 15px 32px rgba(48,26,48,.21))}
+.music-island-capsule{position:relative;overflow:hidden;min-height:66px;padding:8px 10px 9px;border:1px solid #d8c1b9;border-radius:25px;background:linear-gradient(145deg,rgba(255,253,249,.985),rgba(241,229,222,.97));box-shadow:inset 0 1px 0 #fff,0 8px 22px rgba(48,26,48,.11)}
+.music-island.island-open .music-island-capsule{border-radius:20px 20px 12px 12px}
+.music-island-expand{height:47px;gap:12px}
+.music-island-art{width:43px;height:43px;border-radius:13px;box-shadow:0 0 0 1px #c5a49d,0 4px 10px #48283f28}
+.music-island-art:before{display:none}
+.music-island-art img{width:100%;height:100%;display:block;object-fit:cover}
+.music-equalizer{position:absolute;right:3px;bottom:3px;height:14px;gap:2px;padding:3px 4px;border-radius:7px;background:#2d1e2dbd;backdrop-filter:blur(5px)}
+.music-equalizer i{width:2px;height:4px}
+.music-island.is-playing .music-equalizer i{animation:island-eq .55s ease-in-out infinite alternate}
+.music-island-copy{gap:2px}
+.music-island-status{font-size:6px;letter-spacing:.18em}
+.music-island-title{font:600 12px var(--sans);letter-spacing:-.015em}
+.music-island-subtitle{font:8px var(--mono);letter-spacing:.04em;color:#8c7779}
+.music-island-chevron{display:none}
+.music-island-compact-toggle,.music-island-play{width:41px;height:41px;box-shadow:0 3px 0 #301a30,0 7px 14px #48283f25}
+.music-island-progress{position:absolute;left:18px;right:18px;bottom:0;height:2px;border-radius:99px;background:#e4d5ce;overflow:hidden;pointer-events:none}
+.music-island-progress span{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,#9d667b,#c6a16c);box-shadow:0 0 8px #a8757c88;transition:width .18s linear}
+.music-island.is-playing .music-island-progress span{box-shadow:0 0 10px #a8757caa}
+.music-island-panel{margin-top:8px;padding:16px 17px 15px;border-radius:20px;border-color:#d4bdb3;background:linear-gradient(145deg,rgba(255,253,249,.99),rgba(241,229,222,.985));box-shadow:0 22px 55px rgba(48,26,48,.22),inset 0 1px 0 #fff}
+.music-panel-top{grid-template-columns:58px minmax(0,1fr) 34px;gap:13px}
+.music-panel-cover{width:58px;height:58px;border-radius:12px;overflow:hidden;background:#34243a;box-shadow:0 0 0 1px #c8aaa1,0 6px 14px #48283f22}
+.music-panel-cover img{width:100%;height:100%;display:block;object-fit:cover}
+.music-panel-meta small{font-size:7px}
+.music-panel-meta strong{font:600 15px var(--sans);letter-spacing:-.02em}
+.music-panel-meta span{font-size:8px}
+.music-panel-progress{margin-top:16px}
+.music-seek{height:5px}
+.music-panel-controls{grid-template-columns:42px minmax(0,1fr) auto 32px;gap:10px;margin-top:14px}
+.music-panel-status{font-size:8px}
+.music-panel-volume{gap:6px}
+.music-volume{width:74px}
+.music-mute{width:31px;height:31px}
+.music-island-error{font-size:9px}
+@media(max-width:640px){
+ .music-island{width:min(376px,calc(100vw - 20px));bottom:calc(env(safe-area-inset-bottom,0px) + 9px)}
+ .music-island-capsule{min-height:62px;padding:7px 8px 8px;grid-template-columns:minmax(0,1fr) 40px}
+ .music-island-art{width:40px;height:40px}
+ .music-island-title{font-size:11px}
+ .music-island-subtitle{font-size:7px}
+ .music-island-compact-toggle,.music-island-play{width:38px;height:38px}
+ .music-island-panel{padding:14px 13px 13px}
+ .music-panel-controls{grid-template-columns:40px minmax(0,1fr) auto 30px;gap:7px}
+ .music-volume{width:60px}
+ body.music-island-expanded .back-to-top{bottom:220px}
+}
+@media(max-width:365px){.music-panel-controls{grid-template-columns:38px minmax(0,1fr) 30px}.music-panel-volume{grid-column:2;justify-content:flex-end}.music-mute{grid-column:3;grid-row:1}.music-panel-status{grid-column:2}}
+@media(prefers-reduced-motion:reduce){.music-island-progress span{transition:none!important}.album-art img{transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -492,7 +630,14 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
 </header>
 <div class="menu-scrim" id="menuScrim"></div>
 <aside class="menu-panel" id="menuPanel" aria-hidden="true">
- <div class="menu-panel-head"><div><strong>Doğum gününe özel oluşturulmuş web sayfana hoş geldin.</strong><small>DILEDIGIN SAYFAYI SEÇ</small></div><button class="menu-close" id="menuClose" type="button" aria-label="Menüyü kapat">×</button></div>
+ <div class="menu-panel-head">
+  <div class="menu-heading-copy">
+   <small class="menu-panel-kicker">KUMSAL'A ÖZEL · 03 ARALIK</small>
+   <strong>Nereye geçmek istersin?</strong>
+   <span>Her köşede sana ayırdığımız başka bir şey var.</span>
+  </div>
+  <button class="menu-close" id="menuClose" type="button" aria-label="Menüyü kapat">×</button>
+ </div>
  <div class="menu-grid">
   <button class="menu-item" data-view="home"><span class="menu-icon">⌂</span><span><strong>Ana sayfa</strong><small>Doğum günü & sayaç</small></span></button>
   <button class="menu-item" data-view="memories"><span class="menu-icon">▧</span><span><strong>Anılar</strong><small>Fotoğraf albümü</small></span></button>
@@ -503,6 +648,7 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
   <button class="menu-item" data-view="song"><span class="menu-icon">♫</span><span><strong>Sevdiğin bir şarkı</strong><small>Sign of the Times</small></span></button>
   <button class="menu-item menu-item-finale" data-view="finale"><span class="menu-icon">✧</span><span><strong>Son sürpriz</strong><small>Sana sakladığımız son şey</small></span></button>
  </div>
+ <div class="menu-panel-footer"><span class="menu-footer-heart">♡</span><span>İyi ki doğdun, Kumsal.</span><small>8 BÖLÜM · TEK BİR HİKÂYE</small></div>
 </aside>
 <main>
 <section class="view active" id="view-home" aria-label="Ana sayfa">
@@ -524,16 +670,10 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
  <div class="page-hero"><div class="page-kicker">BİRLİKTE BİRİKTİRDİKLERİMİZ</div><h1 class="page-title">Anılarımız <em>♡</em></h1><p class="page-description">Buraya seninle birlikte geçirdiğimiz günlerden birkaç fotoğraf koyduk. Her birine baktıkça o günler, yaptıklarımız, bol bol güldüğümüz anlar aklımıza geliyor. İnan ki hepsinin yeri bizde çok ayrı. Bazen keşke o günlere tekrar dönebilsek diyoruz. Geçmişte biriktirdiğimiz bütün bu anılar için de, hayatımızda olduğun için de çok mutluyuz. İyi ki varsın, iyi ki bizimlesin. Seni çok seviyoruz</p></div>
  <div class="page-body">
   <div class="memory-toolbar">
-   <div class="memory-toolbar-copy"><span class="memory-toolbar-kicker">ANILAR KOLEKSİYONU</span><strong id="memoryCount">131 KARE · BİZDEN BİR ALBÜM</strong></div>
+   <div class="memory-toolbar-copy"><span class="memory-toolbar-kicker">ANILAR KOLEKSİYONU</span><strong id="memoryCount">131 FOTOĞRAF · BİZDEN KALANLAR</strong></div>
    <button class="memory-random" id="memoryRandom" type="button"><span aria-hidden="true">✧</span> RASTGELE BİR ANI SEÇ</button>
   </div>
-  <div class="memory-filters" role="group" aria-label="Anı koleksiyonunu filtrele">
-   <button class="memory-filter active" type="button" data-memory-filter="all" aria-pressed="true">Tüm kareler <span>131</span></button>
-   <button class="memory-filter" type="button" data-memory-filter="close" aria-pressed="false">Yakın planlar</button>
-   <button class="memory-filter" type="button" data-memory-filter="outside" aria-pressed="false">Dışarıda</button>
-   <button class="memory-filter" type="button" data-memory-filter="everyday" aria-pressed="false">Günlük anlar</button>
-  </div>
-  <p class="memory-filter-note" id="memoryFilterNote">Bütün kareler burada; fotoğraflarımızı dilediğin gibi kaydırıp görüntüleyebilirsin.</p>
+  <p class="memory-filter-note memory-intro-note">Hepsi bir arada. Bir fotoğrafa dokunup büyütebilir, albümde dilediğin gibi gezebilirsin. ♡</p>
   <div class="memory-grid" id="memoryGrid"></div>
  </div>
 </section>
@@ -576,12 +716,12 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
   <div class="letter-bottom-mark" aria-hidden="true">♡ &nbsp; ♡ &nbsp; ♡</div>
 </article>
 <section class="voices-section" aria-labelledby="voicesTitle">
- <div class="voices-heading"><div><div class="page-kicker">DÖRT KÜÇÜK SES</div><h2 id="voicesTitle">Bir de <em>bizden dinle.</em></h2></div><p>Her birimizden sana ayrı bir satır. Sana olan mesajlarımızı görmek için kartların üzerine tıklayabilirsin, Seni çok seviyoruz.</p></div>
+ <div class="voices-heading"><div><div class="page-kicker">DÖRT KÜÇÜK NOT</div><h2 id="voicesTitle">Bir de <em>bizden oku.</em></h2></div><p>Her birimizden sana ayrı bir mesaj var. Kartlara dokununca notlarımızı tek tek okuyabilirsin. Seni çok seviyoruz.</p></div>
  <div class="voice-grid">
-  <button class="voice-card" type="button" aria-expanded="false"><span class="voice-front"><span class="voice-mark">B</span><span class="voice-from">BENNA</span><span class="voice-prompt">Sana küçük bir notum var</span><span class="voice-hint">NOTU AÇ ↗</span></span><span class="voice-back"><span class="voice-back-kicker">BENNA'DAN, SEVGİYLE</span><span class="voice-message">Seninle paylaştığımız her güzel kare, dönüp baktığımda yüzümü gülümsetiyor. İyi ki varsın, iyi ki birlikte nice anımız var.</span><span class="voice-heart">♡</span></span></button>
-  <button class="voice-card" type="button" aria-expanded="false"><span class="voice-front"><span class="voice-mark">Ç</span><span class="voice-from">ÇAĞLAR</span><span class="voice-prompt">Sana küçük bir notum var</span><span class="voice-hint">NOTU AÇ ↗</span></span><span class="voice-back"><span class="voice-back-kicker">ÇAĞLAR'DAN, SEVGİYLE</span><span class="voice-message">Birlikte daha anlatılacak çok şey, biriktirilecek çok anı var. Yeni yaşın sana bol kahkaha ve güzel sürprizler getirsin.</span><span class="voice-heart">♡</span></span></button>
-  <button class="voice-card" type="button" aria-expanded="false"><span class="voice-front"><span class="voice-mark">İ</span><span class="voice-from">İSMET</span><span class="voice-prompt">Sana küçük bir notum var</span><span class="voice-hint">NOTU AÇ ↗</span></span><span class="voice-back"><span class="voice-back-kicker">İSMET'TEN, SEVGİYLE</span><span class="voice-message">En güzel anılar bazen en sıradan günlerde saklı. O günleri birlikte paylaştığımız için mutluyum. İyi ki doğdun!</span><span class="voice-heart">♡</span></span></button>
-  <button class="voice-card" type="button" aria-expanded="false"><span class="voice-front"><span class="voice-mark">T</span><span class="voice-from">TUNA</span><span class="voice-prompt">Sana küçük bir notum var</span><span class="voice-hint">NOTU AÇ ↗</span></span><span class="voice-back"><span class="voice-back-kicker">TUNA'DAN, SEVGİYLE</span><span class="voice-message">Bu küçük dünyanın içinde sana söylemek istediğimiz çok şey var. İyi ki hayatımızdasın; daha anlatacak çok hikâyemiz olsun.</span><span class="voice-heart">♡</span></span></button>
+  <button class="voice-card" type="button" aria-expanded="false"><span class="voice-front"><span class="voice-mark">B</span><span class="voice-from">BENNA</span><span class="voice-prompt">Sana küçük bir notum var</span><span class="voice-hint">MESAJI OKU ↗</span></span><span class="voice-back"><span class="voice-back-kicker">BENNA'DAN, SEVGİYLE</span><span class="voice-message">Seninle paylaştığımız her güzel kare, dönüp baktığımda yüzümü gülümsetiyor. İyi ki varsın, iyi ki birlikte nice anımız var.</span><span class="voice-heart">♡</span></span></button>
+  <button class="voice-card" type="button" aria-expanded="false"><span class="voice-front"><span class="voice-mark">Ç</span><span class="voice-from">ÇAĞLAR</span><span class="voice-prompt">Sana küçük bir notum var</span><span class="voice-hint">MESAJI OKU ↗</span></span><span class="voice-back"><span class="voice-back-kicker">ÇAĞLAR'DAN, SEVGİYLE</span><span class="voice-message">Birlikte daha anlatılacak çok şey, biriktirilecek çok anı var. Yeni yaşın sana bol kahkaha ve güzel sürprizler getirsin.</span><span class="voice-heart">♡</span></span></button>
+  <button class="voice-card" type="button" aria-expanded="false"><span class="voice-front"><span class="voice-mark">İ</span><span class="voice-from">İSMET</span><span class="voice-prompt">Sana küçük bir notum var</span><span class="voice-hint">MESAJI OKU ↗</span></span><span class="voice-back"><span class="voice-back-kicker">İSMET'TEN, SEVGİYLE</span><span class="voice-message">En güzel anılar bazen en sıradan günlerde saklı. O günleri birlikte paylaştığımız için mutluyum. İyi ki doğdun!</span><span class="voice-heart">♡</span></span></button>
+  <button class="voice-card" type="button" aria-expanded="false"><span class="voice-front"><span class="voice-mark">T</span><span class="voice-from">TUNA</span><span class="voice-prompt">Sana küçük bir notum var</span><span class="voice-hint">MESAJI OKU ↗</span></span><span class="voice-back"><span class="voice-back-kicker">TUNA'DAN, SEVGİYLE</span><span class="voice-message">Bu küçük dünyanın içinde sana söylemek istediğimiz çok şey var. İyi ki hayatımızdasın; daha anlatacak çok hikâyemiz olsun.</span><span class="voice-heart">♡</span></span></button>
  </div>
  <p class="voices-footnote">DÖRT İSİM · DÖRT İÇTEN SES</p>
 </section>
@@ -589,7 +729,7 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
 </section>
 <section class="view" id="view-song">
  <div class="page-hero"><div class="page-kicker">HOŞUNA GİDEN BİR ŞARKI</div><h1 class="page-title">Bir şarkı, <em>bir sürü his.</em></h1><p class="page-description">Bazı şarkılar birini hatırlatır. Bu da senin için, Kumsal. Sesi açıp bu küçük anın tadını çıkarabilirsin. Aynı zamanda şarkı çaldığı esnada sitede dilediğin gibi gezebilirsin.</p></div>
- <div class="page-body"><div class="song-stage"><div class="album-art" aria-label="Sign of the Times için özel kapak"></div><div class="song-copy"><div class="page-kicker">KUMSAL'IN SEVDİĞİ BİR ŞARKI</div><h2>Sign of the Times</h2><p>Harry Styles · 2017 · 5:40</p><div class="song-inline-player">
+ <div class="page-body"><div class="song-stage"><div class="album-art" aria-label="Sign of the Times albüm kapağı"><img src="assets/sign-of-the-times-cover.webp" alt="Sign of the Times kapak görseli"></div><div class="song-copy"><div class="page-kicker">KUMSAL'IN SEVDİĞİ BİR ŞARKI</div><h2>Sign of the Times</h2><p>Harry Styles · 2017 · 5:40</p><div class="song-inline-player">
  <button class="song-inline-toggle" id="songInlineToggle" type="button" data-music-control aria-label="Şarkıyı başlat">▶</button>
  <div class="song-inline-meta"><strong id="songInlineTitle">Şarkıyı başlat</strong><small id="songInlineStatus">Müzik, siteyi gezerken kesilmeden devam eder.</small></div>
  <span class="song-inline-note" aria-hidden="true">♫</span>
@@ -636,30 +776,43 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
 
 </main>
 <footer class="footer"><span>İYİ Kİ DOĞDUN KUMSAL · 2026</span><button class="footer-seal" id="secretEnvelopeTrigger" type="button" aria-label="Saklı zarfı aç">✉</button><span>SEVGİYLE HAZIRLANDI ♡</span></footer>
+<div class="voice-note-overlay" id="voiceNoteOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="voiceNoteTitle">
+ <article class="voice-note-paper">
+  <button class="voice-note-close" id="voiceNoteClose" type="button" aria-label="Notu kapat">×</button>
+  <div class="voice-note-topline"><span>SADECE SANA</span><span>♡</span></div>
+  <div class="voice-note-seal" aria-hidden="true">✉</div>
+  <div class="voice-note-kicker" id="voiceNoteFrom">BİR ARKADAŞINDAN</div>
+  <h3 id="voiceNoteTitle">Sana küçük bir not.</h3>
+  <p class="voice-note-text" id="voiceNoteText"></p>
+  <div class="voice-note-sign">Sevgiyle, <span id="voiceNoteSignature"></span></div>
+  <div class="voice-note-bottom" aria-hidden="true">♡ &nbsp; ✳ &nbsp; ♡</div>
+ </article>
+</div>
 <div class="secret-envelope-overlay" id="secretEnvelope" role="dialog" aria-modal="true" aria-labelledby="secretEnvelopeTitle" aria-hidden="true">
  <div class="secret-envelope-card"><button class="secret-envelope-close" id="secretEnvelopeClose" type="button" aria-label="Kapat">×</button><div class="envelope-stamp" aria-hidden="true">♡</div><div class="envelope-kicker">BİR KÖŞEYE SAKLADIK</div><h2 id="secretEnvelopeTitle">Küçük bir<br><em>hatırlatma.</em></h2><p>Her fotoğraf bir anı, her anı ayrı bir mutluluk. Ama bu sayfanın en güzel tarafı fotoğraflar değil; hepsinin içinde senin de olman. İyi ki varsın, Kumsal. ♡</p><div class="envelope-sign">Seni seven arkadaşların</div><div class="envelope-names">BENNA · ÇAĞLAR · İSMET · TUNA</div></div>
 </div>
 </div>
-<audio id="siteAudio" src="kumsal-site-sarkisi.mp3" preload="none" loop></audio>
+<audio id="siteAudio" src="kumsal-site-sarkisi.mp3" preload="metadata" loop playsinline></audio>
 <aside class="music-island" id="musicDock" aria-label="Site müzik oynatıcısı" data-music-control>
  <div class="music-island-capsule">
   <button class="music-island-expand" id="musicIslandExpand" type="button" aria-expanded="false" aria-controls="musicIslandPanel" aria-label="Müzik kontrollerini aç" data-music-control>
-   <span class="music-island-art" aria-hidden="true"><span class="music-equalizer"><i></i><i></i><i></i><i></i><i></i></span></span>
-   <span class="music-island-copy"><span class="music-island-status" id="musicKicker">MÜZİĞİ BAŞLAT</span><strong class="music-island-title">Sign of the Times</strong></span>
+   <span class="music-island-art" aria-hidden="true"><img src="assets/sign-of-the-times-cover.webp" alt=""><span class="music-equalizer"><i></i><i></i><i></i><i></i><i></i></span></span>
+   <span class="music-island-copy"><span class="music-island-status" id="musicKicker">MÜZİĞİ BAŞLAT</span><strong class="music-island-title">Sign of the Times</strong><span class="music-island-subtitle">Harry Styles</span></span>
    <span class="music-island-chevron" aria-hidden="true">⌃</span>
   </button>
   <button class="music-island-compact-toggle" id="musicToggleCompact" type="button" data-music-control aria-label="Şarkıyı başlat" title="Şarkıyı başlat">▶</button>
+  <div class="music-island-progress" aria-hidden="true"><span id="musicIslandProgress"></span></div>
  </div>
  <section class="music-island-panel" id="musicIslandPanel" aria-label="Gelişmiş müzik kontrolleri" hidden>
   <div class="music-panel-top">
-   <div class="music-panel-cover" aria-hidden="true">ST</div>
+   <div class="music-panel-cover" aria-hidden="true"><img src="assets/sign-of-the-times-cover.webp" alt=""></div>
    <div class="music-panel-meta"><small>SİTENİN MÜZİĞİ</small><strong>Sign of the Times</strong><span>Harry Styles · Kumsal için</span></div>
    <button class="music-island-collapse" id="musicIslandCollapse" type="button" data-music-control aria-label="Müzik panelini küçült">⌄</button>
   </div>
   <div class="music-panel-progress"><input class="music-seek" id="musicSeek" type="range" min="0" max="1000" step="1" value="0" aria-label="Şarkıda ilerle"><div class="music-time"><span id="musicCurrentTime">0:00</span><span id="musicDuration">5:42</span></div></div>
   <div class="music-panel-controls">
    <button class="music-island-play" id="musicToggle" type="button" data-music-control aria-label="Şarkıyı başlat" title="Şarkıyı başlat">▶</button>
-   <span class="music-panel-status" id="musicExpandedStatus">Müziği başlat, siteyi gezerken yanında kalsın.</span>
+   <span class="music-panel-status" id="musicExpandedStatus">Oynat düğmesine dokun; müzik sayfalar arasında devam etsin.</span>
    <label class="music-panel-volume" aria-label="Ses düzeyi"><span aria-hidden="true">♫</span><input class="music-volume" id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.72" aria-label="Ses düzeyi"></label>
    <button class="music-mute" id="musicMute" type="button" data-music-control aria-label="Sesi kapat" title="Sesi kapat">◖))</button>
   </div>
@@ -908,43 +1061,22 @@ const galleryContainPhotos = new Set([
  "images/photo-088.webp", "images/photo-092.webp", "images/photo-105.webp",
  "images/photo-118.webp", "images/photo-126.webp"
 ]);
-const photoNumbers = values => new Set(values.split(/\s+/).filter(Boolean).map(Number));
-const galleryCollections = {
- close: photoNumbers("001 002 004 006 007 008 011 012 014 015 017 018 019 022 023 027 028 030 032 033 034 035 039 042 044 045 046 047 050 051 052 053 056 057 062 063 064 065 066 068 069 071 072 073 074 075 076 077 079 080 081 083 084 085 087 089 090 091 095 096 098 101 102 103 104 105 107 108 109 110 112 114 116 118 120 121 122 123 124 125 126 127 129 130"),
- outside: photoNumbers("001 003 005 013 018 019 021 022 023 030 035 036 037 038 040 043 047 053 055 057 060 065 067 068 070 075 078 081 082 086 087 088 091 092 093 094 095 097 098 106 111 113 115 117 119 121 130 131"),
- everyday: photoNumbers("002 004 008 009 010 014 016 020 024 025 026 027 028 029 031 032 033 034 037 039 041 042 044 045 046 048 049 050 051 052 054 056 057 058 059 061 062 063 064 066 067 069 071 072 073 074 076 077 079 080 083 084 085 086 089 090 096 099 100 101 102 103 104 105 106 107 108 109 110 111 112 114 116 118 120 122 123 124 125 126 127 128 129 131")
-};
 const gallery = document.getElementById("memoryGrid");
 
 const galleryCaptions = [
- "En güzel günlerden biri", "Birlikte gülmek", "Küçük bir macera", "İyi ki o gün",
- "Favori karelerim", "Hep hatırlayacağım", "Bizim enerjimiz", "Bir başka güzel an",
- "Günün en güzel tarafı", "Biraz spontane, çokça biz", "Bir kareye sığan koca gün",
- "Yan yana, her yerde", "Dönüp bakmalık bir kare", "Sıradan olmayan sıradanlık",
- "Devamı gelecek ♡"
+ "İyi ki çekmişiz.", "Şunu hatırlıyor musun?", "O gün de çok gülmüştük.",
+ "Yine olsa, yine.", "İşte bizim hâlimiz.", "Bunu da unutmayalım.",
+ "Bu kareyi seviyoruz.", "Ne güzel denk gelmişiz.", "Birlikte olduğumuz günlerden.",
+ "Hâlâ favorilerden biri.", "Bu da burada kalsın.", "Bir ara bunu tekrar yapalım.",
+ "Hatırlayınca gülümsedik.", "Yine güzel bir an.", "İyi ki o gün yan yanaydık."
 ];
 let galleryIndex = 0;
 let galleryObserver = null;
-let activeGalleryFilter = "all";
-let galleryItems = galleryPhotos.map((src,index)=>({src,index}));
+const galleryItems = galleryPhotos.map((src,index)=>({src,index}));
 const galleryBatchSize = 12;
 const gallerySentinel = document.createElement("div");
 gallerySentinel.className = "gallery-sentinel";
 gallerySentinel.setAttribute("aria-hidden", "true");
-function selectedGalleryItems(filter){
- if(filter === "all") return galleryPhotos.map((src,index)=>({src,index}));
- const set = galleryCollections[filter];
- return galleryPhotos.map((src,index)=>({src,index})).filter(item=>set?.has(item.index+1));
-}
-function refreshMemoryCount(){
- const count=document.getElementById("memoryCount");
- const note=document.getElementById("memoryFilterNote");
- if(count) count.textContent=activeGalleryFilter==="all"?"131 KARE · BİZDEN BİR PARÇA":galleryItems.length+" KARE · KÜÇÜK BİR KOLEKSİYON";
- if(note){
-  const notes={all:"Bütün kareler burada; bir koleksiyon seçerek küçük bir yolculuğa çıkabilirsin.",close:"Yakın planlar, gülümsemeler ve birbirimize biraz daha yaklaştığımız kareler.",outside:"Dışarıda geçen günlerden, yollardan ve birlikte keşfettiğimiz yerlerden kareler.",everyday:"Büyük planlar gerektirmeyen, kendi hâlinde güzel günlük anlar."};
-  note.textContent=notes[activeGalleryFilter]||notes.all;
- }
-}
 function appendGalleryBatch(){
  if (galleryIndex >= galleryItems.length) { galleryObserver?.unobserve(gallerySentinel); gallerySentinel.remove(); return; }
  const batch = document.createDocumentFragment();
@@ -981,15 +1113,9 @@ function setupGalleryObserver(){
   if(galleryIndex<galleryItems.length)galleryObserver.observe(gallerySentinel);
  } else { galleryObserver=null; while(galleryIndex<galleryItems.length)appendGalleryBatch(); }
 }
-function setGalleryFilter(filter){
- activeGalleryFilter=(filter==="all"||galleryCollections[filter])?filter:"all";
- galleryItems=selectedGalleryItems(activeGalleryFilter); galleryIndex=0;
- galleryObserver?.disconnect(); gallery.replaceChildren(); gallery.after(gallerySentinel);
- document.querySelectorAll("[data-memory-filter]").forEach(button=>{const active=button.dataset.memoryFilter===activeGalleryFilter;button.classList.toggle("active",active);button.setAttribute("aria-pressed",String(active));});
- refreshMemoryCount(); appendGalleryBatch(); setupGalleryObserver();
-}
-document.querySelectorAll("[data-memory-filter]").forEach(button=>button.addEventListener("click",()=>setGalleryFilter(button.dataset.memoryFilter)));
-refreshMemoryCount(); gallery.after(gallerySentinel); appendGalleryBatch(); setupGalleryObserver();
+gallery.after(gallerySentinel);
+appendGalleryBatch();
+setupGalleryObserver();
 // Continuous film strip: curated photo selection, duplicated for seamless scrolling.
 const validFilm=filmPhotos.filter(valid);
 const filmSource=validFilm.length?validFilm:[];
@@ -1023,7 +1149,7 @@ function showView(name,updateHash=true){
  const target=document.getElementById("view-"+name);if(!target)return;
  document.querySelectorAll(".view").forEach(v=>{const active=v===target;v.classList.toggle("active",active);v.setAttribute("aria-hidden",String(!active));});
  document.querySelectorAll(".nav-btn").forEach(b=>{const active=b.dataset.view===name;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active));if(active)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
- document.querySelectorAll(".menu-item").forEach(b=>b.classList.toggle("active",b.dataset.view===name));
+ document.querySelectorAll(".menu-item").forEach(b=>{const active=b.dataset.view===name;b.classList.toggle("active",active);if(active)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
  if(name==="memories" && matchMedia("(min-width:1201px)").matches){
   gallery.querySelectorAll("img").forEach((img,index)=>{if(index<8){img.loading="eager";img.fetchPriority="high";}});
  }
@@ -1036,7 +1162,7 @@ document.querySelector(".brand").addEventListener("click",e=>{e.preventDefault()
 document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.go)));
 window.addEventListener("popstate",()=>showView(location.hash.slice(1)||"home",false));
 showView(location.hash.slice(1)||"home",false);
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMenu(true);closeMemory();closeSecretEnvelopeIfOpen();}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMenu(true);closeMemory();closeSecretEnvelopeIfOpen();closeVoiceNote();}if(e.key==="Tab"&&voiceOverlay?.classList.contains("open")){e.preventDefault();voiceClose.focus();}});
 
 // Flip cards are native buttons: tap, mouse, Enter and Space all work.
 document.querySelectorAll(".reason-card").forEach(card=>card.addEventListener("click",()=>{const open=card.getAttribute("aria-pressed")==="true";card.setAttribute("aria-pressed",String(!open));}));
@@ -1127,16 +1253,82 @@ const wishes=[
 ];
 let wishIndex=0;
 const wishNext=document.getElementById("wishNext"),wishText=document.getElementById("wishText"),wishCount=document.getElementById("wishCount"),wishProgressFill=document.getElementById("wishProgressFill"),wishFinalTrigger=document.getElementById("wishFinalTrigger"),finalSecret=document.getElementById("finalSecret");
-function smallSparkBurst(){const r=wishNext.getBoundingClientRect();const originX=r.left+r.width/2,originY=r.top+r.height/2;launchPartyConfettiAt(originX,originY)}
-function launchPartyConfettiAt(x,y){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const canvas=document.createElement("canvas");canvas.style.cssText="position:fixed;inset:0;width:100%;height:100%;z-index:1300;pointer-events:none";canvas.setAttribute("aria-hidden","true");document.body.append(canvas);const ctx=canvas.getContext("2d");if(!ctx){canvas.remove();return}const dpr=Math.min(devicePixelRatio||1,2),w=innerWidth,h=innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;ctx.scale(dpr,dpr);const palette=["#bd7d8d","#d6ad76","#f1d9b1","#92708d","#e6aaa0"];const p=[];for(let i=0;i<50;i++){const a=Math.PI*2*i/50,sp=1.5+Math.random()*4.5;p.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,rot:Math.random()*6,spin:(Math.random()-.5)*.2,size:2+Math.random()*4,c:palette[i%palette.length],life:1})}const t=performance.now();function frame(now){ctx.clearRect(0,0,w,h);p.forEach(q=>{q.x+=q.vx;q.y+=q.vy;q.vy+=.045;q.life-=.014;q.rot+=q.spin;ctx.save();ctx.globalAlpha=Math.max(0,q.life);ctx.translate(q.x,q.y);ctx.rotate(q.rot);ctx.fillStyle=q.c;ctx.fillRect(-q.size/2,-q.size/2,q.size,q.size*1.5);ctx.restore()});if(now-t<1150){requestAnimationFrame(frame)}else canvas.remove()}requestAnimationFrame(frame)}
+function smallSparkBurst(){const r=wishNext.getBoundingClientRect();launchPartyConfettiAt(r.left+r.width/2,r.top+r.height/2)}
+function launchPartyConfettiAt(x,y){
+ if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+ const previous=document.querySelector(".wish-confetti-canvas");if(previous)previous.remove();
+ const canvas=document.createElement("canvas");canvas.className="wish-confetti-canvas";canvas.setAttribute("aria-hidden","true");
+ canvas.style.cssText="position:fixed;inset:0;width:100%;height:100%;z-index:1300;pointer-events:none";
+ document.body.append(canvas);
+ const ctx=canvas.getContext("2d");if(!ctx){canvas.remove();return}
+ const dpr=Math.min(devicePixelRatio||1,1.65),w=innerWidth,h=innerHeight;
+ canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.scale(dpr,dpr);
+ const palette=["#b66f83","#d4a46c","#f4dfb9","#8b6b91","#e7a6a0","#fff5e7"];
+ const pieces=[],rand=(min,max)=>min+Math.random()*(max-min);
+ for(let i=0;i<118;i++){
+  const angle=rand(-Math.PI*1.92,-Math.PI*.08),speed=rand(2.1,8.6);
+  pieces.push({x:x+rand(-9,9),y:y+rand(-5,5),vx:Math.cos(angle)*speed+rand(-1.1,1.1),vy:Math.sin(angle)*speed-rand(0,1.5),
+   gravity:rand(.075,.16),drag:rand(.986,.996),rotation:rand(0,Math.PI*2),spin:rand(-.16,.16),
+   width:rand(3,7),height:rand(5,12),color:palette[Math.floor(Math.random()*palette.length)],
+   shape:["rect","rect","circle","star"][Math.floor(Math.random()*4)],life:rand(1.0,1.35),fade:rand(.006,.012),
+   wobble:rand(0,Math.PI*2),wobbleSpeed:rand(.035,.085)});
+ }
+ for(let i=0;i<28;i++){
+  const a=Math.PI*2*i/28,sp=rand(.7,2.4);
+  pieces.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,gravity:-.006,drag:.975,rotation:0,spin:0,
+   width:rand(1.5,3),height:rand(1.5,3),color:palette[i%palette.length],shape:"circle",life:.8,fade:.018,wobble:0,wobbleSpeed:0});
+ }
+ function drawStar(px,py,r,color){
+  ctx.beginPath();
+  for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5,rr=k%2?r*.42:r,xx=px+Math.cos(a)*rr,yy=py+Math.sin(a)*rr;k?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy)}
+  ctx.closePath();ctx.fillStyle=color;ctx.fill();
+ }
+ const started=performance.now();
+ function frame(now){
+  ctx.clearRect(0,0,w,h);let alive=0;
+  for(const q of pieces){
+   if(q.life<=0)continue;alive++;
+   q.vx*=q.drag;q.vy=q.vy*q.drag+q.gravity;q.x+=q.vx+Math.sin(q.wobble)*.35;q.y+=q.vy;
+   q.wobble+=q.wobbleSpeed;q.rotation+=q.spin;q.life-=q.fade;
+   ctx.save();ctx.globalAlpha=Math.min(1,Math.max(0,q.life));ctx.translate(q.x,q.y);ctx.rotate(q.rotation);
+   if(q.shape==="circle"){ctx.beginPath();ctx.arc(0,0,q.width*.62,0,Math.PI*2);ctx.fillStyle=q.color;ctx.fill()}
+   else if(q.shape==="star"){drawStar(0,0,q.width,q.color)}
+   else{ctx.fillStyle=q.color;ctx.fillRect(-q.width/2,-q.height/2,q.width,q.height)}
+   ctx.restore();
+  }
+  if(alive&&now-started<2300)requestAnimationFrame(frame);else canvas.remove();
+ }
+ requestAnimationFrame(frame);
+}
 if(wishNext){wishNext.addEventListener("click",()=>{if(wishIndex>=wishes.length)return;wishText.textContent=wishes[wishIndex];wishCount.textContent="DİLEK "+(wishIndex+1)+" / "+wishes.length;wishProgressFill.style.width=((wishIndex+1)/wishes.length*100)+"%";document.getElementById("wishIntro").textContent="Bir dilek daha açıldı. Hepsi senin için. ♡";const box=document.getElementById("wishMessage");box.classList.remove("is-revealing");void box.offsetWidth;box.classList.add("is-revealing");launchPartyConfettiAt(innerWidth/2,innerHeight*.57);wishIndex++;if(wishIndex===wishes.length){wishNext.textContent="DİLEKLERİN HEPSİ SENİN ♡";wishNext.disabled=true;wishFinalTrigger.hidden=false;}})}
 if(wishFinalTrigger){wishFinalTrigger.addEventListener("click",()=>{finalSecret.hidden=false;wishFinalTrigger.hidden=true;if(creditsTrigger)creditsTrigger.hidden=false;launchPartyConfettiAt(innerWidth/2,innerHeight*.62);setTimeout(()=>finalSecret.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"}),80)})}
 
-// Four individual note cards; each opens like a small keepsake.
-document.querySelectorAll(".voice-card").forEach(card=>card.addEventListener("click",()=>{
- const open=card.getAttribute("aria-expanded")==="true";
- card.setAttribute("aria-expanded",String(!open));
-}));
+// Each personal note opens in a paper-like modal, sized for comfortable reading.
+const voiceOverlay=document.getElementById("voiceNoteOverlay");
+const voiceClose=document.getElementById("voiceNoteClose");
+const voiceFrom=document.getElementById("voiceNoteFrom");
+const voiceText=document.getElementById("voiceNoteText");
+const voiceSignature=document.getElementById("voiceNoteSignature");
+let activeVoiceCard=null,voicePreviousOverflow="";
+function openVoiceNote(card){
+ const name=card.querySelector(".voice-from")?.textContent.trim()||"ARKADAŞINDAN";
+ const message=card.querySelector(".voice-message")?.textContent.trim()||"";
+ activeVoiceCard=card;voicePreviousOverflow=document.body.style.overflow;
+ document.querySelectorAll(".voice-card").forEach(item=>item.setAttribute("aria-expanded",String(item===card)));
+ voiceFrom.textContent=name+"’DAN, SEVGİYLE";voiceText.textContent=message;voiceSignature.textContent=name;
+ voiceOverlay.classList.add("open");voiceOverlay.setAttribute("aria-hidden","false");
+ document.body.style.overflow="hidden";voiceClose.focus({preventScroll:true});
+}
+function closeVoiceNote(){
+ if(!voiceOverlay?.classList.contains("open"))return;
+ voiceOverlay.classList.remove("open");voiceOverlay.setAttribute("aria-hidden","true");
+ document.body.style.overflow=voicePreviousOverflow;
+ document.querySelectorAll(".voice-card").forEach(item=>item.setAttribute("aria-expanded","false"));
+ if(activeVoiceCard?.focus)activeVoiceCard.focus({preventScroll:true});activeVoiceCard=null;
+}
+document.querySelectorAll(".voice-card").forEach(card=>card.addEventListener("click",()=>openVoiceNote(card)));
+voiceClose.addEventListener("click",closeVoiceNote);
+voiceOverlay.addEventListener("click",event=>{if(event.target===voiceOverlay)closeVoiceNote();});
 
 // Respect reduced-motion settings and give low-resource devices a gentler motion profile.
 const lowMotionRequested=matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1164,7 +1356,7 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
 
 
 
-// KUMSAL 11.0 ULTRA — persistent soundtrack with a compact, expandable music island.
+// KUMSAL 11.1 — persistent soundtrack with a compact, expandable music island.
 (()=>{
  const audio=document.getElementById("siteAudio");
  const dock=document.getElementById("musicDock");
@@ -1179,6 +1371,7 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
  const volume=document.getElementById("musicVolume");
  const mute=document.getElementById("musicMute");
  const expandedStatus=document.getElementById("musicExpandedStatus");
+ const islandProgress=document.getElementById("musicIslandProgress");
  const errorMessage=document.getElementById("musicError");
  const inlineToggle=document.getElementById("songInlineToggle");
  const inlineTitle=document.getElementById("songInlineTitle");
@@ -1205,7 +1398,7 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
    button.title=playing?"Duraklat":"Şarkıyı başlat";
   });
   kicker.textContent=playing?"ŞU AN ÇALIYOR":(hasStarted?"DURAKLATILDI":"MÜZİĞİ BAŞLAT");
-  if(expandedStatus)expandedStatus.textContent=playing?"Şarkı çalıyor · diğer bölümlere geçebilirsin.":(hasStarted?"Kaldığın yerden devam etmeye hazır.":"Müziği başlat, siteyi gezerken yanında kalsın.");
+  if(expandedStatus)expandedStatus.textContent=playing?"Şarkı çalıyor · diğer bölümlere geçebilirsin.":(hasStarted?"Kaldığın yerden devam etmeye hazır.":"Oynat düğmesine dokun; müzik sayfalar arasında devam etsin.");
   if(inlineToggle){inlineToggle.textContent=playing?"Ⅱ":"▶";inlineToggle.setAttribute("aria-label",playing?"Şarkıyı duraklat":"Şarkıyı başlat")}
   if(inlineTitle)inlineTitle.textContent=playing?"Şarkı çalıyor":"Şarkıyı başlat";
   if(inlineStatus)inlineStatus.textContent=playing?"Diğer bölümlere geçebilirsin; müzik devam edecek.":(hasStarted?"Dilediğin zaman kaldığın yerden devam et.":"Müzik, siteyi gezerken kesilmeden devam eder.");
@@ -1216,6 +1409,7 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
   const amount=total>0?Math.min(100,Math.max(0,audio.currentTime/total*100)):0;
   seek.value=String(Math.round(amount*10));
   seek.style.setProperty("--music-progress",amount+"%");
+  if(islandProgress)islandProgress.style.width=amount+"%";
   current.textContent=formatTime(audio.currentTime);
   if(Number.isFinite(audio.duration))duration.textContent=formatTime(audio.duration);
  }
@@ -1239,12 +1433,7 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
   if(dock.classList.contains("island-open")&&!dock.contains(event.target))setExpanded(false);
  },true);
  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&dock.classList.contains("island-open"))setExpanded(false)});
- // The first meaningful site control can start the soundtrack once; navigating between views never resets it.
- document.addEventListener("click",event=>{
-  if(hasStarted||!audio.paused)return;
-  if(event.target.closest("[data-music-control]"))return;
-  if(event.target.closest("button,a,[role='button']"))playMusic();
- },true);
+ // Music starts only from an explicit play control; navigation never interrupts it.
  audio.addEventListener("play",()=>{hasStarted=true;dock.classList.remove("has-error");paint()});
  audio.addEventListener("pause",paint);
  audio.addEventListener("timeupdate",paintProgress);
@@ -1254,9 +1443,9 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
  volume.addEventListener("input",()=>{const next=Number(volume.value);audio.volume=next;audio.muted=false;if(next>0)lastVolume=next;paint()});
  if(mute)mute.addEventListener("click",()=>{if(audio.muted||audio.volume===0){audio.muted=false;audio.volume=lastVolume||0.72;volume.value=String(audio.volume)}else{lastVolume=audio.volume||lastVolume;audio.muted=true}paint()});
  // Optional system media controls on supported browsers.
- if("mediaSession" in navigator){
+ if("mediaSession" in navigator&&typeof MediaMetadata!=="undefined"){
   try{
-   navigator.mediaSession.metadata=new MediaMetadata({title:"Sign of the Times",artist:"Harry Styles",album:"Kumsal için"});
+   navigator.mediaSession.metadata=new MediaMetadata({title:"Sign of the Times",artist:"Harry Styles",album:"Kumsal için",artwork:[{src:"assets/sign-of-the-times-cover.webp",sizes:"1200x1200",type:"image/webp"}]});
    navigator.mediaSession.setActionHandler("play",playMusic);
    navigator.mediaSession.setActionHandler("pause",()=>{audio.pause();hasStarted=true;paint()});
    navigator.mediaSession.setActionHandler("seekbackward",details=>{audio.currentTime=Math.max(0,audio.currentTime-(details.seekOffset||10));paintProgress()});
