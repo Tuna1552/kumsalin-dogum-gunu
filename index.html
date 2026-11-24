@@ -598,6 +598,45 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
 @media(max-width:365px){.music-panel-controls{grid-template-columns:38px minmax(0,1fr) 30px}.music-panel-volume{grid-column:2;justify-content:flex-end}.music-mute{grid-column:3;grid-row:1}.music-panel-status{grid-column:2}}
 @media(prefers-reduced-motion:reduce){.music-island-progress span{transition:none!important}.album-art img{transition:none!important}}
 
+
+/* Kumsal 11.2 — quiet photo labels, refined player controls and letter-like wishes. */
+.memory-card p{display:none!important}
+.memory-card small{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:11px 4px 0;padding-top:9px;border-top:1px solid #eee3da;font:7px var(--mono);letter-spacing:.13em;color:#a18b84}
+.memory-card small span:first-child{font-size:7px;letter-spacing:.12em;color:#a18b84}
+.memory-card small span:last-child{font-variant-numeric:tabular-nums;color:#725e66}
+.lightbox-caption{font:19px var(--hand);letter-spacing:.01em;color:#fff7ef}
+.music-time{align-items:center;gap:10px}
+.music-time-actions{display:flex;align-items:center;gap:6px}
+.music-skip{min-height:25px;padding:0 8px;border:1px solid #e7d9d1;border-radius:999px;background:rgba(255,250,245,.78);color:#765967;font:8px var(--mono);letter-spacing:.015em;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.music-skip:hover{background:#fff;border-color:#c9aaa0;transform:translateY(-1px)}
+.music-skip:active{transform:translateY(1px)}
+.music-island.is-playing .music-island-art{box-shadow:0 0 0 1px #c5a49d,0 0 0 4px #b9878c24,0 5px 14px #48283f28}
+.music-island.is-playing .music-island-capsule{border-color:#c6a6a0}
+.music-panel-meta{position:relative}
+.music-panel-meta small{display:flex;align-items:center;gap:7px}
+.music-panel-meta small:after{content:"";width:5px;height:5px;border-radius:50%;background:#b7a3a0;box-shadow:0 0 0 3px #b7a3a01c}
+.music-island.is-playing .music-panel-meta small:after{background:#8eaa76;box-shadow:0 0 0 3px #8eaa7628;animation:music-live-dot 1.7s ease-in-out infinite}
+@keyframes music-live-dot{50%{box-shadow:0 0 0 5px #8eaa760c}}
+.wish-message{position:relative;overflow:hidden;border-color:#e5d4c7;background:linear-gradient(145deg,#fffefa,#fff8f0);box-shadow:0 8px 24px #684a3c0d,inset 0 1px 0 #fff}
+.wish-message:before{content:"";position:absolute;left:18px;right:18px;top:0;height:2px;background:linear-gradient(90deg,transparent,#d7b48a,transparent);opacity:.8}
+.wish-message:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 25%,#fff9 48%,transparent 68%);transform:translateX(-120%);opacity:0}
+.wish-message.is-revealing{animation:wish-reveal .62s cubic-bezier(.2,.75,.24,1)}
+.wish-message.is-revealing:after{opacity:.8;animation:wish-sheen .9s ease-out both}
+.wish-count{display:flex;align-items:center;justify-content:center;gap:9px;color:#9c7473}
+.wish-count:before,.wish-count:after{content:"";width:22px;height:1px;background:#d9c4b8}
+.wish-next:disabled{background:linear-gradient(135deg,#79566b,#563b55);color:#f3e9e2;opacity:1;border-color:#79566b}
+.final-secret.is-opening{animation:final-note-in .72s cubic-bezier(.18,.78,.22,1) both}
+@keyframes wish-sheen{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+@media(max-width:640px){
+ .memory-card small{font-size:6px;margin:9px 2px 0;padding-top:8px;letter-spacing:.08em}
+ .memory-card small span:first-child{font-size:6px;letter-spacing:.08em}
+ .music-time{gap:5px}
+ .music-time-actions{gap:4px}
+ .music-skip{padding:0 6px;min-height:24px;font-size:7px}
+}
+@media(max-width:360px){.music-time{gap:4px}.music-skip{padding:0 5px;font-size:6px}}
+@media(prefers-reduced-motion:reduce){.music-island.is-playing .music-panel-meta small:after{animation:none}.wish-message.is-revealing:after{animation:none}.music-skip{transition:none}}
+
 </style>
 </head>
 <body>
@@ -756,8 +795,8 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
     <div class="final-secret-top"><span>SON BİR NOT</span><span>03 · 12 · 2026</span></div>
     <div class="final-secret-star" aria-hidden="true">✧</div>
     <h3>Bu sayfa bitebilir.<br><em>Hikâyemiz değil.</em></h3>
-    <p>Yeni yaşında karşına hep güzel insanlar, unutamayacağın günler ve seni kendine daha çok yaklaştıran fırsatlar çıksın. Biz de yanında olalım; daha çok gülelim, daha çok anı biriktirelim ve yıllar sonra bugünleri hatırladığımızda yine aynı sıcaklıkla gülümseyelim.</p>
-    <div class="final-secret-sign">İyi ki varsın, Kumsal. ♡</div>
+    <p>Buraya yazabildiklerimiz, sana söylemek istediklerimizin hepsi değil. Sadece yeni yaşında yüzünün daha çok güldüğü, kendini sevildiğinden hiç şüphe etmediğin günlerin olsun istiyoruz. Bir gün yine bu fotoğraflara dönüp baktığımızda, aralarına eklenmiş bir sürü yeni anımız da olsun. Beraber gülelim, beraber büyüyelim; sen de hep hayatımızda ol. İyi ki varsın Kumsal, seni çok seviyoruz.</p>
+    <div class="final-secret-sign">Hep yanında, arkadaşların. ♡</div>
     <div class="final-secret-names">BENNA · ÇAĞLAR · İSMET · TUNA</div>
    </div>
    <button class="credits-trigger" id="creditsTrigger" type="button" hidden>JENERİĞİ GÖR <span aria-hidden="true">✦</span></button>
@@ -809,7 +848,14 @@ html.low-motion .music-equalizer i{height:5px!important;animation:none!important
    <div class="music-panel-meta"><small>SİTENİN MÜZİĞİ</small><strong>Sign of the Times</strong><span>Harry Styles · Kumsal için</span></div>
    <button class="music-island-collapse" id="musicIslandCollapse" type="button" data-music-control aria-label="Müzik panelini küçült">⌄</button>
   </div>
-  <div class="music-panel-progress"><input class="music-seek" id="musicSeek" type="range" min="0" max="1000" step="1" value="0" aria-label="Şarkıda ilerle"><div class="music-time"><span id="musicCurrentTime">0:00</span><span id="musicDuration">5:42</span></div></div>
+  <div class="music-panel-progress"><input class="music-seek" id="musicSeek" type="range" min="0" max="1000" step="1" value="0" aria-label="Şarkıda ilerle"><div class="music-time">
+   <span id="musicCurrentTime">0:00</span>
+   <div class="music-time-actions">
+    <button class="music-skip" id="musicSkipBack" type="button" aria-label="15 saniye geri sar" title="15 saniye geri sar">↶ 15</button>
+    <button class="music-skip" id="musicSkipForward" type="button" aria-label="15 saniye ileri al" title="15 saniye ileri al">15 ↷</button>
+   </div>
+   <span id="musicDuration">5:42</span>
+  </div></div>
   <div class="music-panel-controls">
    <button class="music-island-play" id="musicToggle" type="button" data-music-control aria-label="Şarkıyı başlat" title="Şarkıyı başlat">▶</button>
    <span class="music-panel-status" id="musicExpandedStatus">Oynat düğmesine dokun; müzik sayfalar arasında devam etsin.</span>
@@ -1063,13 +1109,8 @@ const galleryContainPhotos = new Set([
 ]);
 const gallery = document.getElementById("memoryGrid");
 
-const galleryCaptions = [
- "İyi ki çekmişiz.", "Şunu hatırlıyor musun?", "O gün de çok gülmüştük.",
- "Yine olsa, yine.", "İşte bizim hâlimiz.", "Bunu da unutmayalım.",
- "Bu kareyi seviyoruz.", "Ne güzel denk gelmişiz.", "Birlikte olduğumuz günlerden.",
- "Hâlâ favorilerden biri.", "Bu da burada kalsın.", "Bir ara bunu tekrar yapalım.",
- "Hatırlayınca gülümsedik.", "Yine güzel bir an.", "İyi ki o gün yan yanaydık."
-];
+// Fotoğraflara uymayan hazır cümleler yerine sade albüm numaraları kullanılır.
+const galleryCaption = "Anılarımızdan bir kare";
 let galleryIndex = 0;
 let galleryObserver = null;
 const galleryItems = galleryPhotos.map((src,index)=>({src,index}));
@@ -1086,7 +1127,7 @@ function appendGalleryBatch(){
   const card = document.createElement("article");
   card.className = "memory-card"; card.tabIndex = 0; card.setAttribute("role", "button");
   card.dataset.galleryIndex=String(i);
-  card.setAttribute("aria-label", "Anıyı büyüt: " + (galleryCaptions[i % galleryCaptions.length] || "Güzel bir an"));
+  card.setAttribute("aria-label", "Fotoğrafı büyüt: " + String(i + 1).padStart(3, "0"));
   const image = document.createElement("div"); image.className = "memory-image";
   image.dataset.placeholder = ["♡","✳","K","✦","❀","♡"][i % 6];
   if (galleryContainPhotos.has(src)) image.classList.add("memory-image--contain");
@@ -1099,8 +1140,10 @@ function appendGalleryBatch(){
    image.append(img);
   }
   card.append(image);
-  const caption = document.createElement("p"); caption.textContent = galleryCaptions[i % galleryCaptions.length] || "Güzel bir an ♡"; card.append(caption);
-  const num = document.createElement("small"); num.textContent = "ANI / " + String(i + 1).padStart(3, "0"); card.append(num);
+  const num = document.createElement("small");
+  const label = document.createElement("span"); label.textContent = "ANILARIMIZDAN";
+  const index = document.createElement("span"); index.textContent = String(i + 1).padStart(3, "0") + " / 131";
+  num.append(label, index); card.append(num);
   batch.append(card);
  }
  gallery.append(batch);
@@ -1209,7 +1252,7 @@ function preloadPhoto(index){if(index<0||index>=galleryPhotos.length)return;cons
 function paintPhoto(index){
  currentPhotoIndex=(index+galleryPhotos.length)%galleryPhotos.length;
  const src=galleryPhotos[currentPhotoIndex];lightboxImg.src=src;lightboxImg.alt="Kumsal ile anı "+(currentPhotoIndex+1);
- lightboxCaption.textContent=galleryCaptions[currentPhotoIndex%galleryCaptions.length]||"Güzel bir an ♡";
+ lightboxCaption.textContent=galleryCaption;
  lightboxCounter.textContent=String(currentPhotoIndex+1).padStart(2,"0")+" / "+String(galleryPhotos.length).padStart(3,"0");
  lightboxProgress.style.width=((currentPhotoIndex+1)/galleryPhotos.length*100)+"%";
  preloadPhoto((currentPhotoIndex+1)%galleryPhotos.length);preloadPhoto((currentPhotoIndex-1+galleryPhotos.length)%galleryPhotos.length);
@@ -1243,65 +1286,46 @@ filmTrack.addEventListener("click",e=>{const frame=e.target.closest(".film-frame
 
 
 
-// Five wishes, followed by one last group message.
+// Five personal wishes, followed by one last group message.
 const wishes=[
- "Yeni yaşında, seni olduğun gibi seven insanlarla çevrili olduğun günler çoğalsın.",
- "Aklından geçen güzel şeylere yaklaşacak cesareti ve o yolda ilerleyecek gücü hep bul.",
- "Kahkahadan nefessiz kaldığın, dönüp dönüp anlatacağın günlerin bol olsun.",
- "Kendinle gurur duyduğun, kalbinin hafiflediği ve yüzünün içtenlikle güldüğü bir yıl yaşa.",
- "Ve bizimle, yıllar sonra bile hatırlayıp yine güleceğimiz nice güzel anı biriktir."
+ "Yeni yaşında, sabah uyandığında içinin rahat olduğu, günün ortasında da durup dururken gülümsediğin çok günün olsun.",
+ "Aklından geçen şeyler için uğraşırken karşına hep güzel fırsatlar çıksın. Olmasını çok istediğin şeylerin gerçekleştiğini tek tek görelim.",
+ "Bir anda buluşup saatlerce güldüğümüz, sonra eve gidince bile konuşmaya devam ettiğimiz günlerimiz hiç eksik olmasın.",
+ "Canın sıkkın olduğunda seni gerçekten dinleyen, mutlu olduğunda sevincini senin kadar sahiplenen insanlar hep yanında olsun.",
+ "Yıllar sonra bugünlere dönüp baktığımızda, bu fotoğrafların yanına daha yüzlercesini eklemiş olalım. Daha çok şey yaşayalım, Kumsal."
 ];
 let wishIndex=0;
 const wishNext=document.getElementById("wishNext"),wishText=document.getElementById("wishText"),wishCount=document.getElementById("wishCount"),wishProgressFill=document.getElementById("wishProgressFill"),wishFinalTrigger=document.getElementById("wishFinalTrigger"),finalSecret=document.getElementById("finalSecret");
-function smallSparkBurst(){const r=wishNext.getBoundingClientRect();launchPartyConfettiAt(r.left+r.width/2,r.top+r.height/2)}
-function launchPartyConfettiAt(x,y){
- if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
- const previous=document.querySelector(".wish-confetti-canvas");if(previous)previous.remove();
- const canvas=document.createElement("canvas");canvas.className="wish-confetti-canvas";canvas.setAttribute("aria-hidden","true");
- canvas.style.cssText="position:fixed;inset:0;width:100%;height:100%;z-index:1300;pointer-events:none";
- document.body.append(canvas);
- const ctx=canvas.getContext("2d");if(!ctx){canvas.remove();return}
- const dpr=Math.min(devicePixelRatio||1,1.65),w=innerWidth,h=innerHeight;
- canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.scale(dpr,dpr);
- const palette=["#b66f83","#d4a46c","#f4dfb9","#8b6b91","#e7a6a0","#fff5e7"];
- const pieces=[],rand=(min,max)=>min+Math.random()*(max-min);
- for(let i=0;i<118;i++){
-  const angle=rand(-Math.PI*1.92,-Math.PI*.08),speed=rand(2.1,8.6);
-  pieces.push({x:x+rand(-9,9),y:y+rand(-5,5),vx:Math.cos(angle)*speed+rand(-1.1,1.1),vy:Math.sin(angle)*speed-rand(0,1.5),
-   gravity:rand(.075,.16),drag:rand(.986,.996),rotation:rand(0,Math.PI*2),spin:rand(-.16,.16),
-   width:rand(3,7),height:rand(5,12),color:palette[Math.floor(Math.random()*palette.length)],
-   shape:["rect","rect","circle","star"][Math.floor(Math.random()*4)],life:rand(1.0,1.35),fade:rand(.006,.012),
-   wobble:rand(0,Math.PI*2),wobbleSpeed:rand(.035,.085)});
- }
- for(let i=0;i<28;i++){
-  const a=Math.PI*2*i/28,sp=rand(.7,2.4);
-  pieces.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,gravity:-.006,drag:.975,rotation:0,spin:0,
-   width:rand(1.5,3),height:rand(1.5,3),color:palette[i%palette.length],shape:"circle",life:.8,fade:.018,wobble:0,wobbleSpeed:0});
- }
- function drawStar(px,py,r,color){
-  ctx.beginPath();
-  for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5,rr=k%2?r*.42:r,xx=px+Math.cos(a)*rr,yy=py+Math.sin(a)*rr;k?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy)}
-  ctx.closePath();ctx.fillStyle=color;ctx.fill();
- }
- const started=performance.now();
- function frame(now){
-  ctx.clearRect(0,0,w,h);let alive=0;
-  for(const q of pieces){
-   if(q.life<=0)continue;alive++;
-   q.vx*=q.drag;q.vy=q.vy*q.drag+q.gravity;q.x+=q.vx+Math.sin(q.wobble)*.35;q.y+=q.vy;
-   q.wobble+=q.wobbleSpeed;q.rotation+=q.spin;q.life-=q.fade;
-   ctx.save();ctx.globalAlpha=Math.min(1,Math.max(0,q.life));ctx.translate(q.x,q.y);ctx.rotate(q.rotation);
-   if(q.shape==="circle"){ctx.beginPath();ctx.arc(0,0,q.width*.62,0,Math.PI*2);ctx.fillStyle=q.color;ctx.fill()}
-   else if(q.shape==="star"){drawStar(0,0,q.width,q.color)}
-   else{ctx.fillStyle=q.color;ctx.fillRect(-q.width/2,-q.height/2,q.width,q.height)}
-   ctx.restore();
-  }
-  if(alive&&now-started<2300)requestAnimationFrame(frame);else canvas.remove();
- }
- requestAnimationFrame(frame);
+// Wishes open like a small note: no confetti, just a calm paper reveal.
+function revealWish(box){
+ if(!box)return;
+ box.classList.remove("is-revealing");
+ void box.offsetWidth;
+ box.classList.add("is-revealing");
 }
-if(wishNext){wishNext.addEventListener("click",()=>{if(wishIndex>=wishes.length)return;wishText.textContent=wishes[wishIndex];wishCount.textContent="DİLEK "+(wishIndex+1)+" / "+wishes.length;wishProgressFill.style.width=((wishIndex+1)/wishes.length*100)+"%";document.getElementById("wishIntro").textContent="Bir dilek daha açıldı. Hepsi senin için. ♡";const box=document.getElementById("wishMessage");box.classList.remove("is-revealing");void box.offsetWidth;box.classList.add("is-revealing");launchPartyConfettiAt(innerWidth/2,innerHeight*.57);wishIndex++;if(wishIndex===wishes.length){wishNext.textContent="DİLEKLERİN HEPSİ SENİN ♡";wishNext.disabled=true;wishFinalTrigger.hidden=false;}})}
-if(wishFinalTrigger){wishFinalTrigger.addEventListener("click",()=>{finalSecret.hidden=false;wishFinalTrigger.hidden=true;if(creditsTrigger)creditsTrigger.hidden=false;launchPartyConfettiAt(innerWidth/2,innerHeight*.62);setTimeout(()=>finalSecret.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"}),80)})}
+if(wishNext){wishNext.addEventListener("click",()=>{
+ if(wishIndex>=wishes.length)return;
+ wishText.textContent=wishes[wishIndex];
+ wishCount.textContent="DİLEK "+String(wishIndex+1).padStart(2,"0")+" / "+String(wishes.length).padStart(2,"0");
+ wishProgressFill.style.width=((wishIndex+1)/wishes.length*100)+"%";
+ document.getElementById("wishIntro").textContent=wishIndex===0?"Bunları senin için gerçekten diliyoruz. ♡":"Bir tane daha… çünkü sana dileyecek güzel şeyimiz çok.";
+ revealWish(document.getElementById("wishMessage"));
+ wishIndex++;
+ if(wishIndex===1)wishNext.innerHTML='BİR SONRAKİ DİLEĞE BAK <span aria-hidden="true">→</span>';
+ if(wishIndex===wishes.length){
+  wishNext.textContent="BÜTÜN DİLEKLER SENİN ♡";
+  wishNext.disabled=true;
+  wishFinalTrigger.hidden=false;
+ }
+})}
+if(wishFinalTrigger){wishFinalTrigger.addEventListener("click",()=>{
+ finalSecret.hidden=false;
+ wishFinalTrigger.hidden=true;
+ if(creditsTrigger)creditsTrigger.hidden=false;
+ document.getElementById("wishIntro").textContent="Bir de hepimizin içinden geçen son bir şey var.";
+ finalSecret.classList.remove("is-opening");void finalSecret.offsetWidth;finalSecret.classList.add("is-opening");
+ setTimeout(()=>finalSecret.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"}),100);
+})}
 
 // Each personal note opens in a paper-like modal, sized for comfortable reading.
 const voiceOverlay=document.getElementById("voiceNoteOverlay");
@@ -1372,6 +1396,8 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
  const mute=document.getElementById("musicMute");
  const expandedStatus=document.getElementById("musicExpandedStatus");
  const islandProgress=document.getElementById("musicIslandProgress");
+ const skipBack=document.getElementById("musicSkipBack");
+ const skipForward=document.getElementById("musicSkipForward");
  const errorMessage=document.getElementById("musicError");
  const inlineToggle=document.getElementById("songInlineToggle");
  const inlineTitle=document.getElementById("songInlineTitle");
@@ -1392,6 +1418,7 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
  function paint(){
   const playing=!audio.paused&&!audio.ended;
   dock.classList.toggle("is-playing",playing);
+  if("mediaSession" in navigator){try{navigator.mediaSession.playbackState=playing?"playing":"paused"}catch(error){/* Optional browser integration. */}}
   toggles.forEach(button=>{
    button.textContent=playing?"Ⅱ":"▶";
    button.setAttribute("aria-label",playing?"Şarkıyı duraklat":"Şarkıyı başlat");
@@ -1412,6 +1439,9 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
   if(islandProgress)islandProgress.style.width=amount+"%";
   current.textContent=formatTime(audio.currentTime);
   if(Number.isFinite(audio.duration))duration.textContent=formatTime(audio.duration);
+  if("mediaSession" in navigator&&typeof navigator.mediaSession.setPositionState==="function"&&Number.isFinite(audio.duration)&&audio.duration>0){
+   try{navigator.mediaSession.setPositionState({duration:audio.duration,playbackRate:audio.playbackRate||1,position:Math.min(audio.currentTime,audio.duration)})}catch(error){/* Some browsers reject transient position states. */}
+  }
  }
  async function playMusic(){
   try{
@@ -1425,6 +1455,13 @@ backToTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedi
   }
  }
  function toggleMusic(){if(audio.paused){playMusic()}else{audio.pause();hasStarted=true;paint()}}
+ function seekBy(seconds){
+  if(!Number.isFinite(audio.duration))return;
+  audio.currentTime=Math.max(0,Math.min(audio.duration,audio.currentTime+seconds));
+  paintProgress();
+ }
+ if(skipBack)skipBack.addEventListener("click",()=>seekBy(-15));
+ if(skipForward)skipForward.addEventListener("click",()=>seekBy(15));
  expand.addEventListener("click",()=>setExpanded(!dock.classList.contains("island-open")));
  if(collapse)collapse.addEventListener("click",()=>setExpanded(false));
  toggles.forEach(button=>button.addEventListener("click",toggleMusic));
