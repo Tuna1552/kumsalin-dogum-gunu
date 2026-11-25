@@ -952,16 +952,17 @@ body.finale-view-active .music-island.island-open{left:50%;right:auto;transform:
 .gift-film-frame-head{padding:0 2px 10px}
 .gift-film-frame-foot{padding:10px 2px 0;color:#c5a88a}
 .gift-film-screen{aspect-ratio:16/9;position:relative;overflow:hidden;background:#100e13;border:1px solid #a78c825c;box-shadow:0 0 0 1px #17121b,0 8px 25px #0e0b1470}
-.gift-film-screen video{display:block;width:100%;height:100%;aspect-ratio:16/9;object-fit:contain;background:#100e13}
+.gift-film-screen iframe{display:block;width:100%;height:100%;aspect-ratio:16/9;border:0;background:#100e13}.gift-film-cover{background-image:linear-gradient(180deg,rgba(25,17,25,.20),rgba(25,17,25,.03) 35%,rgba(25,17,25,.10) 62%,rgba(25,17,25,.62)),url("assets/kumsal-bizden-sana-poster.webp");background-size:cover;background-position:center}
 .gift-film-cover{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(12px,2vw,23px);background:linear-gradient(180deg,rgba(25,17,25,.28),transparent 32%,transparent 62%,rgba(25,17,25,.57));transition:opacity .38s ease,visibility .38s ease;pointer-events:none}
 .gift-film-cover-top,.gift-film-cover-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff7ef;text-shadow:0 2px 12px #171018;font:7px var(--mono);letter-spacing:.17em}
 .gift-film-cover-top span:last-child{font:18px var(--serif);color:#f0d7bd}
-.gift-film-play{pointer-events:auto;align-self:center;margin-top:24px;display:flex;align-items:center;gap:12px;padding:11px 18px;border:1px solid #fff8efad;border-radius:999px;background:rgba(47,31,46,.76);color:#fffaf4;box-shadow:0 8px 25px #160f1c45, inset 0 1px 0 #ffffff2a;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);cursor:pointer;transition:transform .22s,background .22s,box-shadow .22s}
-.gift-film-play:hover{transform:translateY(21px);background:rgba(87,55,77,.9);box-shadow:0 12px 28px #160f1c55,inset 0 1px 0 #ffffff38}
-.gift-film-play:active{transform:translateY(25px)}
-.gift-film-play-icon{width:29px;height:29px;display:grid;place-items:center;padding-left:2px;border-radius:50%;background:linear-gradient(145deg,#e5c89f,#b98d6f);color:#352335;font:12px var(--sans);box-shadow:0 0 0 4px #ffffff1c}
-.gift-film-play-label{font:8px var(--mono);letter-spacing:.14em}
-.gift-film-player.is-playing .gift-film-cover{opacity:0;visibility:hidden}
+.gift-film-play{pointer-events:auto;align-self:center;margin:auto;width:54px;height:54px;display:grid;place-items:center;padding:0;border:1px solid #fff8efb8;border-radius:50%;background:rgba(47,31,46,.72);color:#fffaf4;box-shadow:0 6px 20px #160f1c45,inset 0 1px 0 #ffffff2a;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s,opacity .32s}
+.gift-film-play:hover{transform:scale(1.07);background:rgba(87,55,77,.92);box-shadow:0 9px 24px #160f1c55,inset 0 1px 0 #ffffff38}
+.gift-film-play:active{transform:scale(.95)}
+.gift-film-play-icon{width:42px;height:42px;display:grid;place-items:center;padding-left:3px;border-radius:50%;background:linear-gradient(145deg,#e9d1ae,#bd9474);color:#352335;font:14px var(--sans);box-shadow:0 0 0 3px #ffffff1c}
+.gift-film-play-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* The invitation disappears after the first play; native controls remain visible for replay and pause. */
+.gift-film-screen.has-started .gift-film-cover{opacity:0;visibility:hidden;pointer-events:none}
 .gift-film-theatre-foot{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 3px 0}
 .gift-film-runtime{display:flex;align-items:center;gap:8px;color:#d5bdad;font:7px var(--mono);letter-spacing:.12em;white-space:nowrap}
 .gift-film-runtime-dot{width:5px;height:5px;border-radius:50%;background:#d3a874;box-shadow:0 0 0 4px #d3a87420}
@@ -993,9 +994,9 @@ body.gift-film-view-active .music-island,body.gift-film-playing .music-island{op
  .gift-film-frame-foot{padding-top:7px}
  .gift-film-cover{padding:10px}
  .gift-film-cover-top,.gift-film-cover-bottom{font-size:6px;letter-spacing:.1em}
- .gift-film-play{padding:8px 12px;gap:8px;margin-top:17px}
- .gift-film-play-icon{width:26px;height:26px;font-size:11px}
- .gift-film-play-label{font-size:7px}
+ .gift-film-play{width:48px;height:48px;padding:0;margin:auto}
+ .gift-film-play-icon{width:38px;height:38px;font-size:12px}
+ .gift-film-play-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
  .gift-film-theatre-foot{align-items:flex-start;flex-direction:column;gap:6px;padding:10px 2px 0}
  .gift-film-theatre-foot p{text-align:left;font-size:7px}
  .gift-film-runtime{font-size:6px}
@@ -1134,24 +1135,21 @@ body.gift-film-view-active .music-island,body.gift-film-playing .music-island{op
     <div class="gift-film-frame">
      <div class="gift-film-frame-head"><span>BİZDEN SANA</span><span>№ 001</span></div>
      <div class="gift-film-screen" id="giftFilmPlayer">
-      <video id="giftFilmVideo" controls playsinline webkit-playsinline preload="metadata" poster="assets/kumsal-bizden-sana-poster.webp" aria-label="Kumsal için hazırlanan kısa video">
-       <source src="assets/kumsal-bizden-sana.mp4" type="video/mp4">
-       Tarayıcın bu videoyu oynatamıyor. Lütfen güncel bir tarayıcıda tekrar dene.
-      </video>
+      <iframe id="giftFilmFrame" title="Bizden, Kumsala..." src="about:blank" data-embed="https://www.youtube-nocookie.com/embed/kT8MD_OAUS0?autoplay=1&playsinline=1&rel=0&modestbranding=1&vq=hd2160" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <div class="gift-film-cover" id="giftFilmCover">
        <div class="gift-film-cover-top"><span>KUMSAL'A ÖZEL</span><span>♡</span></div>
        <button class="gift-film-play" id="giftFilmPlay" type="button" aria-label="Videoyu oynat">
         <span class="gift-film-play-icon" aria-hidden="true">▶</span>
         <span class="gift-film-play-label">FİLMİ BAŞLAT</span>
        </button>
-       <div class="gift-film-cover-bottom"><span>Birlikte biriktirdiklerimizden...</span><span>00:35</span></div>
+       <div class="gift-film-cover-bottom"><span>Birlikte biriktirdiklerimizden...</span><span>00:37</span></div>
       </div>
      </div>
      <div class="gift-film-frame-foot"><span>SHOT WITH LOVE</span><span>♡ &nbsp; ♡ &nbsp; ♡</span></div>
     </div>
     <div class="gift-film-theatre-foot">
-     <div class="gift-film-runtime"><span class="gift-film-runtime-dot"></span><span id="giftFilmDuration">00:35</span><span>·</span><span>KISA BİR HATIRA</span></div>
-     <p id="giftFilmStatus" aria-live="polite">Bu sayfada videonun kendi sesi var. Sitedeki şarkı, çıkınca kaldığı yerden devam eder.</p>
+     <div class="gift-film-runtime"><span class="gift-film-runtime-dot"></span><span id="giftFilmDuration">00:37</span><span>·</span><span>KISA BİR HATIRA</span></div>
+     <p id="giftFilmStatus" aria-live="polite">Videoyu başlattığında kendi sesiyle açılır. Sayfadan ayrıldığında müziğimiz kaldığı yerden devam eder.</p>
     </div>
    </section>
   </div>
@@ -1671,42 +1669,26 @@ function closeMenu(restoreFocus=false){panel.classList.remove("open");scrim.clas
 function openMenu(){panel.classList.add("open");scrim.classList.add("open");panel.setAttribute("aria-hidden","false");trigger.setAttribute("aria-expanded","true");trigger.setAttribute("aria-label","Menüyü kapat");document.body.classList.add("menu-open");}
 trigger.addEventListener("click",()=>trigger.getAttribute("aria-expanded")==="true"?closeMenu():openMenu());
 scrim.addEventListener("click",()=>closeMenu());menuClose.addEventListener("click",()=>closeMenu(true));
-const giftFilmVideo=document.getElementById("giftFilmVideo");
+const giftFilmFrame=document.getElementById("giftFilmFrame");
 const giftFilmPlayer=document.getElementById("giftFilmPlayer");
 const giftFilmPlay=document.getElementById("giftFilmPlay");
+const giftFilmCover=document.getElementById("giftFilmCover");
 const giftFilmStatus=document.getElementById("giftFilmStatus");
-const giftFilmDuration=document.getElementById("giftFilmDuration");
-const siteAudioForFilm=document.getElementById("siteAudio");
-let resumeSiteMusicAfterVideoView=false;
-if(giftFilmVideo){
+let giftFilmStarted=false;
+function stopGiftFilm(){
+ if(giftFilmFrame && giftFilmStarted){giftFilmFrame.src="about:blank";giftFilmStarted=false;}
+ giftFilmPlayer?.classList.remove("is-playing","has-started");
+ document.body.classList.remove("gift-film-playing");
+ if(giftFilmStatus)giftFilmStatus.textContent="Videoyu başlattığında kendi sesiyle açılır. Sayfadan ayrıldığında müziğimiz kaldığı yerden devam eder.";
+}
+if(giftFilmFrame){
  giftFilmPlay?.addEventListener("click",()=>{
-  giftFilmStatus.textContent="İyi seyirler Kumsal. ♡";
-  giftFilmVideo.play().catch(()=>{
-   giftFilmStatus.textContent="Video başlatılamadı. Sayfayı yenileyip tekrar deneyebilirsin.";
-  });
- });
- giftFilmVideo.addEventListener("play",()=>{
+  if(giftFilmStarted)return;
+  giftFilmStarted=true;
+  giftFilmPlayer?.classList.add("is-playing","has-started");
   document.body.classList.add("gift-film-playing");
-  giftFilmPlayer?.classList.add("is-playing");
-  if(giftFilmStatus)giftFilmStatus.textContent="Şimdi sadece videonun sesini dinliyorsun. ♡";
- });
- giftFilmVideo.addEventListener("pause",()=>{
-  document.body.classList.remove("gift-film-playing");
-  if(giftFilmStatus && !giftFilmVideo.ended)giftFilmStatus.textContent="Dilediğin zaman kaldığın yerden devam edebilirsin.";
- });
- giftFilmVideo.addEventListener("ended",()=>{
-  document.body.classList.remove("gift-film-playing");
-  if(giftFilmPlayer)giftFilmPlayer.classList.remove("is-playing");
-  giftFilmVideo.currentTime=0;
-  if(giftFilmStatus)giftFilmStatus.textContent="Umarız izlerken yüzünde küçük bir gülümseme kalmıştır. ♡";
- });
- giftFilmVideo.addEventListener("loadedmetadata",()=>{
-  if(!giftFilmDuration || !Number.isFinite(giftFilmVideo.duration))return;
-  const total=Math.floor(giftFilmVideo.duration);
-  giftFilmDuration.textContent=String(Math.floor(total/60)).padStart(2,"0")+":"+String(total%60).padStart(2,"0");
- });
- giftFilmVideo.addEventListener("error",()=>{
-  if(giftFilmStatus)giftFilmStatus.textContent="Video dosyası yüklenemedi. assets klasöründeki video dosyasını kontrol etmeliyiz.";
+  if(giftFilmStatus)giftFilmStatus.textContent="İyi seyirler Kumsal. ♡";
+  giftFilmFrame.src=giftFilmFrame.dataset.embed;
  });
 }
 
@@ -1720,7 +1702,7 @@ function showView(name,updateHash=true){
   if(resumeSiteMusicAfterVideoView)siteAudioForFilm.pause();
  }
  if(name!=="video" && wasGiftFilmView){
-  if(giftFilmVideo && !giftFilmVideo.paused)giftFilmVideo.pause();
+  stopGiftFilm();
   if(resumeSiteMusicAfterVideoView && siteAudioForFilm)siteAudioForFilm.play().catch(()=>{});
   resumeSiteMusicAfterVideoView=false;
  }
