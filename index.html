@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f6efe8">
 <meta name="color-scheme" content="light">
-<meta name="description" content="Kumsal için sevgiyle hazırlanmış bir doğum günü web sitesi: anılar, küçük notlar, bir mektup ve nice güzel dilek.">
+<meta name="description" content="Kumsal için sevgiyle hazırlanmış bir doğum günü web sitesi: anılar, kısa bir video, bir mektup ve nice güzel dilek.">
 <meta property="og:title" content="İyi ki doğdun Kumsal ♡">
 <meta property="og:description" content="Senin için hazırladığımız küçük dünyaya hoş geldin.">
 <meta property="og:type" content="website">
@@ -923,6 +923,87 @@ body.finale-view-active .music-island:not(.island-open) .music-island-compact-to
 body.finale-view-active .music-island.island-open{left:50%;right:auto;transform:translateX(-50%);width:min(392px,calc(100vw - 24px));}
 @media(max-width:640px){body.finale-view-active .music-island:not(.island-open){right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);}}
 
+
+/* KUMSAL 12.2 — a personal mini-film replaces the repeated small-note page. */
+.gift-film-page{background:linear-gradient(180deg,#f8f2eb 0%,#f0e5dc 100%);min-height:calc(100svh - 86px)}
+.gift-film-hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 88% 3%,rgba(222,193,185,.58),transparent 36%),linear-gradient(132deg,#faf5ef,#f0e5dc)}
+.gift-film-hero:after{content:"✦";position:absolute;right:clamp(25px,8vw,115px);bottom:25px;color:#b89578;font-size:clamp(28px,4vw,48px);opacity:.42;pointer-events:none}
+.gift-film-body{max-width:1420px;padding-top:clamp(27px,4vw,54px)}
+.gift-film-layout{display:grid;grid-template-columns:minmax(235px,.72fr) minmax(0,1.55fr);gap:clamp(22px,4vw,58px);align-items:center}
+.gift-film-intro{min-width:0;display:flex;flex-direction:column;align-self:stretch;padding:clamp(20px,2.5vw,34px) 0}
+.gift-film-intro-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:18px;border-bottom:1px solid #dfd0c7}
+.gift-film-eyebrow{font:8px var(--mono);letter-spacing:.2em;color:#a06f79}
+.gift-film-reel{padding:7px 9px;border:1px solid #dfcec3;border-radius:999px;color:#927b76;font:7px var(--mono);letter-spacing:.12em;white-space:nowrap}
+.gift-film-copy{padding-top:clamp(24px,3vw,43px)}
+.gift-film-overline{color:#9d7779;font:8px var(--mono);letter-spacing:.19em}
+.gift-film-copy h2{max-width:390px;margin:13px 0 18px;color:#3c2937;font:400 clamp(35px,4.2vw,54px)/1.08 var(--serif);letter-spacing:-.052em}
+.gift-film-copy h2 em{color:#a66e7d;font-weight:400}
+.gift-film-copy p{max-width:390px;margin:0 0 14px;color:#766a6d;font:13px/1.95 var(--sans)}
+.gift-film-copy .gift-film-last-line{color:#986976;font:italic 16px/1.8 var(--serif)}
+.gift-film-signoff{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:28px;color:#9b7c79;font:7px var(--mono);letter-spacing:.13em}
+.gift-film-sign-rule{width:35px;height:1px;background:linear-gradient(90deg,#b98c7f,#ddc8b6)}
+.gift-film-theatre{min-width:0;padding:clamp(14px,2vw,22px);border:1px solid #705568;border-radius:16px;background:radial-gradient(ellipse at 50% 0%,#50394f 0,transparent 53%),linear-gradient(145deg,#2f2432,#211b28 72%,#332538);box-shadow:0 24px 58px rgba(43,29,42,.19),inset 0 1px 0 #ffffff20;color:#fff7ef;position:relative;overflow:hidden}
+.gift-film-theatre:before{content:"";position:absolute;inset:8px;border:1px solid #ffffff12;border-radius:11px;pointer-events:none}
+.gift-film-theatre-top{position:relative;z-index:1;display:flex;justify-content:space-between;gap:12px;padding:0 3px 13px;color:#d9c3b6;font:7px var(--mono);letter-spacing:.17em}
+.gift-film-theatre-top span:first-child{display:flex;align-items:center;gap:8px}
+.gift-film-theatre-top i{width:6px;height:6px;border-radius:50%;background:#caa775;box-shadow:0 0 0 4px #caa77520}
+.gift-film-frame{position:relative;z-index:1;padding:12px 12px 10px;border:1px solid #c8a87e66;border-radius:7px;background:linear-gradient(145deg,#4b3b48,#302432);box-shadow:0 12px 28px #120e1970,inset 0 1px 0 #ffffff18}
+.gift-film-frame-head,.gift-film-frame-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#d8bd9a;font:7px var(--mono);letter-spacing:.18em}
+.gift-film-frame-head{padding:0 2px 10px}
+.gift-film-frame-foot{padding:10px 2px 0;color:#c5a88a}
+.gift-film-screen{aspect-ratio:16/9;position:relative;overflow:hidden;background:#100e13;border:1px solid #a78c825c;box-shadow:0 0 0 1px #17121b,0 8px 25px #0e0b1470}
+.gift-film-screen video{display:block;width:100%;height:100%;aspect-ratio:16/9;object-fit:contain;background:#100e13}
+.gift-film-cover{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(12px,2vw,23px);background:linear-gradient(180deg,rgba(25,17,25,.28),transparent 32%,transparent 62%,rgba(25,17,25,.57));transition:opacity .38s ease,visibility .38s ease;pointer-events:none}
+.gift-film-cover-top,.gift-film-cover-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#fff7ef;text-shadow:0 2px 12px #171018;font:7px var(--mono);letter-spacing:.17em}
+.gift-film-cover-top span:last-child{font:18px var(--serif);color:#f0d7bd}
+.gift-film-play{pointer-events:auto;align-self:center;margin-top:24px;display:flex;align-items:center;gap:12px;padding:11px 18px;border:1px solid #fff8efad;border-radius:999px;background:rgba(47,31,46,.76);color:#fffaf4;box-shadow:0 8px 25px #160f1c45, inset 0 1px 0 #ffffff2a;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);cursor:pointer;transition:transform .22s,background .22s,box-shadow .22s}
+.gift-film-play:hover{transform:translateY(21px);background:rgba(87,55,77,.9);box-shadow:0 12px 28px #160f1c55,inset 0 1px 0 #ffffff38}
+.gift-film-play:active{transform:translateY(25px)}
+.gift-film-play-icon{width:29px;height:29px;display:grid;place-items:center;padding-left:2px;border-radius:50%;background:linear-gradient(145deg,#e5c89f,#b98d6f);color:#352335;font:12px var(--sans);box-shadow:0 0 0 4px #ffffff1c}
+.gift-film-play-label{font:8px var(--mono);letter-spacing:.14em}
+.gift-film-player.is-playing .gift-film-cover{opacity:0;visibility:hidden}
+.gift-film-theatre-foot{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 3px 0}
+.gift-film-runtime{display:flex;align-items:center;gap:8px;color:#d5bdad;font:7px var(--mono);letter-spacing:.12em;white-space:nowrap}
+.gift-film-runtime-dot{width:5px;height:5px;border-radius:50%;background:#d3a874;box-shadow:0 0 0 4px #d3a87420}
+.gift-film-theatre-foot p{margin:0;color:#bfaeb6;text-align:right;font:8px/1.6 var(--sans)}
+.gift-film-afterword{display:flex;justify-content:center;align-items:center;gap:17px;max-width:850px;margin:clamp(29px,5vw,54px) auto 0;padding:20px 12px 0;border-top:1px solid #dfd0c7;text-align:center;color:#8c7478}
+.gift-film-afterword p{margin:0;font:italic clamp(15px,1.8vw,19px)/1.6 var(--serif)}
+.gift-film-afterword-mark{color:#b38e74;font-size:13px}
+body.gift-film-view-active .music-island,body.gift-film-playing .music-island{opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,12px);transition:opacity .25s,visibility .25s,transform .25s}
+.music-island{transition:opacity .25s,visibility .25s,transform .25s}
+@media(max-width:900px){.gift-film-layout{grid-template-columns:minmax(0,1fr);max-width:780px;margin:0 auto;gap:22px}.gift-film-intro{padding:4px 3px 0}.gift-film-copy{padding-top:22px}.gift-film-copy h2{max-width:560px}.gift-film-copy p{max-width:680px}.gift-film-signoff{margin-top:12px;padding-top:14px}.gift-film-theatre{width:100%}}
+@media(max-width:640px){
+ .gift-film-page{min-height:calc(100svh - 72px)}
+ .gift-film-hero{padding-bottom:27px}
+ .gift-film-hero:after{right:20px;bottom:13px;font-size:25px}
+ .gift-film-body{padding:25px 14px 68px}
+ .gift-film-layout{gap:19px}
+ .gift-film-intro-top{padding-bottom:13px}
+ .gift-film-copy{padding-top:20px}
+ .gift-film-copy h2{font-size:36px;margin:10px 0 13px}
+ .gift-film-copy p{font-size:12px;line-height:1.85;margin-bottom:10px}
+ .gift-film-copy .gift-film-last-line{font-size:15px}
+ .gift-film-signoff{font-size:6px;padding-top:12px;margin-top:8px}
+ .gift-film-theatre{padding:10px;border-radius:12px}
+ .gift-film-theatre:before{inset:5px;border-radius:8px}
+ .gift-film-theatre-top{font-size:6px;padding:0 2px 9px}
+ .gift-film-frame{padding:8px 8px 7px}
+ .gift-film-frame-head,.gift-film-frame-foot{font-size:6px}
+ .gift-film-frame-head{padding-bottom:7px}
+ .gift-film-frame-foot{padding-top:7px}
+ .gift-film-cover{padding:10px}
+ .gift-film-cover-top,.gift-film-cover-bottom{font-size:6px;letter-spacing:.1em}
+ .gift-film-play{padding:8px 12px;gap:8px;margin-top:17px}
+ .gift-film-play-icon{width:26px;height:26px;font-size:11px}
+ .gift-film-play-label{font-size:7px}
+ .gift-film-theatre-foot{align-items:flex-start;flex-direction:column;gap:6px;padding:10px 2px 0}
+ .gift-film-theatre-foot p{text-align:left;font-size:7px}
+ .gift-film-runtime{font-size:6px}
+ .gift-film-afterword{gap:9px;margin-top:24px;padding-top:16px}
+ .gift-film-afterword p{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){.gift-film-cover,.gift-film-play,.gift-film-page *{transition:none!important;animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -948,7 +1029,7 @@ body.finale-view-active .music-island.island-open{left:50%;right:auto;transform:
 <header class="header">
  <a class="brand" href="#home" aria-label="Ana sayfaya dön"><span class="brand-mark"><img src="https://i.supaimg.com/51cbff16-55c6-497a-88dc-d2dd5323e019/66537b85-5d6a-4a19-bb60-0d340131c887.jpg" alt="Arkadaş grubunuz"></span><span class="brand-name">İyi ki Doğdun Kumsal<small>03 ARALIK · 2026 · İYİ Kİ DOĞDUN</small></span></a>
  <nav class="nav" aria-label="Ana menü">
-  <button class="nav-btn active" data-view="home">Ana sayfa</button><button class="nav-btn" data-view="memories">Anılarımız</button><button class="nav-btn" data-view="film">Film şeridi</button><button class="nav-btn" data-view="story">Tanışma Hikâyemiz</button><button class="nav-btn" data-view="reasons">Küçük notlar</button><button class="nav-btn" data-view="letter">Mektubum</button><button class="nav-btn" data-view="song">Sevdiğin Bir Şarkı</button><button class="nav-btn" data-view="finale">Son sürpriz <span aria-hidden="true">✦</span></button>
+  <button class="nav-btn active" data-view="home">Ana sayfa</button><button class="nav-btn" data-view="memories">Anılarımız</button><button class="nav-btn" data-view="film">Film şeridi</button><button class="nav-btn" data-view="story">Tanışma Hikâyemiz</button><button class="nav-btn" data-view="video">Bizden Sana</button><button class="nav-btn" data-view="letter">Mektubum</button><button class="nav-btn" data-view="song">Sevdiğin Bir Şarkı</button><button class="nav-btn" data-view="finale">Son sürpriz <span aria-hidden="true">✦</span></button>
  </nav>
  <div class="header-note"><i></i>KUMSAL İÇİN TASARLANDI</div>
  <button class="menu-trigger" id="menuTrigger" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menuPanel"><span></span><span></span></button>
@@ -968,7 +1049,7 @@ body.finale-view-active .music-island.island-open{left:50%;right:auto;transform:
   <button class="menu-item" data-view="memories"><span class="menu-icon">▧</span><span><strong>Anılar</strong><small>Fotoğraf albümü</small></span></button>
   <button class="menu-item" data-view="film"><span class="menu-icon">▤</span><span><strong>Film şeridi</strong><small>Hareketli hatıralar</small></span></button>
   <button class="menu-item" data-view="story"><span class="menu-icon">✧</span><span><strong>Tanışma Hikâyemiz</strong><small>İlk günden bugüne</small></span></button>
-  <button class="menu-item" data-view="reasons"><span class="menu-icon">♡</span><span><strong>Küçük notlar</strong><small>Sana özel altı kart</small></span></button>
+  <button class="menu-item" data-view="video"><span class="menu-icon">▶</span><span><strong>Bizden Sana</strong><small>Kumsal için hazırladığımız video</small></span></button>
   <button class="menu-item" data-view="letter"><span class="menu-icon">✉</span><span><strong>Mektubum</strong><small>Kalpten birkaç satır</small></span></button>
   <button class="menu-item" data-view="song"><span class="menu-icon">♫</span><span><strong>Sevdiğin bir şarkı</strong><small>Sign of the Times</small></span></button>
   <button class="menu-item menu-item-finale" data-view="finale"><span class="menu-icon">✧</span><span><strong>Son sürpriz</strong><small>Sana sakladığımız son şey</small></span></button>
@@ -1029,66 +1110,55 @@ body.finale-view-active .music-island.island-open{left:50%;right:auto;transform:
   <div class="story-last-note"><span class="story-last-flower" aria-hidden="true">✳</span><div><span class="story-last-kicker">VE DAHA BİTMEDİ...</span><h2>Önümüzde birlikte yaşayacağımız daha çok şey var.</h2><p>Umarız yıllar sonra da yeni fotoğraflara bakıp “Hatırlıyor musun?” diye başlayacağımız bir sürü anımız olur. Şimdilik bu sayfaya birkaçını sığdırabildik.</p></div><span class="story-last-heart" aria-hidden="true">♡</span></div>
  </div>
 </section>
-<section class="view notes-page" id="view-reasons">
- <div class="page-hero notes-hero">
-  <div class="page-kicker">KUMSAL'A AYRILAN KÜÇÜK BİR SAYFA</div>
-  <h1 class="page-title">Arada bir, <em>aklımızdasın.</em></h1>
-  <p class="page-description">Bunlar uzun uzun mektup değil. Gün içinde söylemek isteyip de bazen araya kaynayan şeylerden birkaçını burada bıraktık. Hangisi hoşuna giderse onu aç. ♡</p>
+<section class="view gift-film-page" id="view-video">
+ <div class="page-hero gift-film-hero">
+  <div class="page-kicker">KUMSAL İÇİN KÜÇÜK BİR GÖSTERİM</div>
+  <h1 class="page-title">Biraz <em>bizden sana.</em></h1>
+  <p class="page-description">Bunu hazırlarken birlikte olduğumuz günlerden birkaç görüntüyü bir araya getirdik. Çok uzun değil; ama her karesinde bizden bir şey var. Umarız izlerken yüzünde küçük bir gülümseme olur. ♡</p>
  </div>
- <div class="page-body notes-body">
-  <section class="notes-desk" aria-labelledby="notesDeskTitle">
-   <div class="notes-desk-top">
-    <div><span class="notes-desk-kicker">BİZDEN SANA</span><h2 id="notesDeskTitle">Biraz <em>bizden</em> kalsın.</h2></div>
-    <div class="notes-desk-side"><span class="notes-paperclip" aria-hidden="true">✳</span><span>İSTEDİĞİN SIRAYLA<br>OKUYABİLİRSİN</span></div>
-   </div>
-   <div class="notes-grid" id="reasonGrid">
-    <button class="small-note-card note-tone-rose" type="button" data-note-index="0" aria-haspopup="dialog">
-     <span class="small-note-top"><span>GÜN İÇİNDE</span><span class="small-note-symbol">↗</span></span>
-     <span class="small-note-mark" aria-hidden="true">♡</span>
-     <strong>Bir şey görünce...</strong>
-     <span class="small-note-teaser">“Bunu Kumsal'a da anlatalım” dediğimiz oluyor.</span>
-     <span class="small-note-bottom">NOTU AÇ <span>＋</span></span>
-    </button>
-    <button class="small-note-card note-tone-cream" type="button" data-note-index="1" aria-haspopup="dialog">
-     <span class="small-note-top"><span>BİZİM HÂLİMİZ</span><span class="small-note-symbol">↗</span></span>
-     <span class="small-note-mark" aria-hidden="true">✳</span>
-     <strong>Yanında kasmaya gerek yok.</strong>
-     <span class="small-note-teaser">Bazen en güzel zamanlar, hiçbir plan yapmadığımız zamanlar.</span>
-     <span class="small-note-bottom">NOTU AÇ <span>＋</span></span>
-    </button>
-    <button class="small-note-card note-tone-lilac" type="button" data-note-index="2" aria-haspopup="dialog">
-     <span class="small-note-top"><span>KÜÇÜK BİR HATIRLATMA</span><span class="small-note-symbol">↗</span></span>
-     <span class="small-note-mark" aria-hidden="true">☾</span>
-     <strong>Kendine de biraz iyi davran.</strong>
-     <span class="small-note-teaser">Her şeyi aynı anda halletmek zorunda değilsin.</span>
-     <span class="small-note-bottom">NOTU AÇ <span>＋</span></span>
-    </button>
-    <button class="small-note-card note-tone-sage" type="button" data-note-index="3" aria-haspopup="dialog">
-     <span class="small-note-top"><span>ARAYA KAYNAYANLAR</span><span class="small-note-symbol">↗</span></span>
-     <span class="small-note-mark" aria-hidden="true">〰</span>
-     <strong>Konuşacak şey hiç bitmiyor.</strong>
-     <span class="small-note-teaser">Bir konudan ötekine geçip saatleri unutuyoruz.</span>
-     <span class="small-note-bottom">NOTU AÇ <span>＋</span></span>
-    </button>
-    <button class="small-note-card note-tone-peach" type="button" data-note-index="4" aria-haspopup="dialog">
-     <span class="small-note-top"><span>DEVAMI VAR</span><span class="small-note-symbol">↗</span></span>
-     <span class="small-note-mark" aria-hidden="true">✦</span>
-     <strong>Daha yapacak çok şey var.</strong>
-     <span class="small-note-teaser">Henüz yaşamadığımız bir sürü güzel gün duruyor önümüzde.</span>
-     <span class="small-note-bottom">NOTU AÇ <span>＋</span></span>
-    </button>
-    <button class="small-note-card note-tone-plum" type="button" data-note-index="5" aria-haspopup="dialog">
-     <span class="small-note-top"><span>BU SAYFANIN SEBEBİ</span><span class="small-note-symbol">↗</span></span>
-     <span class="small-note-mark" aria-hidden="true">♡</span>
-     <strong>Yüzün biraz gülsün istedik.</strong>
-     <span class="small-note-teaser">Bütün bu küçük uğraşın sebebi aslında tam olarak bu.</span>
-     <span class="small-note-bottom">NOTU AÇ <span>＋</span></span>
-    </button>
-   </div>
-   <div class="notes-desk-foot"><span>ALTISINI DA OKUMAK ZORUNDA DEĞİLSİN :)</span><span>AMA HEPSİ SENİN İÇİN ♡</span></div>
-  </section>
+ <div class="page-body gift-film-body">
+  <div class="gift-film-layout">
+   <aside class="gift-film-intro" aria-labelledby="giftFilmTitle">
+    <div class="gift-film-intro-top"><span class="gift-film-eyebrow">BİZDEN SANA</span><span class="gift-film-reel">REEL NO. 01</span></div>
+    <div class="gift-film-copy">
+     <span class="gift-film-overline">BİRKAÇ SANİYELİK BİR HATIRA</span>
+     <h2 id="giftFilmTitle">Bu kez biraz da <em>izleyelim.</em></h2>
+     <p>Fotoğrafların arasına bu küçük videoyu da eklemek istedik. İçinde birlikte geçirdiğimiz günlerden birkaç parça, tanıdık yüzler ve dönüp bakınca gülümseten anlar var.</p>
+     <p class="gift-film-last-line">Hazırsan, bu küçük gösterim senin için. ♡</p>
+    </div>
+    <div class="gift-film-signoff"><span class="gift-film-sign-rule"></span><span>BENNA · ÇAĞLAR · İSMET · TUNA</span></div>
+   </aside>
+
+   <section class="gift-film-theatre" aria-label="Kumsal için hazırlanan video">
+    <div class="gift-film-theatre-top"><span><i></i> ÖZEL GÖSTERİM</span><span>03 · 12 · 2026</span></div>
+    <div class="gift-film-frame">
+     <div class="gift-film-frame-head"><span>BİZDEN SANA</span><span>№ 001</span></div>
+     <div class="gift-film-screen" id="giftFilmPlayer">
+      <video id="giftFilmVideo" controls playsinline webkit-playsinline preload="metadata" poster="assets/kumsal-bizden-sana-poster.webp" aria-label="Kumsal için hazırlanan kısa video">
+       <source src="assets/kumsal-bizden-sana.mp4" type="video/mp4">
+       Tarayıcın bu videoyu oynatamıyor. Lütfen güncel bir tarayıcıda tekrar dene.
+      </video>
+      <div class="gift-film-cover" id="giftFilmCover">
+       <div class="gift-film-cover-top"><span>KUMSAL'A ÖZEL</span><span>♡</span></div>
+       <button class="gift-film-play" id="giftFilmPlay" type="button" aria-label="Videoyu oynat">
+        <span class="gift-film-play-icon" aria-hidden="true">▶</span>
+        <span class="gift-film-play-label">FİLMİ BAŞLAT</span>
+       </button>
+       <div class="gift-film-cover-bottom"><span>Birlikte biriktirdiklerimizden...</span><span>00:35</span></div>
+      </div>
+     </div>
+     <div class="gift-film-frame-foot"><span>SHOT WITH LOVE</span><span>♡ &nbsp; ♡ &nbsp; ♡</span></div>
+    </div>
+    <div class="gift-film-theatre-foot">
+     <div class="gift-film-runtime"><span class="gift-film-runtime-dot"></span><span id="giftFilmDuration">00:35</span><span>·</span><span>KISA BİR HATIRA</span></div>
+     <p id="giftFilmStatus" aria-live="polite">Bu sayfada videonun kendi sesi var. Sitedeki şarkı, çıkınca kaldığı yerden devam eder.</p>
+    </div>
+   </section>
+  </div>
+  <div class="gift-film-afterword"><span class="gift-film-afterword-mark">✳</span><p>Bu videonun sonu var; ama birlikte biriktireceğimiz şeylerin devamı var.</p><span class="gift-film-afterword-mark">✳</span></div>
  </div>
 </section>
+
 <section class="view letter-page" id="view-letter">
  <div class="page-hero"><div class="page-kicker">SÖYLEMEK İSTEDİĞİMİZ ŞEYLER</div><h1 class="page-title">Sana bir <em>mektubumuz var.</em></h1><p class="page-description">Aslında sana söylemek istediğimiz o kadar çok şey var ki nereden başlayacağımızı bile bilmiyoruz. Bazen ne kadar sevdiğimizi, bizim için ne kadar değerli olduğunu anlatmaya kelimeler yetmiyor. O yüzden senin için küçük de olsa böyle bir şey hazırlamak istedik. Umarız bunları okurken ne kadar sevildiğini ve hayatımızda ne kadar güzel bir yerin olduğunu hissedersin. Çünkü sen bizim için gerçekten çok özelsin. İyi ki varsın Kumsal. </p></div>
  <div class="page-body letter-body"><article class="letter-paper">
@@ -1216,18 +1286,6 @@ body.finale-view-active .music-island.island-open{left:50%;right:auto;transform:
 
 </main>
 <footer class="footer"><span>İYİ Kİ DOĞDUN KUMSAL · 2026</span><button class="footer-seal" id="secretEnvelopeTrigger" type="button" aria-label="Saklı zarfı aç">✉</button><span>SEVGİYLE HAZIRLANDI ♡</span></footer>
-<div class="small-note-overlay" id="smallNoteOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="smallNoteTitle">
- <article class="small-note-paper">
-  <button class="small-note-close" id="smallNoteClose" type="button" aria-label="Notu kapat">×</button>
-  <div class="small-note-paper-top"><span>KUMSAL'A KÜÇÜK BİR NOT</span><span id="smallNoteNumber">01 / 06</span></div>
-  <div class="small-note-paper-mark" aria-hidden="true">♡</div>
-  <div class="small-note-paper-kicker" id="smallNoteKicker">GÜN İÇİNDE</div>
-  <h2 id="smallNoteTitle">Bir şey görünce...</h2>
-  <p id="smallNoteText"></p>
-  <div class="small-note-paper-sign">Bunu da bil istedik. <span>♡</span></div>
-  <button class="small-note-done" id="smallNoteDone" type="button">NOTLARA GERİ DÖN</button>
- </article>
-</div>
 <div class="wish-note-overlay" id="wishNoteOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="wishNoteTitle">
  <article class="wish-note-paper">
   <button class="wish-note-close" id="wishNoteClose" type="button" aria-label="Dileği kapat">×</button>
@@ -1607,16 +1665,66 @@ const duplicate=track.cloneNode(true);while(duplicate.firstChild)track.append(du
 
 // Single-view navigation + history support.
 const navButtons=[...document.querySelectorAll("[data-view]")];
-const validViews=new Set(["home","memories","film","story","reasons","letter","song","finale"]);
+const validViews=new Set(["home","memories","film","story","video","letter","song","finale"]);
 const trigger=document.getElementById("menuTrigger"),panel=document.getElementById("menuPanel"),scrim=document.getElementById("menuScrim"),menuClose=document.getElementById("menuClose");
 function closeMenu(restoreFocus=false){panel.classList.remove("open");scrim.classList.remove("open");panel.setAttribute("aria-hidden","true");trigger.setAttribute("aria-expanded","false");trigger.setAttribute("aria-label","Menüyü aç");document.body.classList.remove("menu-open");if(restoreFocus)trigger.focus();}
 function openMenu(){panel.classList.add("open");scrim.classList.add("open");panel.setAttribute("aria-hidden","false");trigger.setAttribute("aria-expanded","true");trigger.setAttribute("aria-label","Menüyü kapat");document.body.classList.add("menu-open");}
 trigger.addEventListener("click",()=>trigger.getAttribute("aria-expanded")==="true"?closeMenu():openMenu());
 scrim.addEventListener("click",()=>closeMenu());menuClose.addEventListener("click",()=>closeMenu(true));
+const giftFilmVideo=document.getElementById("giftFilmVideo");
+const giftFilmPlayer=document.getElementById("giftFilmPlayer");
+const giftFilmPlay=document.getElementById("giftFilmPlay");
+const giftFilmStatus=document.getElementById("giftFilmStatus");
+const giftFilmDuration=document.getElementById("giftFilmDuration");
+const siteAudioForFilm=document.getElementById("siteAudio");
+let resumeSiteMusicAfterVideoView=false;
+if(giftFilmVideo){
+ giftFilmPlay?.addEventListener("click",()=>{
+  giftFilmStatus.textContent="İyi seyirler Kumsal. ♡";
+  giftFilmVideo.play().catch(()=>{
+   giftFilmStatus.textContent="Video başlatılamadı. Sayfayı yenileyip tekrar deneyebilirsin.";
+  });
+ });
+ giftFilmVideo.addEventListener("play",()=>{
+  document.body.classList.add("gift-film-playing");
+  giftFilmPlayer?.classList.add("is-playing");
+  if(giftFilmStatus)giftFilmStatus.textContent="Şimdi sadece videonun sesini dinliyorsun. ♡";
+ });
+ giftFilmVideo.addEventListener("pause",()=>{
+  document.body.classList.remove("gift-film-playing");
+  if(giftFilmStatus && !giftFilmVideo.ended)giftFilmStatus.textContent="Dilediğin zaman kaldığın yerden devam edebilirsin.";
+ });
+ giftFilmVideo.addEventListener("ended",()=>{
+  document.body.classList.remove("gift-film-playing");
+  if(giftFilmPlayer)giftFilmPlayer.classList.remove("is-playing");
+  giftFilmVideo.currentTime=0;
+  if(giftFilmStatus)giftFilmStatus.textContent="Umarız izlerken yüzünde küçük bir gülümseme kalmıştır. ♡";
+ });
+ giftFilmVideo.addEventListener("loadedmetadata",()=>{
+  if(!giftFilmDuration || !Number.isFinite(giftFilmVideo.duration))return;
+  const total=Math.floor(giftFilmVideo.duration);
+  giftFilmDuration.textContent=String(Math.floor(total/60)).padStart(2,"0")+":"+String(total%60).padStart(2,"0");
+ });
+ giftFilmVideo.addEventListener("error",()=>{
+  if(giftFilmStatus)giftFilmStatus.textContent="Video dosyası yüklenemedi. assets klasöründeki video dosyasını kontrol etmeliyiz.";
+ });
+}
+
 function showView(name,updateHash=true){
  if(!validViews.has(name))name="home";
  const target=document.getElementById("view-"+name);if(!target)return;
  document.body.classList.toggle("finale-view-active",name==="finale");
+ const wasGiftFilmView=document.body.classList.contains("gift-film-view-active");
+ if(name==="video" && !wasGiftFilmView){
+  resumeSiteMusicAfterVideoView=!!siteAudioForFilm && !siteAudioForFilm.paused;
+  if(resumeSiteMusicAfterVideoView)siteAudioForFilm.pause();
+ }
+ if(name!=="video" && wasGiftFilmView){
+  if(giftFilmVideo && !giftFilmVideo.paused)giftFilmVideo.pause();
+  if(resumeSiteMusicAfterVideoView && siteAudioForFilm)siteAudioForFilm.play().catch(()=>{});
+  resumeSiteMusicAfterVideoView=false;
+ }
+ document.body.classList.toggle("gift-film-view-active",name==="video");
  document.querySelectorAll(".view").forEach(v=>{const active=v===target;v.classList.toggle("active",active);v.setAttribute("aria-hidden",String(!active));});
  document.querySelectorAll(".nav-btn").forEach(b=>{const active=b.dataset.view===name;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active));if(active)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
  document.querySelectorAll(".menu-item").forEach(b=>{const active=b.dataset.view===name;b.classList.toggle("active",active);if(active)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
@@ -1632,34 +1740,7 @@ document.querySelector(".brand").addEventListener("click",e=>{e.preventDefault()
 document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.go)));
 window.addEventListener("popstate",()=>showView(location.hash.slice(1)||"home",false));
 showView(location.hash.slice(1)||"home",false);
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMenu(true);closeMemory();closeSecretEnvelopeIfOpen();closeVoiceNote();closeSmallNote();closeWishNote();}if(e.key==="Tab"&&voiceOverlay?.classList.contains("open")){e.preventDefault();voiceClose.focus();}});
-
-// Six small notes: a separate, quiet reading panel. The four signed letter notes remain independent.
-const smallNotes=[
- {kicker:"GÜN İÇİNDE",title:"Bir şey görünce...",text:"Bazen gün içinde komik bir şey görüyoruz ya da bir şey duyuyoruz; içimizden hemen “Bunu Kumsal'a anlatalım” geçiyor. Sonra anlatınca konu uzuyor, gülüşmeler de peşinden geliyor. Küçük gibi ama bizde yeri olan şeylerden biri bu."},
- {kicker:"BİZİM HÂLİMİZ",title:"Yanında kasmaya gerek yok.",text:"Her buluşmanın özel bir planı olmasına gerek yok. Bazen oturup saçma sapan konuşuyoruz, bazen bir şey anlatırken konudan konuya atlıyoruz. Sonra eve gidince bile sohbet bitmiyor. Seninle en sevdiğimiz zamanlar biraz da böyle."},
- {kicker:"KÜÇÜK BİR HATIRLATMA",title:"Kendine de biraz iyi davran.",text:"Bir gün her şey üst üste gelirse kendine biraz nefes aldır. Her şeyi aynı anda çözmek zorunda değilsin, herkese yetişmek zorunda da değilsin. Bunu söylemek istedik çünkü bazen insanın bunu birinden duymaya ihtiyacı oluyor."},
- {kicker:"ARAYA KAYNAYANLAR",title:"Konuşacak şey hiç bitmiyor.",text:"Bazen bir araya gelince anlatacak o kadar çok şey oluyor ki nereden başlayacağımızı şaşırıyoruz. Bazı şeyleri tekrar tekrar anlatsak da sıkılmıyoruz. Sanırım bu da bizim küçük alışkanlığımız oldu."},
- {kicker:"DEVAMI VAR",title:"Daha yapacak çok şey var.",text:"Daha gidilecek yerler, yapılacak plansız buluşmalar, yarıda kalmış sohbetler var. Şimdiden hepsini tek tek düşünmedik; zaten en güzeli bazen aniden karar verip çıkmak oluyor."},
- {kicker:"BU SAYFANIN SEBEBİ",title:"Yüzün biraz gülsün istedik.",text:"Bu sayfaya altı tane not koyduk ama aslında içlerinden bir tanesini bile okurken yüzün biraz güldüyse bizim için yeter. Hazırlarken en çok istediğimiz şey buydu: kendini bu küçük sürprizin içinde hissetmen."}
-];
-const smallNoteOverlay=document.getElementById("smallNoteOverlay"),smallNoteClose=document.getElementById("smallNoteClose"),smallNoteDone=document.getElementById("smallNoteDone");
-const smallNoteKicker=document.getElementById("smallNoteKicker"),smallNoteTitle=document.getElementById("smallNoteTitle"),smallNoteText=document.getElementById("smallNoteText"),smallNoteNumber=document.getElementById("smallNoteNumber");
-let activeSmallNoteCard=null,smallNotePreviousOverflow="";
-function openSmallNote(index,card){
- const note=smallNotes[index];if(!note)return;
- activeSmallNoteCard=card||document.activeElement;smallNotePreviousOverflow=document.body.style.overflow;
- smallNoteKicker.textContent=note.kicker;smallNoteTitle.textContent=note.title;smallNoteText.textContent=note.text;smallNoteNumber.textContent=String(index+1).padStart(2,"0")+" / 06";
- smallNoteOverlay.classList.add("open");smallNoteOverlay.style.opacity="1";smallNoteOverlay.style.visibility="visible";smallNoteOverlay.style.pointerEvents="auto";smallNoteOverlay.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";smallNoteClose.focus({preventScroll:true});
-}
-function closeSmallNote(){
- if(!smallNoteOverlay?.classList.contains("open"))return;
- smallNoteOverlay.classList.remove("open");smallNoteOverlay.style.opacity="";smallNoteOverlay.style.visibility="";smallNoteOverlay.style.pointerEvents="";smallNoteOverlay.setAttribute("aria-hidden","true");document.body.style.overflow=smallNotePreviousOverflow;
- if(activeSmallNoteCard?.focus)activeSmallNoteCard.focus({preventScroll:true});activeSmallNoteCard=null;
-}
-document.querySelectorAll(".small-note-card").forEach(card=>card.addEventListener("click",()=>openSmallNote(Number(card.dataset.noteIndex),card)));
-smallNoteClose.addEventListener("click",closeSmallNote);smallNoteDone.addEventListener("click",closeSmallNote);
-smallNoteOverlay.addEventListener("click",event=>{if(event.target===smallNoteOverlay)closeSmallNote();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMenu(true);closeMemory();closeSecretEnvelopeIfOpen();closeVoiceNote();closeWishNote();}if(e.key==="Tab"&&voiceOverlay?.classList.contains("open")){e.preventDefault();voiceClose.focus();}});
 
 // Film controls work with mouse and touch.
 const filmTrack=document.getElementById("filmTrack"),filmToggle=document.getElementById("filmToggle");
