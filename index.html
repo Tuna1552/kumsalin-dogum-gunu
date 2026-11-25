@@ -1123,7 +1123,7 @@ body.gift-film-view-active .music-island,body.gift-film-playing .music-island{op
     <div class="gift-film-intro-top"><span class="gift-film-eyebrow">BİZDEN SANA</span><span class="gift-film-reel">REEL NO. 01</span></div>
     <div class="gift-film-copy">
      <span class="gift-film-overline">BİRKAÇ SANİYELİK BİR HATIRA</span>
-     <h2 id="giftFilmTitle">Bu kez biraz da <em>izleyelim.</em></h2>
+     <h2 id="giftFilmTitle">Sana özel bir <em>video.</em></h2>
      <p>Fotoğrafların arasına bu küçük videoyu da eklemek istedik. İçinde birlikte geçirdiğimiz günlerden birkaç parça, tanıdık yüzler ve dönüp bakınca gülümseten anlar var.</p>
      <p class="gift-film-last-line">Hazırsan, bu küçük gösterim senin için. ♡</p>
     </div>
@@ -1670,6 +1670,9 @@ function openMenu(){panel.classList.add("open");scrim.classList.add("open");pane
 trigger.addEventListener("click",()=>trigger.getAttribute("aria-expanded")==="true"?closeMenu():openMenu());
 scrim.addEventListener("click",()=>closeMenu());menuClose.addEventListener("click",()=>closeMenu(true));
 const giftFilmFrame=document.getElementById("giftFilmFrame");
+// Shared soundtrack reference used when entering/leaving the video page.
+const siteAudioForFilm=document.getElementById("siteAudio");
+let resumeSiteMusicAfterVideoView=false;
 const giftFilmPlayer=document.getElementById("giftFilmPlayer");
 const giftFilmPlay=document.getElementById("giftFilmPlay");
 const giftFilmCover=document.getElementById("giftFilmCover");
